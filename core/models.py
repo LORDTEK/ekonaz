@@ -47,7 +47,7 @@ class Firm(models.Model):
     ceo_name = models.CharField(max_length=255, blank=True, null=True)
     ceo_email = models.CharField(max_length=255, blank=True, null=True)
     ceo_cell = models.CharField(max_length=255, blank=True, null=True)
-    logo_media = models.ForeignKey('Media', models.DO_NOTHING, blank=True, null=True)
+    logo_media = models.ForeignKey('Media', on_delete=models.SET_NULL, blank=True, null=True)
     active = models.BooleanField(db_column='active_')
 
     class Meta:
@@ -74,8 +74,8 @@ class Language(models.Model):
 class Media(models.Model):
     id = models.BigAutoField(primary_key=True)
     create = models.DateTimeField(db_column='create_', blank=True, null=True)
-    media_type = models.ForeignKey('MediaType', models.DO_NOTHING, blank=True, null=True)
-    path = models.ForeignKey('Path', models.DO_NOTHING, blank=True, null=True)
+    media_type = models.ForeignKey('MediaType', on_delete=models.PROTECT, blank=True, null=True)
+    path = models.ForeignKey('Path', on_delete=models.PROTECT, blank=True, null=True)
     name = models.CharField(db_column='name_', max_length=255, blank=True, null=True)
     delete = models.DateTimeField(db_column='delete_', blank=True, null=True)
     active = models.BooleanField(db_column='active_')
@@ -129,8 +129,8 @@ class Path(models.Model):
 class TaxOffice(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(db_column='name_', max_length=255)
-    city = models.ForeignKey(City, models.DO_NOTHING)
-    district = models.ForeignKey(District, models.DO_NOTHING)
+    city = models.ForeignKey(City, on_delete=models.PROTECT)
+    district = models.ForeignKey(District, on_delete=models.PROTECT)
 
     class Meta:
         managed = False
@@ -142,15 +142,15 @@ class TaxOffice(models.Model):
 
 class User(models.Model):
     id = models.BigAutoField(primary_key=True)
-    user_group = models.ForeignKey('UserGroup', models.DO_NOTHING)
-    language = models.ForeignKey(Language, models.DO_NOTHING, blank=True, null=True)
+    user_group = models.ForeignKey('UserGroup', on_delete=models.PROTECT)
+    language = models.ForeignKey(Language, on_delete=models.SET_NULL, blank=True, null=True)
     name = models.CharField(db_column='name_', max_length=255, blank=True, null=True)
     tckno = models.CharField(db_column='tckno_', max_length=11, blank=True, null=True)
     certificate_number = models.CharField(max_length=255, blank=True, null=True)
     title = models.CharField(db_column='title_', max_length=255, blank=True, null=True)
     email = models.CharField(db_column='email_', max_length=255, blank=True, null=True)
     #pasword_field = models.CharField(db_column='pasword_', max_length=32, blank=True, null=True)  # Field renamed because it ended with '_'.
-    logo_media = models.ForeignKey(Media, models.DO_NOTHING, blank=True, null=True)
+    logo_media = models.ForeignKey(Media, on_delete=models.SET_NULL, blank=True, null=True)
     active = models.BooleanField(db_column='active_')
 
     class Meta:
@@ -163,8 +163,8 @@ class User(models.Model):
 
 class UserFirm(models.Model):
     pk = models.CompositePrimaryKey('user_id', 'firm_id')
-    user = models.ForeignKey(User, models.DO_NOTHING)
-    firm = models.ForeignKey(Firm, models.DO_NOTHING)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    firm = models.ForeignKey(Firm, on_delete=models.PROTECT)
     create = models.DateTimeField(db_column='create_')
 
     class Meta:
