@@ -5,7 +5,7 @@
 -- Dumped from database version 17.5
 -- Dumped by pg_dump version 17.5
 
--- Started on 2025-07-12 17:09:04
+-- Started on 2025-07-23 19:58:03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -20,8 +20,169 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 5000 (class 0 OID 16399)
--- Dependencies: 222
+-- TOC entry 5173 (class 0 OID 25662)
+-- Dependencies: 247
+-- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.auth_group (id, name) FROM stdin;
+1	Rutin Operatör
+\.
+
+
+--
+-- TOC entry 5175 (class 0 OID 25670)
+-- Dependencies: 249
+-- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
+1	1	65
+2	1	33
+3	1	34
+4	1	35
+5	1	36
+6	1	66
+7	1	67
+8	1	68
+\.
+
+
+--
+-- TOC entry 5171 (class 0 OID 25656)
+-- Dependencies: 245
+-- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
+1	Can add log entry	1	add_logentry
+2	Can change log entry	1	change_logentry
+3	Can delete log entry	1	delete_logentry
+4	Can view log entry	1	view_logentry
+5	Can add permission	2	add_permission
+6	Can change permission	2	change_permission
+7	Can delete permission	2	delete_permission
+8	Can view permission	2	view_permission
+9	Can add group	3	add_group
+10	Can change group	3	change_group
+11	Can delete group	3	delete_group
+12	Can view group	3	view_group
+13	Can add user	4	add_user
+14	Can change user	4	change_user
+15	Can delete user	4	delete_user
+16	Can view user	4	view_user
+17	Can add content type	5	add_contenttype
+18	Can change content type	5	change_contenttype
+19	Can delete content type	5	delete_contenttype
+20	Can view content type	5	view_contenttype
+21	Can add session	6	add_session
+22	Can change session	6	change_session
+23	Can delete session	6	delete_session
+24	Can view session	6	view_session
+25	Can add city	7	add_city
+26	Can change city	7	change_city
+27	Can delete city	7	delete_city
+28	Can view city	7	view_city
+29	Can add district	8	add_district
+30	Can change district	8	change_district
+31	Can delete district	8	delete_district
+32	Can view district	8	view_district
+33	Can add firm	9	add_firm
+34	Can change firm	9	change_firm
+35	Can delete firm	9	delete_firm
+36	Can view firm	9	view_firm
+37	Can add language	10	add_language
+38	Can change language	10	change_language
+39	Can delete language	10	delete_language
+40	Can view language	10	view_language
+41	Can add media	11	add_media
+42	Can change media	11	change_media
+43	Can delete media	11	delete_media
+44	Can view media	11	view_media
+45	Can add media type	12	add_mediatype
+46	Can change media type	12	change_mediatype
+47	Can delete media type	12	delete_mediatype
+48	Can view media type	12	view_mediatype
+49	Can add nace	13	add_nace
+50	Can change nace	13	change_nace
+51	Can delete nace	13	delete_nace
+52	Can view nace	13	view_nace
+53	Can add path	14	add_path
+54	Can change path	14	change_path
+55	Can delete path	14	delete_path
+56	Can view path	14	view_path
+57	Can add tax office	15	add_taxoffice
+58	Can change tax office	15	change_taxoffice
+59	Can delete tax office	15	delete_taxoffice
+60	Can view tax office	15	view_taxoffice
+61	Can add user	16	add_user
+62	Can change user	16	change_user
+63	Can delete user	16	delete_user
+64	Can view user	16	view_user
+65	Can add user firm	17	add_userfirm
+66	Can change user firm	17	change_userfirm
+67	Can delete user firm	17	delete_userfirm
+68	Can view user firm	17	view_userfirm
+69	Can add user group	18	add_usergroup
+70	Can change user group	18	change_usergroup
+71	Can delete user group	18	delete_usergroup
+72	Can view user group	18	view_usergroup
+\.
+
+
+--
+-- TOC entry 5177 (class 0 OID 25676)
+-- Dependencies: 251
+-- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
+2	pbkdf2_sha256$1000000$unaNtTDe2TsZmYHUGZflDz$YMfmcFV3u6PnSoKIbiaLHl6hVJHMw1CKz79JN15Pf5A=	\N	f	osman.atay				f	t	2025-07-19 11:24:46.736717+03
+1	pbkdf2_sha256$1000000$92pzZptuCqIQhtvPFcypfE$kOigF+4Ywen80/jY3qrSXQs7z5V0+1dPUAJAODEt/XY=	2025-07-23 13:38:14.896508+03	t	ekonaz			turksat@outlook.com	t	t	2025-07-19 08:28:50.98044+03
+\.
+
+
+--
+-- TOC entry 5179 (class 0 OID 25684)
+-- Dependencies: 253
+-- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.auth_user_groups (id, user_id, group_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5181 (class 0 OID 25690)
+-- Dependencies: 255
+-- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5188 (class 0 OID 33845)
+-- Dependencies: 262
+-- Data for Name: blood_; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.blood_ (id, name_) FROM stdin;
+1	0 Rh (-)
+2	0 Rh (+)
+3	A Rh (-)
+4	A Rh (+)
+5	B Rh (-)
+6	B Rh (+)
+7	AB Rh (-)
+8	AB Rh (+)
+\.
+
+
+--
+-- TOC entry 5143 (class 0 OID 25464)
+-- Dependencies: 217
 -- Data for Name: city_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -111,8 +272,18 @@ COPY public.city_ (id, name_) FROM stdin;
 
 
 --
--- TOC entry 5002 (class 0 OID 16406)
--- Dependencies: 224
+-- TOC entry 5190 (class 0 OID 33857)
+-- Dependencies: 264
+-- Data for Name: department_; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.department_ (id, firm_id, name_) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5145 (class 0 OID 25468)
+-- Dependencies: 219
 -- Data for Name: district_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1123,8 +1294,108 @@ COPY public.district_ (id, name_, city_id) FROM stdin;
 
 
 --
--- TOC entry 4998 (class 0 OID 16390)
--- Dependencies: 220
+-- TOC entry 5183 (class 0 OID 25748)
+-- Dependencies: 257
+-- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
+1	2025-07-19 11:22:22.87978+03	1	Rutin Operatör	1	[{"added": {}}]	3	1
+2	2025-07-19 11:24:47.340859+03	2	osman.atay	1	[{"added": {}}]	4	1
+\.
+
+
+--
+-- TOC entry 5169 (class 0 OID 25648)
+-- Dependencies: 243
+-- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.django_content_type (id, app_label, model) FROM stdin;
+1	admin	logentry
+2	auth	permission
+3	auth	group
+4	auth	user
+5	contenttypes	contenttype
+6	sessions	session
+7	core	city
+8	core	district
+9	core	firm
+10	core	language
+11	core	media
+12	core	mediatype
+13	core	nace
+14	core	path
+15	core	taxoffice
+16	core	user
+17	core	userfirm
+18	core	usergroup
+\.
+
+
+--
+-- TOC entry 5167 (class 0 OID 25640)
+-- Dependencies: 241
+-- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.django_migrations (id, app, name, applied) FROM stdin;
+1	contenttypes	0001_initial	2025-07-19 08:25:39.047326+03
+2	auth	0001_initial	2025-07-19 08:25:39.101909+03
+3	admin	0001_initial	2025-07-19 08:25:39.122242+03
+4	admin	0002_logentry_remove_auto_add	2025-07-19 08:25:39.131629+03
+5	admin	0003_logentry_add_action_flag_choices	2025-07-19 08:25:39.151383+03
+6	contenttypes	0002_remove_content_type_name	2025-07-19 08:25:39.163266+03
+7	auth	0002_alter_permission_name_max_length	2025-07-19 08:25:39.163266+03
+8	auth	0003_alter_user_email_max_length	2025-07-19 08:25:39.163266+03
+9	auth	0004_alter_user_username_opts	2025-07-19 08:25:39.179104+03
+10	auth	0005_alter_user_last_login_null	2025-07-19 08:25:39.179104+03
+11	auth	0006_require_contenttypes_0002	2025-07-19 08:25:39.179104+03
+12	auth	0007_alter_validators_add_error_messages	2025-07-19 08:25:39.179104+03
+13	auth	0008_alter_user_username_max_length	2025-07-19 08:25:39.20157+03
+14	auth	0009_alter_user_last_name_max_length	2025-07-19 08:25:39.20157+03
+15	auth	0010_alter_group_name_max_length	2025-07-19 08:25:39.210753+03
+16	auth	0011_update_proxy_permissions	2025-07-19 08:25:39.210753+03
+17	auth	0012_alter_user_first_name_max_length	2025-07-19 08:25:39.210753+03
+18	sessions	0001_initial	2025-07-19 08:25:39.229346+03
+19	core	0001_initial	2025-07-19 10:28:54.002924+03
+\.
+
+
+--
+-- TOC entry 5184 (class 0 OID 25776)
+-- Dependencies: 258
+-- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
+cgujftek4k3tp4sm4jlvo4wruqisfzom	.eJxVjMsOwiAURP-FtSHyBpfu-w3kci9K1UBS2pXx36VJF5rMas6ZebMI21ri1vMSZ2IXJtjpt0uAz1x3QA-o98ax1XWZE98VftDOp0b5dT3cv4MCvYw1CCN8tsGlkBKM2KAyGufOOAih9tYoLxVI0uIGQmkyJsmMypD2IbDPF-R2N6E:1udRH6:N7G5D0kwJorj34F5c2rroCnIHy7i_cYv169aOo0yK-k	2025-08-03 13:28:08.367264+03
+ctr7vd8njll6jcmmgxib7r6wj754hvtu	.eJxVjMsOwiAURP-FtSHyBpfu-w3kci9K1UBS2pXx36VJF5rMas6ZebMI21ri1vMSZ2IXJtjpt0uAz1x3QA-o98ax1XWZE98VftDOp0b5dT3cv4MCvYw1CCN8tsGlkBKM2KAyGufOOAih9tYoLxVI0uIGQmkyJsmMypD2IbDPF-R2N6E:1ueWrW:tEzWWREGKkn3nMNXc7Q4Pg6k_eaXdy2XttlZEMgBkWM	2025-08-06 13:38:14.907609+03
+\.
+
+
+--
+-- TOC entry 5192 (class 0 OID 33874)
+-- Dependencies: 266
+-- Data for Name: education_; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.education_ (id, name_) FROM stdin;
+1	Genel
+2	Okuryazar
+3	İlkokul
+4	Ortaokul
+5	Lise
+6	Önlisans
+7	Lisans
+8	Yükseklisans
+9	Doktora
+\.
+
+
+--
+-- TOC entry 5147 (class 0 OID 25472)
+-- Dependencies: 221
 -- Data for Name: firm_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1133,8 +1404,8 @@ COPY public.firm_ (id, name_, city_id, district_id, tax_office_id, nace_id, crea
 
 
 --
--- TOC entry 5018 (class 0 OID 17248)
--- Dependencies: 240
+-- TOC entry 5149 (class 0 OID 25479)
+-- Dependencies: 223
 -- Data for Name: language_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1143,8 +1414,8 @@ COPY public.language_ (id, name_, short_) FROM stdin;
 
 
 --
--- TOC entry 5008 (class 0 OID 16963)
--- Dependencies: 230
+-- TOC entry 5151 (class 0 OID 25485)
+-- Dependencies: 225
 -- Data for Name: media_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1153,8 +1424,8 @@ COPY public.media_ (id, create_, media_type_id, path_id, name_, delete_, active_
 
 
 --
--- TOC entry 5010 (class 0 OID 16982)
--- Dependencies: 232
+-- TOC entry 5153 (class 0 OID 25490)
+-- Dependencies: 227
 -- Data for Name: media_type; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1163,8 +1434,8 @@ COPY public.media_type (id, name_) FROM stdin;
 
 
 --
--- TOC entry 5005 (class 0 OID 16938)
--- Dependencies: 227
+-- TOC entry 5155 (class 0 OID 25494)
+-- Dependencies: 229
 -- Data for Name: nace_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1217,6 +1488,7 @@ COPY public.nace_ (id, name_, code_, description_) FROM stdin;
 46	Mobilya imalatı	31.00.01	Yatak odası, yemek odası, mutfak mobilyası, banyo dolabı, genç ve çocuk odası takımı, gardırop, vestiyer, vb. imalatı (gömme dolap, masa, zigon, vb. dahil)
 47	Mobilya imalatı	31.00.02	Büro, okul, ibadethane, otel, lokanta, sinema, tiyatro vb. kapalı alanlar için mobilya imalatı (iskelet imalatı dahil; taş, beton, seramikten olanlar hariç)
 48	Mobilya imalatı	31.00.03	Sandalye, koltuk, kanepe, oturma takımı, çekyat, divan, markiz, vb. imalatı (iskelet imalatı dahil; plastik olanlar ile bürolarda ve park ve bahçelerde kullanılanlar hariç)
+506	Dericilik	15.11.13	Deri ve kösele esaslı terkip ile elde edilen levha, yaprak, şerit deri ve kösele imalatı
 49	Mobilya imalatı	31.00.04	Mağazalar için tezgah, banko, vitrin, raf, çekmeceli dolap vb. özel mobilya imalatı (laboratuvarlar ve teknik bürolar için olanlar hariç)
 50	Mobilya imalatı	31.00.07	Park ve bahçelerde kullanılan bank, masa, tabure, sandalye, koltuk, vb. mobilyaların imalatı (plastik olanlar hariç)
 51	Mobilya imalatı	31.00.90	Diğer mobilyaların imalatı
@@ -1478,6 +1750,7 @@ COPY public.nace_ (id, name_, code_, description_) FROM stdin;
 305	Börekçilik	56.11.07	Börekçilerin faaliyetleri (imalatçıların faaliyetleri ile seyyar olanlar hariç)
 306	Çeşitli gıdaların imalatı	10.31.02	Patates cipsi, patates çerezi, patates unu ve kaba unlarının imalatı
 307	Çeşitli gıdaların imalatı	10.39.01	Sebze ve meyve konservesi imalatı (salça, domates püresi dahil, patatesten olanlar hariç)
+507	Dericilik	15.11.14	İşlenmiş derinin başka işlemlere tabi tutulmaksızın yalnızca tamburda ütülenmesi ve kurutulması
 308	Çeşitli gıdaların imalatı	10.39.02	Kavrulmuş, tuzlanmış vb. şekilde işlem görmüş sert kabuklu yemişler ile bu meyvelerin püre ve ezmelerinin imalatı (pişirilerek yapılanlar)
 309	Çeşitli gıdaların imalatı	10.39.03	Meyve ve sebzelerden jöle, pekmez, marmelat, reçel vb. imalatı (pestil imalatı dahil)
 310	Çeşitli gıdaların imalatı	10.39.04	Tuzlu su, sirke, sirkeli su, yağ veya diğer koruyucu çözeltilerle korunarak saklanan sebze ve meyvelerin imalatı (turşu, salamura yaprak, sofralık zeytin vb. dahil)
@@ -1528,6 +1801,7 @@ COPY public.nace_ (id, name_, code_, description_) FROM stdin;
 355	Fırıncılık	46.36.02	Fırıncılık mamullerinin toptan ticareti
 356	Fırıncılık	47.24.01	Ekmek, pasta ve unlu mamullerin perakende ticareti
 357	Fırıncılık	56.11.04	Oturacak yeri olmayan içli pide ve lahmacun fırınlarının faaliyetleri (al götür tesisi olarak hizmet verenler)
+505	Dericilik	15.11.11	Kürklü derinin ve postların kazınarak temizlenmesi, kırkılması, tüylerinin yolunması ve ağartılması (postlu derilerin terbiyesi dahil)
 358	Gübre, zirai ilaç imalatı, ticareti	20.15.01	Fosfatlı veya potasyumlu gübreler, iki (azot ve fosfor veya fosfor ve potasyum) veya üç besin maddesi (azot, fosfor ve potasyum) içeren gübreler, sodyum nitrat ile diğer kimyasal ve mineral gübrelerin imalatı
 359	Gübre, zirai ilaç imalatı, ticareti	20.15.02	Bileşik azotlu ürünlerin imalatı (gübreler hariç)
 360	Gübre, zirai ilaç imalatı, ticareti	20.20.13	Çimlenmeyi önleyici ve bitki gelişimini düzenleyici ürün imalatı
@@ -1676,9 +1950,6 @@ COPY public.nace_ (id, name_, code_, description_) FROM stdin;
 502	Deri giyim eşyası ticareti	47.71.03	Kürklü deriden giyim eşyalarının perakende ticareti (işlenmiş kürklü deriler dahil)
 503	Deri giyim eşyası ticareti	47.71.07	Deri veya deri bileşimli giyim eşyası perakende ticareti
 504	Dericilik	15.11.10	Deri ve kürklü deri imalatı (kürkün ve derinin tabaklanması, sepilenmesi, boyanması, cilalanması ve işlenmesi)(işlenmiş derinin başka işlemlere tabi tutulmaksızın yalnızca tamburda ütülenmesi ve kurutulması hariç)
-505	Dericilik	15.11.11	Kürklü derinin ve postların kazınarak temizlenmesi, kırkılması, tüylerinin yolunması ve ağartılması (postlu derilerin terbiyesi dahil)
-506	Dericilik	15.11.13	Deri ve kösele esaslı terkip ile elde edilen levha, yaprak, şerit deri ve kösele imalatı
-507	Dericilik	15.11.14	İşlenmiş derinin başka işlemlere tabi tutulmaksızın yalnızca tamburda ütülenmesi ve kurutulması
 508	Dericilik	15.12.99	Deriden veya deri bileşimlerinden başka yerde sınıflandırılmamış diğer ürünlerin imalatı (makinelerde veya mekanik cihazlarda kullanılan veya diğer teknik kullanımlar için ürünler dahil)
 509	Dericilik	46.24.02	Tabaklanmış deri, güderi ve kösele toptan ticareti
 510	Dokumacılık	13.10.03	Doğal pamuk elyafının imalatı (kardelenmesi, taraklanması vb.)
@@ -2703,8 +2974,8 @@ COPY public.nace_ (id, name_, code_, description_) FROM stdin;
 
 
 --
--- TOC entry 5012 (class 0 OID 16994)
--- Dependencies: 234
+-- TOC entry 5157 (class 0 OID 25500)
+-- Dependencies: 231
 -- Data for Name: path_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -2713,8 +2984,18 @@ COPY public.path_ (id, name_) FROM stdin;
 
 
 --
--- TOC entry 5004 (class 0 OID 16442)
--- Dependencies: 226
+-- TOC entry 5186 (class 0 OID 33832)
+-- Dependencies: 260
+-- Data for Name: personnel_; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.personnel_ (id, name_, surname_, tckno_, address_, cell_, birthday_, driving_license, status_, education_id, department_id, children_, email_, blood_id, military_, gender_, marital_) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5159 (class 0 OID 25504)
+-- Dependencies: 233
 -- Data for Name: tax_office; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -3757,8 +4038,8 @@ COPY public.tax_office (id, name_, city_id, district_id) FROM stdin;
 
 
 --
--- TOC entry 5014 (class 0 OID 17008)
--- Dependencies: 236
+-- TOC entry 5161 (class 0 OID 25508)
+-- Dependencies: 235
 -- Data for Name: user_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -3767,8 +4048,8 @@ COPY public.user_ (id, user_group_id, language_id, name_, tckno_, certificate_nu
 
 
 --
--- TOC entry 5019 (class 0 OID 17268)
--- Dependencies: 241
+-- TOC entry 5163 (class 0 OID 25515)
+-- Dependencies: 237
 -- Data for Name: user_firm; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -3777,7 +4058,7 @@ COPY public.user_firm (user_id, firm_id, create_) FROM stdin;
 
 
 --
--- TOC entry 5016 (class 0 OID 17015)
+-- TOC entry 5164 (class 0 OID 25519)
 -- Dependencies: 238
 -- Data for Name: user_group; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3787,8 +4068,71 @@ COPY public.user_group (id, name_, description_) FROM stdin;
 
 
 --
--- TOC entry 5036 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 5245 (class 0 OID 0)
+-- Dependencies: 246
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+--
+
+SELECT pg_catalog.setval('public.auth_group_id_seq', 1, true);
+
+
+--
+-- TOC entry 5246 (class 0 OID 0)
+-- Dependencies: 248
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+--
+
+SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 8, true);
+
+
+--
+-- TOC entry 5247 (class 0 OID 0)
+-- Dependencies: 244
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+--
+
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 72, true);
+
+
+--
+-- TOC entry 5248 (class 0 OID 0)
+-- Dependencies: 252
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+--
+
+SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, false);
+
+
+--
+-- TOC entry 5249 (class 0 OID 0)
+-- Dependencies: 250
+-- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+--
+
+SELECT pg_catalog.setval('public.auth_user_id_seq', 2, true);
+
+
+--
+-- TOC entry 5250 (class 0 OID 0)
+-- Dependencies: 254
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+--
+
+SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
+
+
+--
+-- TOC entry 5251 (class 0 OID 0)
+-- Dependencies: 261
+-- Name: blood__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.blood__id_seq', 8, true);
+
+
+--
+-- TOC entry 5252 (class 0 OID 0)
+-- Dependencies: 218
 -- Name: city_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -3796,8 +4140,17 @@ SELECT pg_catalog.setval('public.city_id_seq', 1, false);
 
 
 --
--- TOC entry 5037 (class 0 OID 0)
--- Dependencies: 223
+-- TOC entry 5253 (class 0 OID 0)
+-- Dependencies: 263
+-- Name: department__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.department__id_seq', 1, false);
+
+
+--
+-- TOC entry 5254 (class 0 OID 0)
+-- Dependencies: 220
 -- Name: district_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -3805,8 +4158,44 @@ SELECT pg_catalog.setval('public.district_id_seq', 1, false);
 
 
 --
--- TOC entry 5038 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 5255 (class 0 OID 0)
+-- Dependencies: 256
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+--
+
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 2, true);
+
+
+--
+-- TOC entry 5256 (class 0 OID 0)
+-- Dependencies: 242
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+--
+
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 18, true);
+
+
+--
+-- TOC entry 5257 (class 0 OID 0)
+-- Dependencies: 240
+-- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+--
+
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 19, true);
+
+
+--
+-- TOC entry 5258 (class 0 OID 0)
+-- Dependencies: 265
+-- Name: education__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.education__id_seq', 9, true);
+
+
+--
+-- TOC entry 5259 (class 0 OID 0)
+-- Dependencies: 222
 -- Name: firm_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -3814,8 +4203,8 @@ SELECT pg_catalog.setval('public.firm_id_seq', 1, false);
 
 
 --
--- TOC entry 5039 (class 0 OID 0)
--- Dependencies: 239
+-- TOC entry 5260 (class 0 OID 0)
+-- Dependencies: 224
 -- Name: language__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -3823,8 +4212,8 @@ SELECT pg_catalog.setval('public.language__id_seq', 1, false);
 
 
 --
--- TOC entry 5040 (class 0 OID 0)
--- Dependencies: 229
+-- TOC entry 5261 (class 0 OID 0)
+-- Dependencies: 226
 -- Name: media_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -3832,8 +4221,8 @@ SELECT pg_catalog.setval('public.media_id_seq', 1, false);
 
 
 --
--- TOC entry 5041 (class 0 OID 0)
--- Dependencies: 231
+-- TOC entry 5262 (class 0 OID 0)
+-- Dependencies: 228
 -- Name: media_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -3841,8 +4230,8 @@ SELECT pg_catalog.setval('public.media_type_id_seq', 1, false);
 
 
 --
--- TOC entry 5042 (class 0 OID 0)
--- Dependencies: 228
+-- TOC entry 5263 (class 0 OID 0)
+-- Dependencies: 230
 -- Name: nace_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -3850,8 +4239,8 @@ SELECT pg_catalog.setval('public.nace_id_seq', 1, false);
 
 
 --
--- TOC entry 5043 (class 0 OID 0)
--- Dependencies: 233
+-- TOC entry 5264 (class 0 OID 0)
+-- Dependencies: 232
 -- Name: path_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -3859,8 +4248,17 @@ SELECT pg_catalog.setval('public.path_id_seq', 1, false);
 
 
 --
--- TOC entry 5044 (class 0 OID 0)
--- Dependencies: 225
+-- TOC entry 5265 (class 0 OID 0)
+-- Dependencies: 259
+-- Name: personnel__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.personnel__id_seq', 1, false);
+
+
+--
+-- TOC entry 5266 (class 0 OID 0)
+-- Dependencies: 234
 -- Name: tax_office_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -3868,8 +4266,8 @@ SELECT pg_catalog.setval('public.tax_office_id_seq', 1, false);
 
 
 --
--- TOC entry 5045 (class 0 OID 0)
--- Dependencies: 235
+-- TOC entry 5267 (class 0 OID 0)
+-- Dependencies: 236
 -- Name: user__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -3877,15 +4275,15 @@ SELECT pg_catalog.setval('public.user__id_seq', 1, false);
 
 
 --
--- TOC entry 5046 (class 0 OID 0)
--- Dependencies: 237
+-- TOC entry 5268 (class 0 OID 0)
+-- Dependencies: 239
 -- Name: user_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.user_group_id_seq', 1, false);
 
 
--- Completed on 2025-07-12 17:09:04
+-- Completed on 2025-07-23 19:58:04
 
 --
 -- PostgreSQL database dump complete

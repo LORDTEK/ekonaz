@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal - Ekonaz</title>
+    <style>
+        /* Basit CSS Reset */
+        body, h1, h2, ul, p { margin: 0; padding: 0; }
+        body { font-family: sans-serif; display: flex; height: 100vh; background-color: #f4f7f6; }
+
+        /* Sol Menü (Sidebar) */
+        .sidebar {
+            width: 250px;
+            background-color: #34495e;
+            color: white;
+            padding: 20px;
+        }
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .sidebar ul {
+            list-style-type: none;
+        }
+        .sidebar ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .sidebar ul li a:hover {
+            background-color: #4a627c;
+        }
+
+        /* Ana İçerik Alanı */
+        .main-content {
+            flex-grow: 1; /* Kalan tüm alanı kapla */
+            padding: 40px;
+            overflow-y: auto; /* İçerik taşarsa scroll çıksın */
+        }
+        .main-content h1 {
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        .module-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Esnek kutu yapısı */
+            gap: 30px;
+        }
+
+        /* Modül Kutucukları */
+        .module-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 20px;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .module-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .module-box .icon {
+            font-size: 48px; /* İkon boyutu */
+            margin-bottom: 15px;
+        }
+        .module-box h3 {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>Ekonaz Portal</h2>
+        <ul>
+            <li><a href="{% url 'portal' %}">Ana Sayfa</a></li>
+            <li><a href="/admin/" target="_blank">Genel Yönetim</a></li>
+            </ul>
+    </nav>
+
+    <main class="main-content">
+        <h1>Modüller</h1>
+        <div class="module-container">
+
+            <a href="/admin/" target="_blank" class="module-box">
+                <div class="icon">⚙️</div> <h3>Genel Yönetim</h3>
+            </a>
+
+            </div>
+    </main>
+
+</body>
+</html>
