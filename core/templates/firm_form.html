@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Firma Formu</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        form p { margin-bottom: 15px; }
+        form label { display: block; margin-bottom: 5px; font-weight: bold; }
+        form input, form select, form textarea { width: 300px; padding: 5px; }
+        button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        /* Select2 kutusunun formumuza uyum sağlaması için */
+        .select2-container { width: 312px !important; }
+    </style>
+</head>
+<body>
+
+    <h1>Firma Formu</h1>
+    <hr>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Kaydet</button>
+    </form>
+
+    <br>
+    <a href="{% url 'core:firm-list' %}">Firma Listesine Geri Dön</a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $("#id_city").change(function () {
+            const url = "{% url 'core:ajax_load_districts' %}";
+            const cityId = $(this).val();
+
+            $.ajax({
+                url: url,
+                data: {
+                    'city_id': cityId
+                },
+                success: function (data) {
+                    $("#id_district").html('<option value="">---------</option>');
+                    $.each(data, function (key, value) {
+                        $("#id_district").append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // id'si 'id_nace' olan select kutusunu Select2'ye dönüştür
+            $('#id_nace').select2({
+                placeholder: "NACE kodu seçin veya yazarak arayın",
+                allowClear: true
+            });
+        });
+    </script>
+
+</body>
+</html>

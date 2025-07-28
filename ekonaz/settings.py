@@ -137,8 +137,12 @@ LOGOUT_REDIRECT_URL = '/' # Çıkış yapınca login sayfasına dönsün
 
 STATIC_URL = 'static/'
 
-# BU SATIRLARI EKLE:
+
 import os
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

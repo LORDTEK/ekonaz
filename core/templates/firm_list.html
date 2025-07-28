@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Firma Listesi</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .action-links a { margin-right: 10px; }
+        .add-new { display: inline-block; margin-bottom: 20px; padding: 10px 15px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1>{{ list_title }}</h1>
+
+    <a href="{% url 'core:firm-add' %}" class="add-new">Yeni Firma Ekle</a>
+    {% if is_showing_deleted %}
+    <a href="{% url 'core:firm-list' %}">Aktif Firmaları Göster</a>
+{% else %}
+    <a href="{% url 'core:firm-list' %}?show_deleted=true">Silinmiş Firmaları Göster</a>
+{% endif %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Firma Adı</th>
+                <th>Şehir</th>
+                <th>Telefon</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for firm in firms %}
+            <tr>
+                <td>{{ firm.name }}</td>
+                <td>{{ firm.city }}</td>
+                <td>{{ firm.telephone }}</td>
+                <td class="action-links">
+                    <a href="{% url 'core:firm-update' firm.pk %}">Düzenle</a>
+                    <a href="{% url 'core:firm-delete' firm.pk %}">Sil</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Henüz kayıtlı firma bulunmamaktadır.</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+
+    <br>
+    <a href="{% url 'core:portal' %}">Portal'a Geri Dön</a>
+
+</body>
+</html>

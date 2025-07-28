@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Silme Onayı</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .confirmation-box { border: 1px solid #dc3545; padding: 20px; border-radius: 5px; max-width: 500px; }
+        .btn { display: inline-block; padding: 10px 15px; color: white; text-decoration: none; border-radius: 5px; border: none; cursor: pointer; }
+        .btn-danger { background-color: #dc3545; }
+        .btn-secondary { background-color: #6c757d; }
+    </style>
+</head>
+<body>
+
+    <div class="confirmation-box">
+        <h1>Silme Onayı</h1>
+        <hr>
+        <p><strong>"{{ firm.name }}"</strong> adlı firmayı kalıcı olarak silmek istediğinizden emin misiniz?</p>
+        <p>Bu işlem geri alınamaz.</p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-danger">Evet, Belirtilen Tarihte Sil</button>
+            <a href="{% url 'core:firm-list' %}" class="btn btn-secondary">İptal</a>
+        </form>
+    </div>
+
+</body>
+</html>

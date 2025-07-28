@@ -81,8 +81,11 @@
     <nav class="sidebar">
         <h2>Ekonaz Portal</h2>
         <ul>
-            <li><a href="{% url 'portal' %}">Ana Sayfa</a></li>
+            <li><a href="{% url 'core:portal' %}">Ana Sayfa</a></li>
             <li><a href="/admin/" target="_blank">Genel Yönetim</a></li>
+            {% if perms.core.view_firm %}
+                <li><a href="{% url 'core:firm-list' %}">Firma Yönetimi</a></li>
+            {% endif %}
             </ul>
     </nav>
 
@@ -94,6 +97,12 @@
                 <div class="icon">⚙️</div> <h3>Genel Yönetim</h3>
             </a>
 
+            {% if perms.core.view_firm %}
+            <a href="{% url 'core:firm-list' %}" class="module-box">
+                <div class="icon">🏢</div>
+                    <h3>Firma Yönetimi</h3>
+            </a>
+{% endif %}
             </div>
     </main>
 

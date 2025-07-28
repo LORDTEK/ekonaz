@@ -1,73 +1,7 @@
+from datetime import timezone
+import os
+from django.conf import settings
 from django.db import models
-
-
-class AuthGroup(models.Model):
-    name = models.CharField(unique=True, max_length=150)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_group'
-
-
-class AuthGroupPermissions(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_group_permissions'
-        unique_together = (('group', 'permission'),)
-
-
-class AuthPermission(models.Model):
-    name = models.CharField(max_length=255)
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
-    codename = models.CharField(max_length=100)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_permission'
-        unique_together = (('content_type', 'codename'),)
-
-
-class AuthUser(models.Model):
-    password = models.CharField(max_length=128)
-    last_login = models.DateTimeField(blank=True, null=True)
-    is_superuser = models.BooleanField()
-    username = models.CharField(unique=True, max_length=150)
-    first_name = models.CharField(max_length=150)
-    last_name = models.CharField(max_length=150)
-    email = models.CharField(max_length=254)
-    is_staff = models.BooleanField()
-    is_active = models.BooleanField()
-    date_joined = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'auth_user'
-
-
-class AuthUserGroups(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_user_groups'
-        unique_together = (('user', 'group'),)
-
-
-class AuthUserUserPermissions(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_user_user_permissions'
-        unique_together = (('user', 'permission'),)
 
 
 class Blood(models.Model):
@@ -96,7 +30,7 @@ class City(models.Model):
 
 class Department(models.Model):
     id = models.BigAutoField(primary_key=True)
-    firm = models.ForeignKey('Firm', models.PROTECT)
+    firm = models.ForeignKey('Firm', models.PROTECT, related_name='departments')
     name = models.CharField(db_column='name_', max_length=255, blank=True, null=True)
 
     class Meta:
@@ -120,51 +54,6 @@ class District(models.Model):
         return f"{self.name} ({self.city.name})"
 
 
-class DjangoAdminLog(models.Model):
-    action_time = models.DateTimeField()
-    object_id = models.TextField(blank=True, null=True)
-    object_repr = models.CharField(max_length=200)
-    action_flag = models.SmallIntegerField()
-    change_message = models.TextField()
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'django_admin_log'
-
-
-class DjangoContentType(models.Model):
-    app_label = models.CharField(max_length=100)
-    model = models.CharField(max_length=100)
-
-    class Meta:
-        managed = False
-        db_table = 'django_content_type'
-        unique_together = (('app_label', 'model'),)
-
-
-class DjangoMigrations(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    app = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    applied = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'django_migrations'
-
-
-class DjangoSession(models.Model):
-    session_key = models.CharField(primary_key=True, max_length=40)
-    session_data = models.TextField()
-    expire_date = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'django_session'
-
-
 class Education(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(db_column='name_', max_length=15)
@@ -179,27 +68,63 @@ class Education(models.Model):
 
 class Firm(models.Model):
     id = models.BigAutoField(primary_key=True)
-    name = models.CharField(db_column='name_', max_length=255)
-    city = models.ForeignKey(City, on_delete=models.PROTECT, blank=True, null=True)
-    district = models.ForeignKey(District, on_delete=models.PROTECT, blank=True, null=True)
-    tax_office = models.ForeignKey('TaxOffice', on_delete=models.PROTECT, blank=True, null=True)
-    nace = models.ForeignKey('Nace', on_delete=models.PROTECT, blank=True, null=True)
-    create = models.DateTimeField(db_column='create_', blank=True, null=True)
-    delete = models.DateTimeField(db_column='delete_', blank=True, null=True)
-    address = models.CharField(db_column='address_', max_length=255, blank=True, null=True)
-    telephone = models.CharField(db_column='telephone_', max_length=255, blank=True, null=True)
-    fax = models.CharField(db_column='fax_', max_length=255, blank=True, null=True)
-    email = models.CharField(db_column='email_', max_length=255, blank=True, null=True)
-    type_firm = models.CharField(max_length=255, blank=True, null=True)
-    tax = models.CharField(db_column='tax_', max_length=255, blank=True, null=True)
-    web = models.CharField(db_column='web_', max_length=255, blank=True, null=True)
-    sgk_sicil = models.CharField(max_length=255, blank=True, null=True)
-    payment = models.CharField(db_column='payment_', max_length=255, blank=True, null=True)
-    ceo_name = models.CharField(max_length=255, blank=True, null=True)
-    ceo_email = models.CharField(max_length=255, blank=True, null=True)
-    ceo_cell = models.CharField(max_length=255, blank=True, null=True)
-    logo_media = models.ForeignKey('Media', on_delete=models.SET_NULL, null=True, blank=True, null=True)
+    name = models.CharField(db_column='name_', max_length=255, verbose_name="Firma Adı")
+    city = models.ForeignKey(City, on_delete=models.PROTECT, blank=True, null=True, verbose_name="Şehir")
+    district = models.ForeignKey(District, on_delete=models.PROTECT, blank=True, null=True, verbose_name="İlçe")
+    tax_office = models.ForeignKey('TaxOffice', on_delete=models.PROTECT, blank=True, null=True, verbose_name="Vergi Daire")
+    nace = models.ForeignKey('Nace', on_delete=models.PROTECT, blank=True, null=True, verbose_name="NACE kodu")
+    create = models.DateField(db_column='create_', blank=True, null=True, verbose_name="Oluşturma Tarihi")
+    delete = models.DateTimeField(db_column='delete_', blank=True, null=True, verbose_name="Silinme Tarihi")
+    address = models.CharField(db_column='address_', max_length=255, blank=True, null=True, verbose_name="Adres")
+    telephone = models.CharField(db_column='telephone_', max_length=255, blank=True, null=True, verbose_name="Telefon")
+    fax = models.CharField(db_column='fax_', max_length=255, blank=True, null=True, verbose_name="Faks")
+    email = models.CharField(db_column='email_', max_length=255, blank=True, null=True, verbose_name="e-Posta")
+    type_firm = models.CharField(max_length=255, blank=True, null=True, verbose_name="Firma Türü")
+    tax = models.CharField(db_column='tax_', max_length=255, blank=True, null=True, verbose_name="Vergi Numara")
+    web = models.CharField(db_column='web_', max_length=255, blank=True, null=True, verbose_name="İnternet Site")
+    sgk_sicil = models.CharField(max_length=255, blank=True, null=True, verbose_name="SGK Sicil No")
+    payment = models.CharField(db_column='payment_', max_length=255, blank=True, null=True, verbose_name="Ödeme Tipi")
+    ceo_name = models.CharField(max_length=255, blank=True, null=True, verbose_name="Yetkili")
+    ceo_email = models.CharField(max_length=255, blank=True, null=True, verbose_name="Yetkili e-Posta")
+    ceo_cell = models.CharField(max_length=255, blank=True, null=True, verbose_name="Yetkili Telefon")
+    #logo_media = models.ForeignKey('Media', on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Firma Logo")
+    logo_media = models.FileField(upload_to='logo_firm/', blank=True, null=True, verbose_name="Firma Logosu")
     active = models.BooleanField(db_column='active_')
+
+    def save(self, *args, **kwargs):
+        # Eğer bu, veritabanında zaten var olan bir kayıt ise (yani güncelleme yapılıyorsa)
+        if self.pk:
+            try:
+                # Veritabanındaki eski halini çek
+                eski_kayit = Firm.objects.get(pk=self.pk)
+                # Eğer eski kaydın logosu varSA ve yeni logo ile aynı DEĞİLSE
+                if eski_kayit.logo_media and eski_kayit.logo_media != self.logo_media:
+                    # Eski dosyanın yolunu al ve sil
+                    eski_dosya_yolu = os.path.join(settings.MEDIA_ROOT, str(eski_kayit.logo_media))
+                    if os.path.isfile(eski_dosya_yolu):
+                        os.remove(eski_dosya_yolu)
+            except Firm.DoesNotExist:
+                pass # Kayıt henüz veritabanında yok, bir şey yapma
+
+        # Django'nun asıl save metodunu çalıştırarak kaydı tamamla
+        super(Firm, self).save(*args, **kwargs)
+
+    '''
+    def delete_hard(self, *args, **kwargs):
+        # Eğer silinmekte olan kaydın bir logosu varsa
+        if self.logo_media:
+            # Dosyanın yolunu al ve sil
+            dosya_yolu = os.path.join(settings.MEDIA_ROOT, str(self.logo_media))
+            if os.path.isfile(dosya_yolu):
+                os.remove(dosya_yolu)
+
+        # Django'nun asıl delete metodunu çalıştırarak kaydı veritabanından sil
+        super(Firm, self).delete(*args, **kwargs)
+    '''
+
+    def delete_soft(self, *args, **kwargs):
+        self.delete = timezone.now()
+        self.save()
 
     class Meta:
         managed = False
@@ -323,14 +248,14 @@ class TaxOffice(models.Model):
 class User(models.Model):
     id = models.BigAutoField(primary_key=True)
     user_group = models.ForeignKey('UserGroup', models.PROTECT)
-    language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True, blank=True, null=True)
+    language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(db_column='name_', max_length=255, blank=True, null=True)
     tckno = models.CharField(db_column='tckno_', max_length=11, blank=True, null=True)
     certificate_number = models.CharField(max_length=255, blank=True, null=True)
     title = models.CharField(db_column='title_', max_length=255, blank=True, null=True)
     email = models.CharField(db_column='email_', max_length=255, blank=True, null=True)
     #pasword = models.CharField(db_column='pasword_', max_length=32, blank=True, null=True)
-    logo_media = models.ForeignKey(Media, on_delete=models.SET_NULL, null=True, blank=True, null=True)
+    logo_media = models.ForeignKey(Media, on_delete=models.SET_NULL, null=True, blank=True)
     active = models.BooleanField(db_column='active_')
 
     class Meta:
@@ -343,8 +268,8 @@ class User(models.Model):
 
 class UserFirm(models.Model):
     pk = models.CompositePrimaryKey('user_id', 'firm_id')
-    user = models.ForeignKey(User, models.PROTECT)
-    firm = models.ForeignKey(Firm, models.PROTECT)
+    user = models.ForeignKey(User, models.PROTECT, related_name='firm_associations')
+    firm = models.ForeignKey(Firm, models.PROTECT, related_name='user_associations')
     create = models.DateTimeField(db_column='create_')
 
     class Meta:
