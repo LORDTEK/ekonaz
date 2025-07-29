@@ -41,7 +41,13 @@ def firm_update_view(request, pk):
     firm = get_object_or_404(Firm, pk=pk)
     form = FirmForm(request.POST or None, request.FILES or None, instance=firm)
     if form.is_valid():
-        form.save()
+        instance = form.save(commit=False)
+
+        if 'delete' in form.cleaned_data:
+            instance.delete = form.cleaned_data['delete']
+
+        instance.save()
+
         return redirect('core:firm-list')
     return render(request, 'firm_form.html', {'form': form})
 

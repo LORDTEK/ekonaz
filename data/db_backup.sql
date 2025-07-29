@@ -5,7 +5,7 @@
 -- Dumped from database version 17.5
 -- Dumped by pg_dump version 17.5
 
--- Started on 2025-07-23 19:58:56
+-- Started on 2025-07-29 10:41:33
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -547,8 +547,8 @@ CREATE TABLE public.firm_ (
     ceo_name character varying(255),
     ceo_email character varying(255),
     ceo_cell character varying(255),
-    logo_media_id bigint,
-    active_ boolean DEFAULT true NOT NULL
+    active_ boolean DEFAULT true NOT NULL,
+    logo_media character varying(255)
 );
 
 
@@ -797,7 +797,8 @@ CREATE TABLE public.personnel_ (
     blood_id bigint,
     military_ boolean DEFAULT true NOT NULL,
     gender_ boolean DEFAULT true NOT NULL,
-    marital_ boolean DEFAULT false NOT NULL
+    marital_ boolean DEFAULT false NOT NULL,
+    related_personnel bigint
 );
 
 
@@ -1489,7 +1490,7 @@ CREATE INDEX django_session_session_key_c0390e0f_like ON public.django_session U
 
 
 --
--- TOC entry 4986 (class 2606 OID 25711)
+-- TOC entry 4985 (class 2606 OID 25711)
 -- Name: auth_group_permissions auth_group_permissio_permission_id_84c5c92e_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: mydbuser
 --
 
@@ -1498,7 +1499,7 @@ ALTER TABLE ONLY public.auth_group_permissions
 
 
 --
--- TOC entry 4987 (class 2606 OID 25706)
+-- TOC entry 4986 (class 2606 OID 25706)
 -- Name: auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: mydbuser
 --
 
@@ -1507,7 +1508,7 @@ ALTER TABLE ONLY public.auth_group_permissions
 
 
 --
--- TOC entry 4985 (class 2606 OID 25697)
+-- TOC entry 4984 (class 2606 OID 25697)
 -- Name: auth_permission auth_permission_content_type_id_2f476e4b_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: mydbuser
 --
 
@@ -1516,7 +1517,7 @@ ALTER TABLE ONLY public.auth_permission
 
 
 --
--- TOC entry 4988 (class 2606 OID 25726)
+-- TOC entry 4987 (class 2606 OID 25726)
 -- Name: auth_user_groups auth_user_groups_group_id_97559544_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: mydbuser
 --
 
@@ -1525,7 +1526,7 @@ ALTER TABLE ONLY public.auth_user_groups
 
 
 --
--- TOC entry 4989 (class 2606 OID 25721)
+-- TOC entry 4988 (class 2606 OID 25721)
 -- Name: auth_user_groups auth_user_groups_user_id_6a12ed8b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: mydbuser
 --
 
@@ -1534,7 +1535,7 @@ ALTER TABLE ONLY public.auth_user_groups
 
 
 --
--- TOC entry 4990 (class 2606 OID 25740)
+-- TOC entry 4989 (class 2606 OID 25740)
 -- Name: auth_user_user_permissions auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: mydbuser
 --
 
@@ -1543,7 +1544,7 @@ ALTER TABLE ONLY public.auth_user_user_permissions
 
 
 --
--- TOC entry 4991 (class 2606 OID 25735)
+-- TOC entry 4990 (class 2606 OID 25735)
 -- Name: auth_user_user_permissions auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: mydbuser
 --
 
@@ -1570,7 +1571,7 @@ ALTER TABLE ONLY public.district_
 
 
 --
--- TOC entry 4992 (class 2606 OID 25756)
+-- TOC entry 4991 (class 2606 OID 25756)
 -- Name: django_admin_log django_admin_log_content_type_id_c4bce8eb_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: mydbuser
 --
 
@@ -1579,7 +1580,7 @@ ALTER TABLE ONLY public.django_admin_log
 
 
 --
--- TOC entry 4993 (class 2606 OID 25761)
+-- TOC entry 4992 (class 2606 OID 25761)
 -- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: mydbuser
 --
 
@@ -1606,16 +1607,7 @@ ALTER TABLE ONLY public.firm_
 
 
 --
--- TOC entry 4973 (class 2606 OID 25575)
--- Name: firm_ firm_logo_media_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.firm_
-    ADD CONSTRAINT firm_logo_media_id_fkey FOREIGN KEY (logo_media_id) REFERENCES public.media_(id) ON DELETE SET NULL;
-
-
---
--- TOC entry 4974 (class 2606 OID 25580)
+-- TOC entry 4973 (class 2606 OID 25580)
 -- Name: firm_ firm_nace_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1624,7 +1616,7 @@ ALTER TABLE ONLY public.firm_
 
 
 --
--- TOC entry 4975 (class 2606 OID 25585)
+-- TOC entry 4974 (class 2606 OID 25585)
 -- Name: firm_ firm_tax_office_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1633,7 +1625,7 @@ ALTER TABLE ONLY public.firm_
 
 
 --
--- TOC entry 4976 (class 2606 OID 25590)
+-- TOC entry 4975 (class 2606 OID 25590)
 -- Name: media_ media_media_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1642,7 +1634,7 @@ ALTER TABLE ONLY public.media_
 
 
 --
--- TOC entry 4977 (class 2606 OID 25595)
+-- TOC entry 4976 (class 2606 OID 25595)
 -- Name: media_ media_path_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1651,7 +1643,7 @@ ALTER TABLE ONLY public.media_
 
 
 --
--- TOC entry 4994 (class 2606 OID 33851)
+-- TOC entry 4993 (class 2606 OID 33851)
 -- Name: personnel_ personnel__blood_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1660,7 +1652,7 @@ ALTER TABLE ONLY public.personnel_
 
 
 --
--- TOC entry 4995 (class 2606 OID 33868)
+-- TOC entry 4994 (class 2606 OID 33868)
 -- Name: personnel_ personnel__department_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1669,7 +1661,7 @@ ALTER TABLE ONLY public.personnel_
 
 
 --
--- TOC entry 4996 (class 2606 OID 33880)
+-- TOC entry 4995 (class 2606 OID 33880)
 -- Name: personnel_ personnel__education_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1678,7 +1670,16 @@ ALTER TABLE ONLY public.personnel_
 
 
 --
--- TOC entry 4978 (class 2606 OID 25600)
+-- TOC entry 4996 (class 2606 OID 33885)
+-- Name: personnel_ related_personnel_personnel__id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.personnel_
+    ADD CONSTRAINT related_personnel_personnel__id_fkey FOREIGN KEY (related_personnel) REFERENCES public.personnel_(id) NOT VALID;
+
+
+--
+-- TOC entry 4977 (class 2606 OID 25600)
 -- Name: tax_office tax_office_city_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1687,7 +1688,7 @@ ALTER TABLE ONLY public.tax_office
 
 
 --
--- TOC entry 4979 (class 2606 OID 25605)
+-- TOC entry 4978 (class 2606 OID 25605)
 -- Name: tax_office tax_office_district_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1696,7 +1697,7 @@ ALTER TABLE ONLY public.tax_office
 
 
 --
--- TOC entry 4980 (class 2606 OID 25610)
+-- TOC entry 4979 (class 2606 OID 25610)
 -- Name: user_ user__language_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1705,7 +1706,7 @@ ALTER TABLE ONLY public.user_
 
 
 --
--- TOC entry 4981 (class 2606 OID 25615)
+-- TOC entry 4980 (class 2606 OID 25615)
 -- Name: user_ user__logo_media_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1714,7 +1715,7 @@ ALTER TABLE ONLY public.user_
 
 
 --
--- TOC entry 4982 (class 2606 OID 25620)
+-- TOC entry 4981 (class 2606 OID 25620)
 -- Name: user_ user__user_group_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1723,7 +1724,7 @@ ALTER TABLE ONLY public.user_
 
 
 --
--- TOC entry 4983 (class 2606 OID 25625)
+-- TOC entry 4982 (class 2606 OID 25625)
 -- Name: user_firm user_firm_firm_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1732,7 +1733,7 @@ ALTER TABLE ONLY public.user_firm
 
 
 --
--- TOC entry 4984 (class 2606 OID 25630)
+-- TOC entry 4983 (class 2606 OID 25630)
 -- Name: user_firm user_firm_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -2044,7 +2045,7 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public GRANT ALL ON SEQUENC
 ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public GRANT ALL ON TABLES TO mydbuser;
 
 
--- Completed on 2025-07-23 19:58:57
+-- Completed on 2025-07-29 10:41:33
 
 --
 -- PostgreSQL database dump complete

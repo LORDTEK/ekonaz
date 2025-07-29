@@ -5,7 +5,7 @@
 -- Dumped from database version 17.5
 -- Dumped by pg_dump version 17.5
 
--- Started on 2025-07-23 19:58:03
+-- Started on 2025-07-29 10:40:44
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,7 +26,7 @@ SET row_security = off;
 --
 
 COPY public.auth_group (id, name) FROM stdin;
-1	Rutin Operatör
+1	Firma Yöneticileri
 \.
 
 
@@ -127,6 +127,62 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 70	Can change user group	18	change_usergroup
 71	Can delete user group	18	delete_usergroup
 72	Can view user group	18	view_usergroup
+73	Can add auth group	19	add_authgroup
+74	Can change auth group	19	change_authgroup
+75	Can delete auth group	19	delete_authgroup
+76	Can view auth group	19	view_authgroup
+77	Can add auth group permissions	20	add_authgrouppermissions
+78	Can change auth group permissions	20	change_authgrouppermissions
+79	Can delete auth group permissions	20	delete_authgrouppermissions
+80	Can view auth group permissions	20	view_authgrouppermissions
+81	Can add auth permission	21	add_authpermission
+82	Can change auth permission	21	change_authpermission
+83	Can delete auth permission	21	delete_authpermission
+84	Can view auth permission	21	view_authpermission
+85	Can add auth user	22	add_authuser
+86	Can change auth user	22	change_authuser
+87	Can delete auth user	22	delete_authuser
+88	Can view auth user	22	view_authuser
+89	Can add auth user groups	23	add_authusergroups
+90	Can change auth user groups	23	change_authusergroups
+91	Can delete auth user groups	23	delete_authusergroups
+92	Can view auth user groups	23	view_authusergroups
+93	Can add auth user user permissions	24	add_authuseruserpermissions
+94	Can change auth user user permissions	24	change_authuseruserpermissions
+95	Can delete auth user user permissions	24	delete_authuseruserpermissions
+96	Can view auth user user permissions	24	view_authuseruserpermissions
+97	Can add blood	25	add_blood
+98	Can change blood	25	change_blood
+99	Can delete blood	25	delete_blood
+100	Can view blood	25	view_blood
+101	Can add department	26	add_department
+102	Can change department	26	change_department
+103	Can delete department	26	delete_department
+104	Can view department	26	view_department
+105	Can add django admin log	27	add_djangoadminlog
+106	Can change django admin log	27	change_djangoadminlog
+107	Can delete django admin log	27	delete_djangoadminlog
+108	Can view django admin log	27	view_djangoadminlog
+109	Can add django content type	28	add_djangocontenttype
+110	Can change django content type	28	change_djangocontenttype
+111	Can delete django content type	28	delete_djangocontenttype
+112	Can view django content type	28	view_djangocontenttype
+113	Can add django migrations	29	add_djangomigrations
+114	Can change django migrations	29	change_djangomigrations
+115	Can delete django migrations	29	delete_djangomigrations
+116	Can view django migrations	29	view_djangomigrations
+117	Can add django session	30	add_djangosession
+118	Can change django session	30	change_djangosession
+119	Can delete django session	30	delete_djangosession
+120	Can view django session	30	view_djangosession
+121	Can add education	31	add_education
+122	Can change education	31	change_education
+123	Can delete education	31	delete_education
+124	Can view education	31	view_education
+125	Can add personnel	32	add_personnel
+126	Can change personnel	32	change_personnel
+127	Can delete personnel	32	delete_personnel
+128	Can view personnel	32	view_personnel
 \.
 
 
@@ -138,7 +194,7 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
 2	pbkdf2_sha256$1000000$unaNtTDe2TsZmYHUGZflDz$YMfmcFV3u6PnSoKIbiaLHl6hVJHMw1CKz79JN15Pf5A=	\N	f	osman.atay				f	t	2025-07-19 11:24:46.736717+03
-1	pbkdf2_sha256$1000000$92pzZptuCqIQhtvPFcypfE$kOigF+4Ywen80/jY3qrSXQs7z5V0+1dPUAJAODEt/XY=	2025-07-23 13:38:14.896508+03	t	ekonaz			turksat@outlook.com	t	t	2025-07-19 08:28:50.98044+03
+1	pbkdf2_sha256$1000000$92pzZptuCqIQhtvPFcypfE$kOigF+4Ywen80/jY3qrSXQs7z5V0+1dPUAJAODEt/XY=	2025-07-28 15:56:51.117396+03	t	ekonaz			turksat@outlook.com	t	t	2025-07-19 08:28:50+03
 \.
 
 
@@ -149,6 +205,7 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 --
 
 COPY public.auth_user_groups (id, user_id, group_id) FROM stdin;
+1	1	1
 \.
 
 
@@ -1302,6 +1359,8 @@ COPY public.district_ (id, name_, city_id) FROM stdin;
 COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
 1	2025-07-19 11:22:22.87978+03	1	Rutin Operatör	1	[{"added": {}}]	3	1
 2	2025-07-19 11:24:47.340859+03	2	osman.atay	1	[{"added": {}}]	4	1
+3	2025-07-26 17:07:37.704858+03	1	Firma Yöneticileri	2	[{"changed": {"fields": ["Name"]}}]	3	1
+4	2025-07-26 17:11:52.799932+03	1	ekonaz	2	[{"changed": {"fields": ["Groups"]}}]	4	1
 \.
 
 
@@ -1330,6 +1389,20 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 16	core	user
 17	core	userfirm
 18	core	usergroup
+19	core	authgroup
+20	core	authgrouppermissions
+21	core	authpermission
+22	core	authuser
+23	core	authusergroups
+24	core	authuseruserpermissions
+25	core	blood
+26	core	department
+27	core	djangoadminlog
+28	core	djangocontenttype
+29	core	djangomigrations
+30	core	djangosession
+31	core	education
+32	core	personnel
 \.
 
 
@@ -1359,6 +1432,7 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 17	auth	0012_alter_user_first_name_max_length	2025-07-19 08:25:39.210753+03
 18	sessions	0001_initial	2025-07-19 08:25:39.229346+03
 19	core	0001_initial	2025-07-19 10:28:54.002924+03
+20	core	0002_authgroup_authgrouppermissions_authpermission_and_more	2025-07-26 23:05:22.202885+03
 \.
 
 
@@ -1370,7 +1444,7 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
 cgujftek4k3tp4sm4jlvo4wruqisfzom	.eJxVjMsOwiAURP-FtSHyBpfu-w3kci9K1UBS2pXx36VJF5rMas6ZebMI21ri1vMSZ2IXJtjpt0uAz1x3QA-o98ax1XWZE98VftDOp0b5dT3cv4MCvYw1CCN8tsGlkBKM2KAyGufOOAih9tYoLxVI0uIGQmkyJsmMypD2IbDPF-R2N6E:1udRH6:N7G5D0kwJorj34F5c2rroCnIHy7i_cYv169aOo0yK-k	2025-08-03 13:28:08.367264+03
-ctr7vd8njll6jcmmgxib7r6wj754hvtu	.eJxVjMsOwiAURP-FtSHyBpfu-w3kci9K1UBS2pXx36VJF5rMas6ZebMI21ri1vMSZ2IXJtjpt0uAz1x3QA-o98ax1XWZE98VftDOp0b5dT3cv4MCvYw1CCN8tsGlkBKM2KAyGufOOAih9tYoLxVI0uIGQmkyJsmMypD2IbDPF-R2N6E:1ueWrW:tEzWWREGKkn3nMNXc7Q4Pg6k_eaXdy2XttlZEMgBkWM	2025-08-06 13:38:14.907609+03
+ctr7vd8njll6jcmmgxib7r6wj754hvtu	.eJxVjMsOwiAURP-FtSHyBpfu-w3kci9K1UBS2pXx36VJF5rMas6ZebMI21ri1vMSZ2IXJtjpt0uAz1x3QA-o98ax1XWZE98VftDOp0b5dT3cv4MCvYw1CCN8tsGlkBKM2KAyGufOOAih9tYoLxVI0uIGQmkyJsmMypD2IbDPF-R2N6E:1ugNPP:cv5E5psZtyPdu9YqlLcmpQQ24g3paG999OP2C91Ls-8	2025-08-11 15:56:51.126224+03
 \.
 
 
@@ -1399,7 +1473,8 @@ COPY public.education_ (id, name_) FROM stdin;
 -- Data for Name: firm_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.firm_ (id, name_, city_id, district_id, tax_office_id, nace_id, create_, delete_, address_, telephone_, fax_, email_, type_firm, tax_, web_, sgk_sicil, payment_, ceo_name, ceo_email, ceo_cell, logo_media_id, active_) FROM stdin;
+COPY public.firm_ (id, name_, city_id, district_id, tax_office_id, nace_id, create_, delete_, address_, telephone_, fax_, email_, type_firm, tax_, web_, sgk_sicil, payment_, ceo_name, ceo_email, ceo_cell, active_, logo_media) FROM stdin;
+2	Nalçacı Holding	42	516	632	654	2025-02-12 00:00:00	\N	Konya Yolu	033224577	\N	\N	LTDİ ŞTİ	\N	\N	\N	\N	\N	\N	\N	t	logo_firm/Screenshot_2025-06-18_103404.png
 \.
 
 
@@ -2989,7 +3064,7 @@ COPY public.path_ (id, name_) FROM stdin;
 -- Data for Name: personnel_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.personnel_ (id, name_, surname_, tckno_, address_, cell_, birthday_, driving_license, status_, education_id, department_id, children_, email_, blood_id, military_, gender_, marital_) FROM stdin;
+COPY public.personnel_ (id, name_, surname_, tckno_, address_, cell_, birthday_, driving_license, status_, education_id, department_id, children_, email_, blood_id, military_, gender_, marital_, related_personnel) FROM stdin;
 \.
 
 
@@ -4091,7 +4166,7 @@ SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 8, true);
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
 
-SELECT pg_catalog.setval('public.auth_permission_id_seq', 72, true);
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 128, true);
 
 
 --
@@ -4100,7 +4175,7 @@ SELECT pg_catalog.setval('public.auth_permission_id_seq', 72, true);
 -- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
 
-SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, false);
+SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, true);
 
 
 --
@@ -4163,7 +4238,7 @@ SELECT pg_catalog.setval('public.district_id_seq', 1, false);
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 2, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 4, true);
 
 
 --
@@ -4172,7 +4247,7 @@ SELECT pg_catalog.setval('public.django_admin_log_id_seq', 2, true);
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
 
-SELECT pg_catalog.setval('public.django_content_type_id_seq', 18, true);
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 32, true);
 
 
 --
@@ -4181,7 +4256,7 @@ SELECT pg_catalog.setval('public.django_content_type_id_seq', 18, true);
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 19, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 20, true);
 
 
 --
@@ -4199,7 +4274,7 @@ SELECT pg_catalog.setval('public.education__id_seq', 9, true);
 -- Name: firm_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.firm_id_seq', 1, false);
+SELECT pg_catalog.setval('public.firm_id_seq', 2, true);
 
 
 --
@@ -4283,7 +4358,7 @@ SELECT pg_catalog.setval('public.user__id_seq', 1, false);
 SELECT pg_catalog.setval('public.user_group_id_seq', 1, false);
 
 
--- Completed on 2025-07-23 19:58:04
+-- Completed on 2025-07-29 10:40:44
 
 --
 -- PostgreSQL database dump complete

@@ -39,8 +39,12 @@
                 <td>{{ firm.city }}</td>
                 <td>{{ firm.telephone }}</td>
                 <td class="action-links">
-                    <a href="{% url 'core:firm-update' firm.pk %}">Düzenle</a>
-                    <a href="{% url 'core:firm-delete' firm.pk %}">Sil</a>
+                    {% if is_showing_deleted %}
+                        <a href="{% url 'core:firm-update' firm.pk %}">Gör / Geri Al</a>
+                    {% else %}
+                        <a href="{% url 'core:firm-update' firm.pk %}">Düzenle</a>
+                        <a href="{% url 'core:firm-delete' firm.pk %}">Sil</a>
+                    {% endif %}
                 </td>
             </tr>
             {% empty %}
