@@ -1,4 +1,4 @@
-from datetime import timezone
+from django.utils import timezone
 import os
 from django.conf import settings
 from django.db import models
@@ -11,6 +11,8 @@ class Blood(models.Model):
     class Meta:
         managed = False
         db_table = 'blood_'
+        verbose_name = "Kan Grubu"
+        verbose_name_plural = "Kan Grupları"
 
     def __str__(self):
         return f"{self.name}"
@@ -23,6 +25,8 @@ class City(models.Model):
     class Meta:
         managed = False
         db_table = 'city_'
+        verbose_name = "Şehir"
+        verbose_name_plural = "Şehirler"
 
     def __str__(self):
         return f"{self.name}"
@@ -36,6 +40,8 @@ class Department(models.Model):
     class Meta:
         managed = False
         db_table = 'department_'
+        verbose_name = "Birim"
+        verbose_name_plural = "Birimler"
 
     def __str__(self):
         return f"{self.name} ({self.firm.name})"
@@ -49,6 +55,8 @@ class District(models.Model):
     class Meta:
         managed = False
         db_table = 'district_'
+        verbose_name = "İlçe"
+        verbose_name_plural = "İlçeler"
 
     def __str__(self):
         return f"{self.name} ({self.city.name})"
@@ -61,6 +69,8 @@ class Education(models.Model):
     class Meta:
         managed = False
         db_table = 'education_'
+        verbose_name = "Eğitim Durumu"
+        verbose_name_plural = "Eğitim Durumları"
 
     def __str__(self):
         return f"{self.name}"
@@ -109,18 +119,14 @@ class Firm(models.Model):
         # Django'nun asıl save metodunu çalıştırarak kaydı tamamla
         super(Firm, self).save(*args, **kwargs)
 
-    '''
     def delete_hard(self, *args, **kwargs):
-        # Eğer silinmekte olan kaydın bir logosu varsa
+        # Logo dosyasını diskten sil
         if self.logo_media:
-            # Dosyanın yolunu al ve sil
             dosya_yolu = os.path.join(settings.MEDIA_ROOT, str(self.logo_media))
             if os.path.isfile(dosya_yolu):
                 os.remove(dosya_yolu)
-
-        # Django'nun asıl delete metodunu çalıştırarak kaydı veritabanından sil
+        # Django'nun orjinal, kalıcı silme metodunu çağır
         super(Firm, self).delete(*args, **kwargs)
-    '''
 
     def delete_soft(self, *args, **kwargs):
         self.delete = timezone.now()
@@ -129,6 +135,8 @@ class Firm(models.Model):
     class Meta:
         managed = False
         db_table = 'firm_'
+        verbose_name = "Firma"
+        verbose_name_plural = "Firmalar"
 
     def __str__(self):
         return f"{self.name}"
@@ -142,6 +150,8 @@ class Language(models.Model):
     class Meta:
         managed = False
         db_table = 'language_'
+        verbose_name = "Dil"
+        verbose_name_plural = "Diller"
 
     def __str__(self):
         return f"{self.name} ({self.short})"
@@ -159,6 +169,8 @@ class Media(models.Model):
     class Meta:
         managed = False
         db_table = 'media_'
+        verbose_name = "Medya"
+        verbose_name_plural = "Medyalar"
 
     def __str__(self):
         path_name = self.path.name if self.path else 'Yol Yok'
@@ -173,6 +185,8 @@ class MediaType(models.Model):
     class Meta:
         managed = False
         db_table = 'media_type'
+        verbose_name = "Medya Türü"
+        verbose_name_plural = "Medya Türleri"
 
     def __str__(self):
         return f"{self.name}"
@@ -187,6 +201,8 @@ class Nace(models.Model):
     class Meta:
         managed = False
         db_table = 'nace_'
+        verbose_name = "NACE Kodu"
+        verbose_name_plural = "NACE Kodları"
 
     def __str__(self):
         return f"{self.code} ({self.name})"
@@ -199,36 +215,91 @@ class Path(models.Model):
     class Meta:
         managed = False
         db_table = 'path_'
+        verbose_name = "Dizin Yolu"
+        verbose_name_plural = "Dizin Yolları"
 
     def __str__(self):
         return f"{self.name}"
 
 
 class Personnel(models.Model):
+
+    GENDER_CHOICES = [
+        (True, 'Erkek'),
+        (False, 'Kadın'),
+    ]
+    MILITARY_CHOICES = [
+        (True, 'Yaptı/Muaf'),
+        (False, 'Yapmadı'),
+    ]
+    MARITAL_CHOICES = [
+        (True, 'Evli'),
+        (False, 'Bekar'),
+    ]
+
     id = models.BigAutoField(primary_key=True)
-    name = models.CharField(db_column='name_', max_length=255, blank=True, null=True)
-    surname = models.CharField(db_column='surname_', max_length=255, blank=True, null=True)
-    tckno = models.CharField(db_column='tckno_', max_length=11, blank=True, null=True)
-    address = models.CharField(db_column='address_', max_length=255, blank=True, null=True)
-    cell = models.CharField(db_column='cell_', max_length=15, blank=True, null=True)
-    birthday = models.DateTimeField(db_column='birthday_', blank=True, null=True)
-    driving_license = models.CharField(max_length=15, blank=True, null=True)
-    status = models.CharField(db_column='status_', max_length=255, blank=True, null=True)
-    education = models.ForeignKey(Education, on_delete=models.PROTECT, blank=True, null=True)
-    department = models.ForeignKey(Department, on_delete=models.PROTECT, blank=True, null=True)
-    children = models.IntegerField(db_column='children_')
-    email = models.CharField(db_column='email_', max_length=255, blank=True, null=True)
-    blood = models.ForeignKey(Blood, on_delete=models.PROTECT, blank=True, null=True)
-    military = models.BooleanField(db_column='military_')
-    gender = models.BooleanField(db_column='gender_')
-    marital = models.BooleanField(db_column='marital_')
+    firm = models.ForeignKey(db_column='firm_id', to='Firm', on_delete=models.CASCADE, verbose_name="Firma")
+    name = models.CharField(db_column='name_', max_length=255, blank=True, null=True, verbose_name="Ad")
+    surname = models.CharField(db_column='surname_', max_length=255, blank=True, null=True, verbose_name="Soyad")
+    tckno = models.CharField(db_column='tckno_', max_length=11, blank=True, null=True, verbose_name="TC Kimlik Numara")
+    address = models.CharField(db_column='address_', max_length=255, blank=True, null=True, verbose_name="Adres")
+    cell = models.CharField(db_column='cell_', max_length=15, blank=True, null=True, verbose_name="Telefon")
+    birthday = models.DateTimeField(db_column='birthday_', blank=True, null=True, verbose_name="Doğum Tarihi")
+    driving_license = models.CharField(max_length=15, blank=True, null=True, verbose_name="Sürücü Belge")
+    status = models.CharField(db_column='status_', max_length=255, blank=True, null=True, verbose_name="Durum")
+    education = models.ForeignKey(Education, on_delete=models.PROTECT, blank=True, null=True, verbose_name="Eğitim")
+    department = models.ForeignKey(Department, on_delete=models.PROTECT, blank=True, null=True, verbose_name="Birim")
+    children = models.IntegerField(db_column='children_', blank=True, null=True, verbose_name="Çocuk Sayısı")
+    email = models.CharField(db_column='email_', max_length=255, blank=True, null=True, verbose_name="e-Posta")
+    blood = models.ForeignKey(Blood, on_delete=models.PROTECT, blank=True, null=True, verbose_name="Kan Grubu")
+    military = models.BooleanField(db_column='military_', choices=MILITARY_CHOICES, default=True, verbose_name="Askerlik Durumu")
+    gender = models.BooleanField(db_column='gender_', choices=GENDER_CHOICES, default=True, verbose_name="Cinsiyet")
+    marital = models.BooleanField(db_column='marital_', choices=MARITAL_CHOICES, default=False, verbose_name="Medeni Durum")
+    commencement = models.DateField(db_column='commencement_', blank=True, null=True, verbose_name="İşe Başlama Tarihi")
+    termination = models.DateField(db_column='termination_', blank=True, null=True, verbose_name="İşten Ayrılma Tarihi")
+    delete = models.DateTimeField(db_column='delete_', blank=True, null=True, verbose_name="Silinme Tarihi")
+    picture = models.FileField(upload_to='picture_personnel/', blank=True, null=True, verbose_name="Personel Resmi", db_column='picture_')
+
+    related_personnel = models.ForeignKey(
+        'self', 
+        on_delete=models.SET_NULL, 
+        blank=True, 
+        null=True, 
+        verbose_name="Önceki Kayıt",
+        db_column='related_personnel_id'
+    )
 
     class Meta:
         managed = False
         db_table = 'personnel_'
+        verbose_name = "Personel"
+        verbose_name_plural = "Personeller"
 
     def __str__(self):
-        return f"{self.name} ({self.tckno})"
+        return f"{self.name} {self.surname} ({self.tckno})"
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            try:
+                eski_kayit = Personnel.objects.get(pk=self.pk)
+                if eski_kayit.picture and eski_kayit.picture != self.picture:
+                    eski_dosya_yolu = os.path.join(settings.MEDIA_ROOT, str(eski_kayit.picture))
+                    if os.path.isfile(eski_dosya_yolu):
+                        os.remove(eski_dosya_yolu)
+            except Personnel.DoesNotExist:
+                pass
+        super(Personnel, self).save(*args, **kwargs)
+
+    def delete_soft(self):
+        self.delete = timezone.now()
+        self.save()
+
+    def delete_hard(self, *args, **kwargs):
+        if self.picture:
+            dosya_yolu = os.path.join(settings.MEDIA_ROOT, str(self.picture))
+            if os.path.isfile(dosya_yolu):
+                os.remove(dosya_yolu)
+        super(Personnel, self).delete(*args, **kwargs)
 
 
 class TaxOffice(models.Model):
@@ -240,6 +311,8 @@ class TaxOffice(models.Model):
     class Meta:
         managed = False
         db_table = 'tax_office'
+        verbose_name = "Vergi Daire"
+        verbose_name_plural = "Vergi Daireleri"
 
     def __str__(self):
         return f"{self.name} ({self.city.name} {self.district.name})"
@@ -261,6 +334,8 @@ class User(models.Model):
     class Meta:
         managed = False
         db_table = 'user_'
+        verbose_name = "Kullanıcı"
+        verbose_name_plural = "Kullanıcılar"
 
     def __str__(self):
         return f"{self.name} ({self.tckno})"
@@ -275,6 +350,8 @@ class UserFirm(models.Model):
     class Meta:
         managed = False
         db_table = 'user_firm'
+        verbose_name = "Kullanıcı-Firma"
+        verbose_name_plural = "Kullanıcılar-Firmalar"
 
     def __str__(self):
         return f"{self.user.name} ({self.firm.name})"
@@ -288,6 +365,8 @@ class UserGroup(models.Model):
     class Meta:
         managed = False
         db_table = 'user_group'
+        verbose_name = "Kullanıcı Grubu"
+        verbose_name_plural = "Kullanıcı Grupları"
 
     def __str__(self):
         return f"{self.name} ({self.description})"

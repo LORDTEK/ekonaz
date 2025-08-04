@@ -723,7 +723,7 @@ CREATE TABLE public.personnel_ (
     status_ character varying(255),
     education_id bigint,
     department_id bigint,
-    children_ integer DEFAULT 0 NOT NULL,
+    children_ integer DEFAULT 0,
     email_ character varying(255),
     blood_id bigint,
     military_ boolean DEFAULT true NOT NULL,
@@ -733,7 +733,8 @@ CREATE TABLE public.personnel_ (
     firm_id bigint,
     commencement_ timestamp without time zone,
     termination_ timestamp without time zone,
-    delete_ timestamp without time zone
+    delete_ timestamp without time zone,
+    picture_ character varying(255)
 );
 
 

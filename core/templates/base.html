@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ekonaz Portal{% endblock %}</title>
+
+    <style>
+        body, h1, h2, ul, p { margin: 0; padding: 0; }
+        body { font-family: sans-serif; display: flex; height: 100vh; background-color: #f4f7f6; }
+        .sidebar { width: 250px; background-color: #34495e; color: white; padding: 20px; flex-shrink: 0; }
+        .sidebar h2 { text-align: center; margin-bottom: 30px; }
+        .sidebar ul { list-style-type: none; }
+        .sidebar ul li a { display: block; color: white; text-decoration: none; padding: 15px; border-radius: 5px; transition: background-color 0.3s; }
+        .sidebar ul li a:hover { background-color: #4a6781; }
+        .main-content { flex-grow: 1; padding: 40px; overflow-y: auto; }
+    </style>
+
+    {% block styles %}{% endblock %}
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>Ekonaz Portal</h2>
+        <ul>
+            <li><a href="{% url 'core:portal' %}">Ana Sayfa</a></li>
+            <li><a href="{% url 'core:firm-list' %}">Firma Yönetimi</a></li>
+        </ul>
+
+        <ul>
+            <hr style="border-color: #4a6781;">
+            <li><a href="{% url 'core:logout' %}">Çıkış Yap</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block scripts %}{% endblock %}
+
+</body>
+</html>

@@ -146,3 +146,10 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Oturumun saniye cinsinden ömrü
+SESSION_COOKIE_AGE = 31536000 # 1 yıl
+
+# Tarayıcı kapatıldığında oturumun sona ermesini sağlar
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False 
