@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.http import JsonResponse
 from .models import Firm, District, Personnel, Department
 from .forms import FirmForm, FirmSoftDeleteForm, PersonnelForm, DepartmentForm
+from django.db.models import Q
 
 
 @login_required
@@ -56,15 +57,31 @@ def portal_view(request):
 
 @permission_required('core.view_firm', raise_exception=True)
 def firm_list_view(request):
+    # Arama kutusundan gelen 'q' parametresini al
+    query = request.GET.get('q')
+
     show_deleted = request.GET.get('show_deleted')
+
     if show_deleted:
-        firms = Firm.objects.filter(delete__isnull=False)
+        base_queryset = Firm.objects.filter(delete__isnull=False)
         list_title = "Silinmiş Firmalar"
     else:
-        firms = Firm.objects.filter(delete__isnull=True)
+        base_queryset = Firm.objects.filter(delete__isnull=True)
         list_title = "Aktif Firmalar"
+
+    # Eğer bir arama sorgusu varsa, listeyi filtrele
+    if query:
+        # name, city__name (ilişkili modelin alanı) veya tax alanlarından
+        # HERHANGİ BİRİ arama terimini içeriyorsa...
+        base_queryset = base_queryset.filter(
+            Q(name__icontains=query) |
+            Q(city__name__icontains=query) |
+            Q(tax__icontains=query)
+        )
+        list_title += f" (Arama Sonuçları: '{query}')"
+
     context = {
-        'firms': firms,
+        'firms': base_queryset,
         'list_title': list_title,
         'is_showing_deleted': bool(show_deleted)
     }
@@ -130,22 +147,30 @@ def load_districts(request):
 @permission_required('core.view_personnel', raise_exception=True)
 def personnel_list_view(request, firm_pk):
     firm = get_object_or_404(Firm, pk=firm_pk)
-
-    # URL'den '?show_deleted=true' parametresi gelip gelmediğini kontrol et
+    
+    # Arama kutusundan gelen 'q' parametresini al
+    query = request.GET.get('q')
     show_deleted = request.GET.get('show_deleted')
 
     if show_deleted:
-        # Eğer parametre varsa, sadece silinmiş olanları listele
-        personnel_list = Personnel.objects.filter(firm=firm, delete__isnull=False)
+        base_queryset = Personnel.objects.filter(firm=firm, delete__isnull=False)
         list_title = f"{firm.name} - Silinmiş Personeller"
     else:
-        # Eğer parametre yoksa, sadece aktif olanları listele
-        personnel_list = Personnel.objects.filter(firm=firm, delete__isnull=True)
+        base_queryset = Personnel.objects.filter(firm=firm, delete__isnull=True)
         list_title = f"{firm.name} - Aktif Personeller"
+
+    # Eğer bir arama sorgusu varsa, listeyi filtrele
+    if query:
+        base_queryset = base_queryset.filter(
+            Q(name__icontains=query) |
+            Q(surname__icontains=query) |
+            Q(tckno__icontains=query)
+        )
+        list_title += f" (Arama Sonuçları: '{query}')"
 
     context = {
         'firm': firm,
-        'personnel_list': personnel_list,
+        'personnel_list': base_queryset,
         'list_title': list_title,
         'is_showing_deleted': bool(show_deleted)
     }

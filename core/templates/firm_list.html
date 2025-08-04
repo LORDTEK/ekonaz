@@ -16,7 +16,10 @@
 
 {% block content %}
     <h1>{{ list_title }}</h1>
-
+    <form method="get" action="{% url 'core:firm-list' %}">
+        <input type="text" name="q" placeholder="Firma Adı, Şehir, Vergi No..." value="{{ request.GET.q }}">
+        <button type="submit">Ara</button>
+    </form>
     <div class="header-actions">
         <a href="{% url 'core:firm-add' %}" class="add-new">Yeni Firma Ekle</a>
         {% if is_showing_deleted %}
@@ -26,7 +29,7 @@
         {% endif %}
     </div>
 
-    <table>
+    <figure><table>
         <thead>
             <tr>
                 <th>Logo</th>
@@ -68,5 +71,5 @@
             </tr>
             {% endfor %}
         </tbody>
-    </table>
+    </table></figure>
 {% endblock %}
