@@ -342,12 +342,13 @@ class User(models.Model):
 
 
 class UserFirm(models.Model):
-    pk = models.CompositePrimaryKey('user_id', 'firm_id')
+    #pk = models.CompositePrimaryKey('user_id', 'firm_id')
     user = models.ForeignKey(User, models.PROTECT, related_name='firm_associations')
     firm = models.ForeignKey(Firm, models.PROTECT, related_name='user_associations')
     create = models.DateTimeField(db_column='create_')
 
     class Meta:
+        unique_together = ('user', 'firm')
         managed = False
         db_table = 'user_firm'
         verbose_name = "Kullanıcı-Firma"
