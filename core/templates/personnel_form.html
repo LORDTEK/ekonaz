@@ -3,11 +3,18 @@
 {% block title %}Personel Formu - Ekonaz Portal{% endblock %}
 
 {% block styles %}
+    {{ block.super }}
     <style>
-        /* Pico.css form elemanlarını zaten güzelleştiriyor, ek stile gerek yok */
-        form {
-            max-width: 600px; /* Formun çok genişlemesini engelle */
+        form { max-width: 800px; } /* Formu biraz daha genişletelim */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
         }
+        .grid-full-width {
+            grid-column: 1 / -1;
+        }
+        form ul { list-style-type: none; padding-left: 0; } /* Radyo buton listesinin girintisini kaldır */
     </style>
 {% endblock %}
 
@@ -16,18 +23,22 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
+        <div class="grid">
         {% for field in form %}
-            <label for="{{ field.id_for_label }}">
-                {{ field.label }}
-            </label>
-            {{ field }}
-            {% if field.help_text %}
-                <small>{{ field.help_text }}</small>
-            {% endif %}
-            {% for error in field.errors %}
-                <small style="color: red;">{{ error }}</small>
-            {% endfor %}
+            <div {% if field.name == 'address' %}class="grid-full-width"{% endif %}>
+                <label for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                </label>
+                {{ field }}
+                {% if field.help_text %}
+                    <small>{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                    <small style="color: var(--pico-color-red-500);">{{ error }}</small>
+                {% endfor %}
+            </div>
         {% endfor %}
+        </div>
 
         <button type="submit">Kaydet</button>
     </form>
@@ -36,11 +47,16 @@
 {% endblock %}
 
 {% block scripts %}
-    {{ block.super }} <script>
+    {{ block.super }}
+    <script>
         $(document).ready(function() {
             // 'firm' alanını Select2'ye dönüştür
             $('#id_firm').select2({
                 placeholder: "Firma seçin veya yazarak arayın",
+                allowClear: true
+            });
+            $('#id_department').select2({
+                placeholder: "Birim seçin veya yazarak arayın",
                 allowClear: true
             });
         });
