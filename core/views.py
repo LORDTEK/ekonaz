@@ -147,8 +147,7 @@ def load_districts(request):
 @permission_required('core.view_personnel', raise_exception=True)
 def personnel_list_view(request, firm_pk):
     firm = get_object_or_404(Firm, pk=firm_pk)
-    
-    # Arama kutusundan gelen 'q' parametresini al
+
     query = request.GET.get('q')
     show_deleted = request.GET.get('show_deleted')
 
@@ -159,14 +158,13 @@ def personnel_list_view(request, firm_pk):
         base_queryset = Personnel.objects.filter(firm=firm, delete__isnull=True)
         list_title = f"{firm.name} - Aktif Personeller"
 
-    # Eğer bir arama sorgusu varsa, listeyi filtrele
     if query:
         base_queryset = base_queryset.filter(
             Q(name__icontains=query) |
             Q(surname__icontains=query) |
             Q(tckno__icontains=query)
         )
-        list_title += f" (Arama Sonuçları: '{query}')"
+        list_title += f" (Arama: '{query}')"
 
     context = {
         'firm': firm,

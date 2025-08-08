@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" {% if 'admin' not in request.path %}data-theme="dark"{% endif %}>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,6 +39,17 @@
             border-bottom: 1px solid #dfe4e8; /* Altına ince bir çizgi ekleyelim */
             padding-bottom: 15px; /* Çizgi ile yazı arasına boşluk bırakalım */
             font-weight: 300; /* Yazı tipini biraz inceltelim */
+        }
+        .main-content form p {
+            margin-bottom: 0.5rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .grid-full-width {
+            grid-column: 1 / -1; /* Tam genişlik kaplamasını sağlar */
         }
     </style>
 </head>
