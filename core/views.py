@@ -147,7 +147,6 @@ def load_districts(request):
 @permission_required('core.view_personnel', raise_exception=True)
 def personnel_list_view(request, firm_pk):
     firm = get_object_or_404(Firm, pk=firm_pk)
-
     query = request.GET.get('q')
     show_deleted = request.GET.get('show_deleted')
 
