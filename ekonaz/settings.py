@@ -153,4 +153,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 SESSION_COOKIE_AGE = 31536000 # 1 yıl
 
 # Tarayıcı kapatıldığında oturumun sona ermesini sağlar
-SESSION_EXPIRE_AT_BROWSER_CLOSE = False 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+
+
+#AUTH_USER_MODEL = 'core.User'

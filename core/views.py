@@ -1,12 +1,11 @@
-# core/views.py
-
 from django.utils import timezone
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User as AuthUser
 from django.contrib.auth.decorators import login_required, permission_required
 from django.http import JsonResponse
-from .models import Firm, District, Personnel, Department
-from .forms import FirmForm, FirmSoftDeleteForm, PersonnelForm, DepartmentForm
 from django.db.models import Q
+from .models import Firm, District, Personnel, Department, Education, Blood, User, UserGroup, Language, Media
+from .forms import FirmForm, FirmSoftDeleteForm, PersonnelForm, DepartmentForm, UserProfileForm
 
 
 @login_required
@@ -33,6 +32,12 @@ def portal_view(request):
             'url': '/admin/', # Bu özel bir URL olduğu için adını değil, direkt yolunu yazıyoruz
             'icon': '⚙️',
             'permission': 'is_staff', # Bu da özel bir yetki kontrolü
+        },
+        {
+            'name': 'Kullanıcı Yönetimi',
+            'url_name': 'core:user-list',
+            'icon': '👤',
+            'permission': 'core.view_user',
         },
     ]
 
@@ -293,3 +298,88 @@ def department_delete_view(request, pk):
         return redirect('core:department-list', firm_pk=firm_pk)
 
     return render(request, 'department_confirm_delete.html', {'department': department})
+
+@permission_required('core.view_user', raise_exception=True)
+def user_list_view(request):
+    # Arama ve filtreleme için temel hazırlık
+    query = request.GET.get('q')
+    users = User.objects.all()
+
+    if query:
+        users = users.filter(
+            Q(name__icontains=query) |
+            Q(tckno__icontains=query) |
+            Q(email__icontains=query)
+        )
+
+    context = {
+        'users': users,
+        'list_title': "Kullanıcı Listesi"
+    }
+    return render(request, 'user_list.html', context)
+
+
+@permission_required('core.add_user', raise_exception=True)
+def user_create_view(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Önce Django'nun standart kullanıcısını oluştur
+            auth_user = AuthUser.objects.create_user(
+                username=form.cleaned_data['username'],
+                email=form.cleaned_data['email'],
+                password=form.cleaned_data['password']
+            )
+            # Sonra bizim profilimizi oluştur ve standart kullanıcıya bağla
+            profile = form.save(commit=False)
+            profile.auth_user = auth_user
+            profile.save()
+            return redirect('core:user-list')
+    else:
+        form = UserProfileForm()
+    return render(request, 'user_form.html', {'form': form})
+
+
+@permission_required('core.change_user', raise_exception=True)
+def user_update_view(request, pk):
+    profile = get_object_or_404(User, pk=pk)
+
+    try:
+        auth_user = profile.auth_user
+    except User.auth_user.RelatedObjectDoesNotExist:
+        # Eğer bu profilin bağlı olduğu bir auth_user yoksa,
+        # geçici olarak boş bir tane oluşturalım ki form hata vermesin.
+        # Bu durumun normalde olmaması gerekir.
+        auth_user = None
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid() and auth_user is not None: # Sadece auth_user varsa güncelle
+            profile = form.save()
+
+            auth_user.username = form.cleaned_data['username']
+            auth_user.email = form.cleaned_data['email']
+            if form.cleaned_data['password']:
+                auth_user.set_password(form.cleaned_data['password'])
+            auth_user.save()
+
+            return redirect('core:user-list')
+    else:
+        form = UserProfileForm(instance=profile)
+
+    return render(request, 'user_form.html', {'form': form})
+
+
+@permission_required('core.delete_user', raise_exception=True)
+def user_delete_view(request, pk):
+    profile = get_object_or_404(User, pk=pk)
+    if request.method == 'POST':
+        try:
+            # Önce bağlı auth_user'ı silmeyi dene
+            profile.auth_user.delete()
+        except User.auth_user.RelatedObjectDoesNotExist:
+            # Eğer bağlı bir auth_user yoksa, sadece profili sil
+            profile.delete()
+        return redirect('core:user-list')
+
+    return render(request, 'user_confirm_delete.html', {'user_obj': profile})

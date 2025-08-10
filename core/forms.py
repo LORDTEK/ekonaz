@@ -1,7 +1,10 @@
 # core/forms.py
 from django.utils import timezone
 from django import forms
-from .models import Firm, City, Personnel, Department, Education, Blood
+from django.contrib.auth.models import User as AuthUser
+from .models import Firm, City, Personnel, Department, Education, Blood, User, UserGroup, Language, Media
+from collections import OrderedDict
+
 
 class FirmForm(forms.ModelForm):
     class Meta:
@@ -26,12 +29,14 @@ class FirmForm(forms.ModelForm):
                 required=False
             )
 
+
 class FirmSoftDeleteForm(forms.Form):
     delete_date = forms.DateTimeField(
         initial=timezone.now,
         label="Silinme Tarihi ve Saati",
         widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M')
     )
+
 
 class PersonnelForm(forms.ModelForm):
     previous_tckno = forms.CharField(
@@ -107,3 +112,96 @@ class DepartmentForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         # Firma listesinde sadece aktif olanları gösterelim
         self.fields['firm'].queryset = Firm.objects.filter(delete__isnull=True).order_by('name')
+
+
+class UserProfileForm(forms.ModelForm):
+    # Django'nun standart auth.User modelinden gelen alanlar
+    username = forms.CharField(label="Rumuz (kullanıcı adı)", required=True)
+    email = forms.EmailField(label="E-Posta", required=False)
+    password = forms.CharField(label="Şifre", widget=forms.PasswordInput, required=False, help_text="Yeni kullanıcı için veya şifre değiştirmek için doldurun. Değiştirmek istemiyorsanız boş bırakın.")
+
+    class Meta:
+        model = User # Bizim profil modelimiz
+        # Profil modelimizden gelen alanlar
+        fields = ['username', 'tckno', 'title', 'picture', 'user_group', 'language', 'active', 'first_name', 'last_name', 'is_staff']
+        labels = {
+            'username': 'Rumuz (kullanıcı adı)',
+            'title': 'Unvan',
+            'tckno': 'TC Kimlik No',
+            'picture': 'Profil Resmi',
+            'user_group': 'Kullanıcı Grubu',
+            'language': 'Dil',
+            'active': 'Aktif',
+            'first_name': 'Adı',
+            'last_name': 'Soyadı',
+            'is_staff': 'Çalışan mı?',
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Eğer bu, var olan bir kullanıcıyı düzenleme formuysa (instance varsa)
+        if self.instance and self.instance.pk and hasattr(self.instance, 'auth_user'):
+            # Formdaki username ve email alanlarını, bağlı olduğu auth_user'dan gelen verilerle doldur
+            self.fields['username'].initial = self.instance.auth_user.username
+            self.fields['email'].initial = self.instance.auth_user.email
+
+        self.fields['user_group'].queryset = UserGroup.objects.order_by('name')
+        self.fields['language'].queryset = Language.objects.order_by('name')
+
+        if not self.instance or not self.instance.pk:
+            try:
+                default_group = UserGroup.objects.get(name='Yönetici')
+                self.fields['user_group'].initial = default_group
+            except UserGroup.DoesNotExist:
+                if UserGroup.objects.exists():
+                    self.fields['user_group'].initial = UserGroup.objects.first()
+            try:
+                default_language = Language.objects.get(name='Türkçe')
+                self.fields['language'].initial = default_language
+            except Language.DoesNotExist:
+                if Language.objects.exists():
+                    self.fields['language'].initial = Language.objects.first()
+        self.fields = OrderedDict([
+            ('username', self.fields['username']),
+            ('password', self.fields['password']),
+            ('first_name', self.fields['first_name']),
+            ('last_name', self.fields['last_name']),
+            ('tckno', self.fields['tckno']),
+            ('title', self.fields['title']),
+            ('email', self.fields['email']),
+            ('language', self.fields['language']),
+            ('active', self.fields['active']),
+            ('picture', self.fields['picture']),
+            ('is_staff', self.fields['is_staff']),
+            ('user_group', self.fields['user_group']),
+        ])
+
+
+'''
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        # Modeldeki alanları listeliyoruz. 'logo_media' yerine 'picture' geldi.
+        fields = [
+            'name', 'tckno', 'certificate_number', 'title', 'email', 
+            'user_group', 'language', 'picture', 'active'
+        ]
+        # Formda görünecek Türkçe etiketler
+        labels = {
+            'name': 'Ad Soyad',
+            'tckno': 'TC Kimlik No',
+            'certificate_number': 'Sertifika Numarası',
+            'title': 'Unvan',
+            'email': 'e-Posta Adresi',
+            'user_group': 'Kullanıcı Grubu',
+            'language': 'Dil',
+            'picture': 'Kullanıcı Resmi',
+            'active': 'Aktif',
+        }
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['user_group'].queryset = UserGroup.objects.order_by('name')
+        self.fields['language'].queryset = Language.objects.order_by('name')
+'''

@@ -32,6 +32,12 @@ urlpatterns = [
     path('departments/edit/<int:pk>/', views.department_update_view, name='department-update'),
     path('departments/delete/<int:pk>/', views.department_delete_view, name='department-delete'),
 
+    # User managements
+    path('users/', views.user_list_view, name='user-list'),
+    path('users/add/', views.user_create_view, name='user-add'),
+    path('users/edit/<int:pk>/', views.user_update_view, name='user-update'),
+    path('users/delete/<int:pk>/', views.user_delete_view, name='user-delete'),
+
     # Çıkış
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
 ]

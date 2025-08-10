@@ -57,14 +57,32 @@
 
     <nav class="sidebar">
         <div> <h2>Ekonaz Portal</h2>
-            <ul>
-                <li><a href="{% url 'core:portal' %}">Ana Sayfa</a></li>
+        <ul>
+            <li><a href="{% url 'core:portal' %}">Ana Sayfa</a></li>
+            {% if perms.core.view_firm %}
                 <li><a href="{% url 'core:firm-list' %}">Firma Yönetimi</a></li>
-            </ul>
+            {% endif %}
+            {% if perms.core.view_user %}
+                <li><a href="{% url 'core:user-list' %}">Kullanıcı Yönetimi</a></li>
+            {% endif %}
+        </ul>
         </div>
 
-        <ul class="logout-menu"> <hr style="border-color: #4a6781;">
-            <li><a href="{% url 'core:logout' %}">Çıkış Yap</a></li>
+        <ul class="logout-menu">
+            <hr style="border-color: #4a6781;">
+
+            <li style="text-align: center; padding: 15px 0;">
+                {% if user.user and user.user.picture %}
+                    <img src="{{ user.user.picture.url }}" alt="{{ user.user.name }}" style="width: 60px; height: 60px; border-radius: 50%; margin-bottom: 10px; object-fit: cover;">
+                {% endif %}
+                <span style="display: block; font-weight: bold; padding: 0 15px;">{{ user.user.first_name|default:user.username }} {{ user.user.last_name }}</span>
+            </li>
+            <li>
+                <form id="logout-form" action="{% url 'core:logout' %}" method="post" style="margin: 0;">
+                    {% csrf_token %}
+                    <a href="#" onclick="document.getElementById('logout-form').submit(); return false;" style="display: block; color: white; text-decoration: none; padding: 15px; border-radius: 5px;">Çıkış Yap</a>
+                </form>
+            </li>
         </ul>
     </nav>
 

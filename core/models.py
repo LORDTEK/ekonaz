@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User as AuthUser
 from django.utils import timezone
 import os
 from django.conf import settings
@@ -319,17 +320,23 @@ class TaxOffice(models.Model):
 
 
 class User(models.Model):
+    auth_user = models.OneToOneField(AuthUser, on_delete=models.CASCADE)
     id = models.BigAutoField(primary_key=True)
-    user_group = models.ForeignKey('UserGroup', models.PROTECT)
-    language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True, blank=True)
-    name = models.CharField(db_column='name_', max_length=255, blank=True, null=True)
-    tckno = models.CharField(db_column='tckno_', max_length=11, blank=True, null=True)
-    certificate_number = models.CharField(max_length=255, blank=True, null=True)
-    title = models.CharField(db_column='title_', max_length=255, blank=True, null=True)
-    email = models.CharField(db_column='email_', max_length=255, blank=True, null=True)
-    #pasword = models.CharField(db_column='pasword_', max_length=32, blank=True, null=True)
-    logo_media = models.ForeignKey(Media, on_delete=models.SET_NULL, null=True, blank=True)
-    active = models.BooleanField(db_column='active_')
+    user_group = models.ForeignKey('UserGroup', on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Kullanıcı Grubu")
+    language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Dil")
+    username = models.CharField(db_column='name_', max_length=255, blank=True, null=True, verbose_name="Rumuz (kullanıcı adı)")
+    tckno = models.CharField(db_column='tckno_', max_length=11, blank=True, null=True, verbose_name="TC Kimlik No")
+    certificate_number = models.CharField(max_length=255, blank=True, null=True, verbose_name="Sertifika Numarası")
+    title = models.CharField(db_column='title_', max_length=255, blank=True, null=True, verbose_name="Unvan")
+    email = models.CharField(db_column='email_', max_length=255, blank=True, null=True, verbose_name="e-Posta")
+    pasword = models.CharField(db_column='password_', max_length=32, blank=True, null=True, verbose_name="Parola")
+    logo_media = models.ForeignKey(Media, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Kullanıcı Resmi", db_column='logo_media')
+    picture = models.FileField(upload_to='picture_user/', blank=True, null=True, verbose_name="Kullanıcı Resmi")
+    first_name = models.CharField(db_column='first_name', max_length=255, blank=True, null=True, verbose_name="Adı")
+    last_name = models.CharField(db_column='last_name', max_length=255, blank=True, null=True, verbose_name="Soyadı")
+    active = models.BooleanField(db_column='active_', default=True)
+    is_staff = models.BooleanField('is_staff', default=True)
+    is_superuser = models.BooleanField('is_superuser', default=False)
 
     class Meta:
         managed = False
@@ -342,19 +349,23 @@ class User(models.Model):
 
 
 class UserFirm(models.Model):
-    #pk = models.CompositePrimaryKey('user_id', 'firm_id')
+    # Django'ya birincil anahtarın 'user_id' ve 'firm_id' birleşimi olduğunu söylüyoruz.
+    pk = models.CompositePrimaryKey('user_id', 'firm_id')
+
+    # Alan tanımları doğru, olduğu gibi kalıyor.
     user = models.ForeignKey(User, models.PROTECT, related_name='firm_associations')
     firm = models.ForeignKey(Firm, models.PROTECT, related_name='user_associations')
     create = models.DateTimeField(db_column='create_')
 
     class Meta:
-        unique_together = ('user', 'firm')
+        # unique_together'a gerek yok, çünkü CompositePrimaryKey zaten bu işi yapıyor.
         managed = False
         db_table = 'user_firm'
-        verbose_name = "Kullanıcı-Firma"
-        verbose_name_plural = "Kullanıcılar-Firmalar"
+        verbose_name = "Kullanıcı-Firma Ataması"
+        verbose_name_plural = "Kullanıcı-Firma Atamaları"
 
     def __str__(self):
+        # Bu __str__ metodu da doğru, olduğu gibi kalabilir.
         return f"{self.user.name} ({self.firm.name})"
 
 
