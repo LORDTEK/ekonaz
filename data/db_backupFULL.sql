@@ -5,6 +5,8 @@
 -- Dumped from database version 17.5
 -- Dumped by pg_dump version 17.5
 
+-- Started on 2025-08-10 11:27:39
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -18,7 +20,9 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: mydbuser
+-- TOC entry 5179 (class 0 OID 25662)
+-- Dependencies: 247
+-- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.auth_group (id, name) FROM stdin;
@@ -28,7 +32,9 @@ COPY public.auth_group (id, name) FROM stdin;
 
 
 --
--- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: mydbuser
+-- TOC entry 5181 (class 0 OID 25670)
+-- Dependencies: 249
+-- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
@@ -48,7 +54,9 @@ COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
 
 
 --
--- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: mydbuser
+-- TOC entry 5177 (class 0 OID 25656)
+-- Dependencies: 245
+-- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
@@ -184,7 +192,9 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 
 
 --
--- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: mydbuser
+-- TOC entry 5183 (class 0 OID 25676)
+-- Dependencies: 251
+-- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
@@ -194,7 +204,9 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 
 
 --
--- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: mydbuser
+-- TOC entry 5185 (class 0 OID 25684)
+-- Dependencies: 253
+-- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.auth_user_groups (id, user_id, group_id) FROM stdin;
@@ -206,7 +218,9 @@ COPY public.auth_user_groups (id, user_id, group_id) FROM stdin;
 
 
 --
--- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: mydbuser
+-- TOC entry 5187 (class 0 OID 25690)
+-- Dependencies: 255
+-- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
@@ -470,7 +484,9 @@ COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 
 
 --
--- Data for Name: blood_; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5194 (class 0 OID 33845)
+-- Dependencies: 262
+-- Data for Name: blood_; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.blood_ (id, name_) FROM stdin;
@@ -486,7 +502,9 @@ COPY public.blood_ (id, name_) FROM stdin;
 
 
 --
--- Data for Name: city_; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5149 (class 0 OID 25464)
+-- Dependencies: 217
+-- Data for Name: city_; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.city_ (id, name_) FROM stdin;
@@ -575,7 +593,9 @@ COPY public.city_ (id, name_) FROM stdin;
 
 
 --
--- Data for Name: department_; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5196 (class 0 OID 33857)
+-- Dependencies: 264
+-- Data for Name: department_; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.department_ (id, firm_id, name_) FROM stdin;
@@ -586,7 +606,9 @@ COPY public.department_ (id, firm_id, name_) FROM stdin;
 
 
 --
--- Data for Name: district_; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5151 (class 0 OID 25468)
+-- Dependencies: 219
+-- Data for Name: district_; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.district_ (id, name_, city_id) FROM stdin;
@@ -1596,7 +1618,9 @@ COPY public.district_ (id, name_, city_id) FROM stdin;
 
 
 --
--- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: mydbuser
+-- TOC entry 5189 (class 0 OID 25748)
+-- Dependencies: 257
+-- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
@@ -1606,7 +1630,9 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 
 
 --
--- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: mydbuser
+-- TOC entry 5175 (class 0 OID 25648)
+-- Dependencies: 243
+-- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.django_content_type (id, app_label, model) FROM stdin;
@@ -1646,7 +1672,9 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 
 
 --
--- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: mydbuser
+-- TOC entry 5173 (class 0 OID 25640)
+-- Dependencies: 241
+-- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.django_migrations (id, app, name, applied) FROM stdin;
@@ -1673,7 +1701,9 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 
 
 --
--- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: mydbuser
+-- TOC entry 5190 (class 0 OID 25776)
+-- Dependencies: 258
+-- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
@@ -1685,7 +1715,9 @@ a7ln6cintxq9b185ihm6p3udnc40en2z	.eJxVjEEOwiAQRe_C2hCcgba4dN8zNAMzSNVAUtqV8e7apA
 
 
 --
--- Data for Name: education_; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5198 (class 0 OID 33874)
+-- Dependencies: 266
+-- Data for Name: education_; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.education_ (id, name_) FROM stdin;
@@ -1702,7 +1734,9 @@ COPY public.education_ (id, name_) FROM stdin;
 
 
 --
--- Data for Name: firm_; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5153 (class 0 OID 25472)
+-- Dependencies: 221
+-- Data for Name: firm_; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.firm_ (id, name_, city_id, district_id, tax_office_id, nace_id, create_, delete_, address_, telephone_, fax_, email_, type_firm, tax_, web_, sgk_sicil, payment_, ceo_name, ceo_email, ceo_cell, active_, logo_media) FROM stdin;
@@ -1713,7 +1747,9 @@ COPY public.firm_ (id, name_, city_id, district_id, tax_office_id, nace_id, crea
 
 
 --
--- Data for Name: language_; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5155 (class 0 OID 25479)
+-- Dependencies: 223
+-- Data for Name: language_; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.language_ (id, name_, short_) FROM stdin;
@@ -1723,7 +1759,9 @@ COPY public.language_ (id, name_, short_) FROM stdin;
 
 
 --
--- Data for Name: media_; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5157 (class 0 OID 25485)
+-- Dependencies: 225
+-- Data for Name: media_; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.media_ (id, create_, media_type_id, path_id, name_, delete_, active_) FROM stdin;
@@ -1731,7 +1769,9 @@ COPY public.media_ (id, create_, media_type_id, path_id, name_, delete_, active_
 
 
 --
--- Data for Name: media_type; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5159 (class 0 OID 25490)
+-- Dependencies: 227
+-- Data for Name: media_type; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.media_type (id, name_) FROM stdin;
@@ -1739,7 +1779,9 @@ COPY public.media_type (id, name_) FROM stdin;
 
 
 --
--- Data for Name: nace_; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5161 (class 0 OID 25494)
+-- Dependencies: 229
+-- Data for Name: nace_; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.nace_ (id, name_, code_, description_) FROM stdin;
@@ -3277,7 +3319,9 @@ COPY public.nace_ (id, name_, code_, description_) FROM stdin;
 
 
 --
--- Data for Name: path_; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5163 (class 0 OID 25500)
+-- Dependencies: 231
+-- Data for Name: path_; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.path_ (id, name_) FROM stdin;
@@ -3285,7 +3329,9 @@ COPY public.path_ (id, name_) FROM stdin;
 
 
 --
--- Data for Name: personnel_; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5192 (class 0 OID 33832)
+-- Dependencies: 260
+-- Data for Name: personnel_; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.personnel_ (id, name_, surname_, tckno_, address_, cell_, birthday_, driving_license, status_, education_id, department_id, children_, email_, blood_id, military_, gender_, marital_, related_personnel_id, firm_id, commencement_, termination_, delete_, picture_) FROM stdin;
@@ -3296,7 +3342,9 @@ COPY public.personnel_ (id, name_, surname_, tckno_, address_, cell_, birthday_,
 
 
 --
--- Data for Name: tax_office; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5165 (class 0 OID 25504)
+-- Dependencies: 233
+-- Data for Name: tax_office; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.tax_office (id, name_, city_id, district_id) FROM stdin;
@@ -4338,7 +4386,9 @@ COPY public.tax_office (id, name_, city_id, district_id) FROM stdin;
 
 
 --
--- Data for Name: user_; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5167 (class 0 OID 25508)
+-- Dependencies: 235
+-- Data for Name: user_; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.user_ (id, user_group_id, language_id, name_, tckno_, certificate_number, title_, email_, password_, active_, picture, first_name, last_name, is_superuser, is_staff, last_login, date_joined, auth_user_id, logo_media) FROM stdin;
@@ -4348,7 +4398,9 @@ COPY public.user_ (id, user_group_id, language_id, name_, tckno_, certificate_nu
 
 
 --
--- Data for Name: user_firm; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5169 (class 0 OID 25515)
+-- Dependencies: 237
+-- Data for Name: user_firm; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.user_firm (user_id, firm_id, create_) FROM stdin;
@@ -4356,7 +4408,9 @@ COPY public.user_firm (user_id, firm_id, create_) FROM stdin;
 
 
 --
--- Data for Name: user_group; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 5170 (class 0 OID 25519)
+-- Dependencies: 238
+-- Data for Name: user_group; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.user_group (id, name_, description_) FROM stdin;
@@ -4366,172 +4420,222 @@ COPY public.user_group (id, name_, description_) FROM stdin;
 
 
 --
--- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+-- TOC entry 5220 (class 0 OID 0)
+-- Dependencies: 246
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.auth_group_id_seq', 2, true);
 
 
 --
--- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+-- TOC entry 5221 (class 0 OID 0)
+-- Dependencies: 248
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 12, true);
 
 
 --
--- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+-- TOC entry 5222 (class 0 OID 0)
+-- Dependencies: 244
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.auth_permission_id_seq', 128, true);
 
 
 --
--- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+-- TOC entry 5223 (class 0 OID 0)
+-- Dependencies: 252
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 8, true);
 
 
 --
--- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+-- TOC entry 5224 (class 0 OID 0)
+-- Dependencies: 250
+-- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.auth_user_id_seq', 10, true);
 
 
 --
--- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+-- TOC entry 5225 (class 0 OID 0)
+-- Dependencies: 254
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 384, true);
 
 
 --
--- Name: blood__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5226 (class 0 OID 0)
+-- Dependencies: 261
+-- Name: blood__id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.blood__id_seq', 8, true);
 
 
 --
--- Name: city_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5227 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: city_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.city_id_seq', 1, false);
 
 
 --
--- Name: department__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5228 (class 0 OID 0)
+-- Dependencies: 263
+-- Name: department__id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.department__id_seq', 3, true);
 
 
 --
--- Name: district_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5229 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: district_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.district_id_seq', 1, false);
 
 
 --
--- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+-- TOC entry 5230 (class 0 OID 0)
+-- Dependencies: 256
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.django_admin_log_id_seq', 20, true);
 
 
 --
--- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+-- TOC entry 5231 (class 0 OID 0)
+-- Dependencies: 242
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.django_content_type_id_seq', 32, true);
 
 
 --
--- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+-- TOC entry 5232 (class 0 OID 0)
+-- Dependencies: 240
+-- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.django_migrations_id_seq', 87, true);
 
 
 --
--- Name: education__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5233 (class 0 OID 0)
+-- Dependencies: 265
+-- Name: education__id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.education__id_seq', 9, true);
 
 
 --
--- Name: firm_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5234 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: firm_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.firm_id_seq', 5, true);
 
 
 --
--- Name: language__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5235 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: language__id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.language__id_seq', 1, false);
 
 
 --
--- Name: media_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5236 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: media_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.media_id_seq', 1, false);
 
 
 --
--- Name: media_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5237 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: media_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.media_type_id_seq', 1, false);
 
 
 --
--- Name: nace_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5238 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: nace_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.nace_id_seq', 1, false);
 
 
 --
--- Name: path_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5239 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: path_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.path_id_seq', 1, false);
 
 
 --
--- Name: personnel__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5240 (class 0 OID 0)
+-- Dependencies: 259
+-- Name: personnel__id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.personnel__id_seq', 5, true);
 
 
 --
--- Name: tax_office_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5241 (class 0 OID 0)
+-- Dependencies: 234
+-- Name: tax_office_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.tax_office_id_seq', 1, false);
 
 
 --
--- Name: user__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5242 (class 0 OID 0)
+-- Dependencies: 236
+-- Name: user__id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.user__id_seq', 10, true);
 
 
 --
--- Name: user_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 5243 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: user_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.user_group_id_seq', 1, false);
 
+
+-- Completed on 2025-08-10 11:27:39
 
 --
 -- PostgreSQL database dump complete
