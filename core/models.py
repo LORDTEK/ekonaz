@@ -350,7 +350,7 @@ class User(models.Model):
 
 class UserFirm(models.Model):
     # Django'ya birincil anahtarın 'user_id' ve 'firm_id' birleşimi olduğunu söylüyoruz.
-    pk = models.CompositePrimaryKey('user_id', 'firm_id')
+    #pk = models.CompositePrimaryKey('user_id', 'firm_id')
 
     # Alan tanımları doğru, olduğu gibi kalıyor.
     user = models.ForeignKey(User, models.PROTECT, related_name='firm_associations')
@@ -359,6 +359,7 @@ class UserFirm(models.Model):
 
     class Meta:
         # unique_together'a gerek yok, çünkü CompositePrimaryKey zaten bu işi yapıyor.
+        unique_together = ('user', 'firm')
         managed = False
         db_table = 'user_firm'
         verbose_name = "Kullanıcı-Firma Ataması"
