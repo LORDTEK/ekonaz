@@ -188,8 +188,8 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 --
 
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-10	pbkdf2_sha256$1000000$25SeOtNRNdjXGGjZRsT7Dl$WMFuaRgxsub5DkFThXk/3pjXCFovJP7rWjVBQUqGOTY=	\N	t	ekonaz	Ali	Bozdemir	bilgi@ekonaz.com.tr	t	t	2025-08-09 19:25:05+03
 9	pbkdf2_sha256$1000000$BZQkncOfqiqRpaV3fjEe8q$DhnJr4Nk9y333wdyaunNfN1b7/jgyd7084Snc2QqHrQ=	2025-08-10 10:16:15.49279+03	t	a				t	t	2025-08-09 10:23:23+03
+10	pbkdf2_sha256$1000000$25SeOtNRNdjXGGjZRsT7Dl$WMFuaRgxsub5DkFThXk/3pjXCFovJP7rWjVBQUqGOTY=	\N	t	ekonaz	Ali	Bozdemir	bilgi@ekonaz.com.tr	t	t	2025-08-09 19:25:05+03
 \.
 
 
@@ -1707,8 +1707,8 @@ COPY public.education_ (id, name_) FROM stdin;
 
 COPY public.firm_ (id, name_, city_id, district_id, tax_office_id, nace_id, create_, delete_, address_, telephone_, fax_, email_, type_firm, tax_, web_, sgk_sicil, payment_, ceo_name, ceo_email, ceo_cell, active_, logo_media) FROM stdin;
 3	Nalçacı Holding	42	625	632	654	2025-07-10 00:00:00	\N	Nalçacı Caddesi	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	t	logo_firm/Screenshot_2025-06-18_103404.png
-4	Ağaç LTD	34	143	13	609	2023-06-21 00:00:00	\N	71. cadde	2164555	\N	\N	ŞTİ	\N	\N	\N	TL	\N	\N	\N	t	logo_firm/Screenshot_2025-06-18_104003.png
 5	Ekonaz Ortak Sağlık Güvenlik Birimi San. Tic. Ltd. Şti.	42	516	630	628	2014-04-16 00:00:00	\N	FEVZİ ÇAKMAK MAH. KENİTRA CAD. 26/O KARATAY / KONYA	+905323957913	\N	ekonaz.muhasebe@gmail.com	OSGB	3300497959	www.ekonazcevre.com.tr	\N	\N	Ali BOZDEMİR	ekonaz.muhasebe@gmail.com	+905323957913	t	logo_firm/ekonaz.png
+4	Ağaç LTD	34	143	13	609	2023-06-21 00:00:00	\N	71. cadde	2164555	\N	\N	ŞTİ	\N	\N	\N	TL	\N	\N	\N	t	logo_firm/Screenshot_2025-06-18_104003.png
 \.
 
 
