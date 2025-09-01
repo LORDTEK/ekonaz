@@ -5,7 +5,7 @@
 -- Dumped from database version 17.5
 -- Dumped by pg_dump version 17.5
 
--- Started on 2025-09-01 11:17:59
+-- Started on 2025-09-01 12:16:31
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -4861,7 +4861,7 @@ SELECT pg_catalog.setval('public.user_firm_id_seq', 2, true);
 SELECT pg_catalog.setval('public.user_group_id_seq', 1, false);
 
 
--- Completed on 2025-09-01 11:17:59
+-- Completed on 2025-09-01 12:16:31
 
 --
 -- PostgreSQL database dump complete
