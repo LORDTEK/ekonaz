@@ -345,17 +345,17 @@ class User(models.Model):
         verbose_name_plural = "Kullanıcılar"
 
     def __str__(self):
-        return f"{self.name} ({self.tckno})"
+        return f"{self.username} ({self.tckno})"
 
 
 class UserFirm(models.Model):
     # Django'ya birincil anahtarın 'user_id' ve 'firm_id' birleşimi olduğunu söylüyoruz.
     #pk = models.CompositePrimaryKey('user_id', 'firm_id')
 
-    # Alan tanımları doğru, olduğu gibi kalıyor.
+    id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(User, models.PROTECT, related_name='firm_associations')
     firm = models.ForeignKey(Firm, models.PROTECT, related_name='user_associations')
-    create = models.DateTimeField(db_column='create_')
+    create = models.DateTimeField(db_column='create_', auto_now_add=True)
 
     class Meta:
         # unique_together'a gerek yok, çünkü CompositePrimaryKey zaten bu işi yapıyor.
@@ -367,7 +367,7 @@ class UserFirm(models.Model):
 
     def __str__(self):
         # Bu __str__ metodu da doğru, olduğu gibi kalabilir.
-        return f"{self.user.name} ({self.firm.name})"
+        return f"{self.user.username} ({self.firm.name})"
 
 
 class UserGroup(models.Model):

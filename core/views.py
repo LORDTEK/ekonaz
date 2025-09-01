@@ -39,6 +39,24 @@ def portal_view(request):
             'icon': '👤',
             'permission': 'core.view_user',
         },
+        {
+            'name': 'Karbon Yönetim',
+            'url_name': 'carbon:management-list',
+            'icon': '🌍',
+            'permission': 'carbon.view_management_carbon',
+        },
+        {
+            'name': 'Karbon Girdi',
+            'url_name': 'carbon:input-list',
+            'icon': '📝',
+            'permission': 'carbon.view_input_carbon',
+        },
+        {
+            'name': 'Karbon Rapor',
+            'url_name': 'carbon:report-list',
+            'icon': '📊',
+            'permission': 'carbon.view_report_carbon',
+        },
     ]
 
     # Kullanıcının görebileceği modüller için boş bir liste oluşturuyoruz.

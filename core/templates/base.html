@@ -65,6 +65,15 @@
             {% if perms.core.view_user %}
                 <li><a href="{% url 'core:user-list' %}">Kullanıcı Yönetimi</a></li>
             {% endif %}
+            {% if perms.carbon.view_management_carbon %}
+                <li><a href="{% url 'carbon:management-list' %}">Karbon Yönetim</a></li>
+            {% endif %}
+            {% if perms.carbon.view_input_carbon %}
+                <li><a href="{% url 'carbon:input-list' %}">Karbon Girdi</a></li>
+            {% endif %}
+            {% if perms.carbon.view_report_carbon %}
+                <li><a href="{% url 'carbon:report-list' %}">Karbon Rapor</a></li>
+            {% endif %}
         </ul>
         </div>
 
