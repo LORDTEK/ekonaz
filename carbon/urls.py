@@ -1,3 +1,4 @@
+# carbon/urls.py
 from django.urls import path
 from . import views
 
@@ -7,7 +8,10 @@ urlpatterns = [
     path('emissionfactor/create/', views.emissionfactor_create_view, name='emissionfactor-create'),
     path('emissionfactor/<int:pk>/update/', views.emissionfactor_update_view, name='emissionfactor-update'),
     path('emissionfactor/<int:pk>/delete/', views.emissionfactor_delete_view, name='emissionfactor-delete'),
+    
+    # Bu satırın YORUMDA OLMADIĞINDAN emin olun:
     path('input/', views.input_list_view, name='input-list'),
+    
     path('inputdata/create/', views.inputdata_create_view, name='inputdata-create'),
     path('inputdata/<int:pk>/update/', views.inputdata_update_view, name='inputdata-update'),
     path('inputdata/<int:pk>/delete/', views.inputdata_delete_view, name='inputdata-delete'),
