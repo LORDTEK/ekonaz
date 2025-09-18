@@ -5,7 +5,7 @@
 -- Dumped from database version 17.5
 -- Dumped by pg_dump version 17.5
 
--- Started on 2025-09-02 22:13:57
+-- Started on 2025-09-18 16:25:39
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -20,7 +20,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 5292 (class 0 OID 25662)
+-- TOC entry 5282 (class 0 OID 25662)
 -- Dependencies: 247
 -- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
@@ -32,7 +32,7 @@ COPY public.auth_group (id, name) FROM stdin;
 
 
 --
--- TOC entry 5294 (class 0 OID 25670)
+-- TOC entry 5284 (class 0 OID 25670)
 -- Dependencies: 249
 -- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
@@ -54,7 +54,7 @@ COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
 
 
 --
--- TOC entry 5290 (class 0 OID 25656)
+-- TOC entry 5280 (class 0 OID 25656)
 -- Dependencies: 245
 -- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
@@ -233,24 +233,56 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 171	Can change Kapsam 4 Verisi	42	change_scope4data
 172	Can delete Kapsam 4 Verisi	42	delete_scope4data
 173	Can view Kapsam 4 Verisi	42	view_scope4data
+174	Can add GWP Değerleri	43	add_gwpvalues
+175	Can change GWP Değerleri	43	change_gwpvalues
+176	Can delete GWP Değerleri	43	delete_gwpvalues
+177	Can view GWP Değerleri	43	view_gwpvalues
+178	Can add Excel Raporu	44	add_excelreport
+179	Can change Excel Raporu	44	change_excelreport
+180	Can delete Excel Raporu	44	delete_excelreport
+181	Can view Excel Raporu	44	view_excelreport
+182	Can add Kapsam 1 (Excel)	45	add_scope1excel
+183	Can change Kapsam 1 (Excel)	45	change_scope1excel
+184	Can delete Kapsam 1 (Excel)	45	delete_scope1excel
+185	Can view Kapsam 1 (Excel)	45	view_scope1excel
+186	Can add Kapsam 2 (Excel)	46	add_scope2excel
+187	Can change Kapsam 2 (Excel)	46	change_scope2excel
+188	Can delete Kapsam 2 (Excel)	46	delete_scope2excel
+189	Can view Kapsam 2 (Excel)	46	view_scope2excel
+190	Can add Kapsam 4 (Excel)	47	add_scope4excel
+191	Can change Kapsam 4 (Excel)	47	change_scope4excel
+192	Can delete Kapsam 4 (Excel)	47	delete_scope4excel
+193	Can view Kapsam 4 (Excel)	47	view_scope4excel
+194	Can add Karbon Katsayısı	48	add_carboncoefficient
+195	Can change Karbon Katsayısı	48	change_carboncoefficient
+196	Can delete Karbon Katsayısı	48	delete_carboncoefficient
+197	Can view Karbon Katsayısı	48	view_carboncoefficient
+198	Can add dynamic carbon input	49	add_dynamiccarboninput
+199	Can change dynamic carbon input	49	change_dynamiccarboninput
+200	Can delete dynamic carbon input	49	delete_dynamiccarboninput
+201	Can view dynamic carbon input	49	view_dynamiccarboninput
+202	Can add sub scope	50	add_subscope
+203	Can change sub scope	50	change_subscope
+204	Can delete sub scope	50	delete_subscope
+205	Can view sub scope	50	view_subscope
 \.
 
 
 --
--- TOC entry 5296 (class 0 OID 25676)
+-- TOC entry 5286 (class 0 OID 25676)
 -- Dependencies: 251
 -- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
 
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
 10	pbkdf2_sha256$1000000$25SeOtNRNdjXGGjZRsT7Dl$WMFuaRgxsub5DkFThXk/3pjXCFovJP7rWjVBQUqGOTY=	\N	t	ekonaz	Ali	Bozdemir	bilgi@ekonaz.com.tr	t	t	2025-08-09 19:25:05+03
-9	pbkdf2_sha256$1000000$BZQkncOfqiqRpaV3fjEe8q$DhnJr4Nk9y333wdyaunNfN1b7/jgyd7084Snc2QqHrQ=	2025-09-02 08:44:54.814226+03	t	a				t	t	2025-08-09 10:23:23+03
-11	pbkdf2_sha256$1000000$3NCk6o0yqErMYlbuqRTcmm$wJzekY4emk4mnJ4b5sGkjDdJMtp6yDyMYww3tuceA34=	2025-09-02 08:45:11.372507+03	f	Muhasebeci				f	t	2025-08-29 15:26:38+03
+9	pbkdf2_sha256$1000000$BZQkncOfqiqRpaV3fjEe8q$DhnJr4Nk9y333wdyaunNfN1b7/jgyd7084Snc2QqHrQ=	2025-09-15 15:49:01.096808+03	t	a				t	t	2025-08-09 10:23:23+03
+11	pbkdf2_sha256$1000000$3NCk6o0yqErMYlbuqRTcmm$wJzekY4emk4mnJ4b5sGkjDdJMtp6yDyMYww3tuceA34=	2025-09-15 15:49:52.266736+03	f	Muhasebeci				f	t	2025-08-29 15:26:38+03
 \.
 
 
 --
--- TOC entry 5298 (class 0 OID 25684)
+-- TOC entry 5288 (class 0 OID 25684)
 -- Dependencies: 253
 -- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
@@ -264,7 +296,7 @@ COPY public.auth_user_groups (id, user_id, group_id) FROM stdin;
 
 
 --
--- TOC entry 5300 (class 0 OID 25690)
+-- TOC entry 5290 (class 0 OID 25690)
 -- Dependencies: 255
 -- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
@@ -602,7 +634,7 @@ COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 
 
 --
--- TOC entry 5307 (class 0 OID 33845)
+-- TOC entry 5297 (class 0 OID 33845)
 -- Dependencies: 262
 -- Data for Name: blood_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -620,7 +652,127 @@ COPY public.blood_ (id, name_) FROM stdin;
 
 
 --
--- TOC entry 5315 (class 0 OID 42094)
+-- TOC entry 5318 (class 0 OID 74856)
+-- Dependencies: 283
+-- Data for Name: carbon_carboncoefficient; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.carbon_carboncoefficient (id, scope, subscope, coefficient_type, name, value, unit, valid_from, valid_to, source, notes, created_at, updated_at, created_by_id) FROM stdin;
+1	1	1.1	NKD	Genel	48.0000000000	TJ/Gg	2000-01-01	2222-01-01	IPCC 2023		2025-09-11 23:05:38.50471+03	2025-09-14 14:39:49.316206+03	11
+34	1	1.1	YOGUNLUK_KG_M3	Genel	0.7200000000	kg/m³	2000-01-01	2222-01-01	DEFRA 2024		2025-09-14 14:41:21.989514+03	2025-09-14 14:41:21.989514+03	11
+35	1	1.1	EF_CH4	Genel	1.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ESA		2025-09-14 14:42:34.571613+03	2025-09-14 14:42:34.571613+03	11
+36	1	1.1	EF_CO2	Genel	56100.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	NASA		2025-09-14 14:43:15.184765+03	2025-09-14 14:43:15.184765+03	11
+37	1	1.1	EF_N2O	Genel	0.1000000000	kgN2O/TJ	2000-01-01	2222-01-01	JAXA		2025-09-14 14:43:52.282334+03	2025-09-14 14:43:52.282334+03	11
+39	1	1.2	NKD	Genel	43.0000000000	TJ/Gg	2000-01-01	2222-01-01			2025-09-14 17:41:37.359937+03	2025-09-14 17:41:37.359937+03	11
+40	1	1.2	YOGUNLUK_TON_LT	Genel	0.0008400000	ton/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-15 17:25:22.013448+03	2025-09-15 17:25:22.013448+03	11
+41	1	1.2	EF_N2O	Genel	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 17:26:07.325226+03	2025-09-15 17:26:07.325226+03	11
+42	1	1.2	EF_CH4	Genel	3.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 17:26:38.416198+03	2025-09-15 17:26:38.416198+03	11
+43	1	1.2	EF_CO2	Genel	74100.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 17:26:58.974918+03	2025-09-15 17:26:58.974918+03	11
+44	2	2.1	EF_TCO2_MWH	Genel	0.4420000000	tCO2/MWh	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:50:57.753069+03	2025-09-15 21:50:57.753069+03	11
+45	3	3.1	NKD	Motorin	43.0000000000	TJ/Gg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:52:04.47617+03	2025-09-15 21:52:04.47617+03	11
+46	3	3.1	YOGUNLUK_KG_LT	Motorin	0.8400000000	kg/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:52:42.855493+03	2025-09-15 21:52:42.855493+03	11
+47	3	3.1	EF_N2O	Motorin	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:53:11.278404+03	2025-09-15 21:53:11.278404+03	11
+48	3	3.1	EF_CH4	Motorin	3.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:53:35.659171+03	2025-09-15 21:53:35.659171+03	11
+49	3	3.1	EF_CO2	Motorin	74100.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:54:00.399876+03	2025-09-15 21:54:00.399876+03	11
+50	3	3.2	NKD	Motorin	43.0000000000	TJ/Gg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:54:55.857349+03	2025-09-15 21:54:55.857349+03	11
+51	3	3.2	YOGUNLUK_KG_LT	Motorin	0.8400000000	kg/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:55:27.207449+03	2025-09-15 21:55:27.207449+03	11
+52	3	3.2	EF_N2O	Motorin	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:55:58.598608+03	2025-09-15 21:55:58.598608+03	11
+53	3	3.2	EF_CH4	Motorin	3.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:56:21.259452+03	2025-09-15 21:56:21.259452+03	11
+54	3	3.2	EF_CO2	Motorin	74100.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:56:40.505812+03	2025-09-15 21:56:40.505812+03	11
+55	3	3.3	NKD	Motorin	43.0000000000	TJ/Gg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:57:31.947219+03	2025-09-15 21:57:31.947219+03	11
+56	3	3.3	YOGUNLUK_KG_LT	Motorin	0.8400000000	kg/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:57:56.806176+03	2025-09-15 21:57:56.806176+03	11
+57	3	3.3	EF_N2O	Motorin	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:58:26.027463+03	2025-09-15 21:58:26.027463+03	11
+58	3	3.3	EF_CH4	Motorin	3.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:58:47.969839+03	2025-09-15 21:58:47.969839+03	11
+59	3	3.3	EF_CO2	Motorin	74100.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 21:59:15.795072+03	2025-09-15 21:59:15.795072+03	11
+60	3	3.4	NKD	Motorin	43.0000000000	TJ/Gg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:00:24.059907+03	2025-09-15 22:00:24.059907+03	11
+61	3	3.4	YOGUNLUK_TON_LT	Motorin	0.0008400000	ton/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:01:20.599662+03	2025-09-15 22:01:20.599662+03	11
+62	3	3.4	EF_N2O	Motorin	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:02:02.271258+03	2025-09-15 22:02:02.271258+03	11
+63	3	3.4	EF_CH4	Motorin	3.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:02:24.37745+03	2025-09-15 22:02:24.37745+03	11
+64	3	3.4	EF_CO2	Motorin	74100.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:02:45.278338+03	2025-09-15 22:02:45.278338+03	11
+65	3	3.5	EF_KG_CO2E_ODA	Tokyo	39.0000000000	kgCO2e/oda	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:07:40.837226+03	2025-09-15 22:07:40.837226+03	11
+66	3	3.5	EF_KG_CO2E_ODA	Dubai	63.8000000000	kgCO2e/oda	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:08:53.651118+03	2025-09-15 22:08:53.651118+03	11
+67	3	3.5	EF_KG_CO2E_ODA	Moskova	24.2000000000	kgCO2e/oda	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:09:46.171937+03	2025-09-15 22:09:46.171937+03	11
+68	3	3.5	EF_KG_CO2E_ODA	İstanbul	32.1000000000	kgCO2e/oda	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:10:14.253847+03	2025-09-15 22:10:14.253847+03	11
+69	3	3.5	NKD	Uçak	44.1000000000	TJ/Gg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:13:32.764411+03	2025-09-15 22:13:32.764411+03	11
+70	3	3.5	YOGUNLUK_KG_LT	Uçak	0.7620000000	kg/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:14:48.763169+03	2025-09-15 22:14:48.763169+03	11
+71	3	3.5	EF_N2O	Uçak	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:15:26.308573+03	2025-09-15 22:15:26.308573+03	11
+72	3	3.5	EF_CH4	Uçak	10.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:15:52.829161+03	2025-09-15 22:15:52.829161+03	11
+73	3	3.5	EF_CO2	Uçak	71500.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:16:23.046294+03	2025-09-15 22:16:23.046294+03	11
+74	3	3.5	NKD	Taşıt	43.0000000000	TJ/Gg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:17:05.502748+03	2025-09-15 22:17:05.502748+03	11
+75	3	3.5	YOGUNLUK_TON_LT	Taşıt	0.0008400000	ton/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:17:37.808852+03	2025-09-15 22:17:37.808852+03	11
+76	3	3.5	EF_N2O	Taşıt	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:18:20.194243+03	2025-09-15 22:18:20.194243+03	11
+77	3	3.5	EF_CH4	Taşıt	3.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:18:57.491344+03	2025-09-15 22:18:57.491344+03	11
+78	3	3.5	EF_CO2	Taşıt	74100.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:19:16.372419+03	2025-09-15 22:19:16.372419+03	11
+79	4	4.1	EF_KG_CO2_KG	Silisli Sac	1.8500000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:21:02.279701+03	2025-09-15 22:21:02.279701+03	11
+80	4	4.1	EF_KG_CO2_KG	Pik Döküm	2.0000000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:21:21.04057+03	2025-09-15 22:21:21.04057+03	11
+81	4	4.1	EF_KG_CO2_KG	Sfero Karbon Verici	1.9000000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:21:50.441961+03	2025-09-15 22:21:50.441961+03	11
+82	4	4.1	EF_KG_CO2_KG	Magnezyum	8.5000000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:22:14.15781+03	2025-09-15 22:22:14.15781+03	11
+83	4	4.1	EF_KG_CO2_KG	Ferro Fosfor	1.7500000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:22:41.980392+03	2025-09-15 22:22:41.980392+03	11
+84	4	4.1	EF_KG_CO2_KG	Ferro Krom	2.1000000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:23:05.964209+03	2025-09-15 22:23:05.964209+03	11
+85	4	4.1	EF_KG_CO2_KG	Ferro Silisyum 75	1.9500000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:23:29.059308+03	2025-09-15 22:23:29.059308+03	11
+86	4	4.1	EF_KG_CO2_KG	Rulman	2.0000000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:23:49.037092+03	2025-09-15 22:23:49.037092+03	11
+87	4	4.1	EF_KG_CO2_KG	Takoz-Palet	1.8000000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:24:14.142561+03	2025-09-15 22:24:14.14641+03	11
+88	4	4.1	EF_KG_CO2_KG	Klemens	1.8500000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:24:35.903272+03	2025-09-15 22:24:35.903272+03	11
+89	4	4.1	EF_KG_CO2_KG	Çelik	1.8500000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:24:57.042144+03	2025-09-15 22:24:57.042144+03	11
+90	4	4.1	EF_KG_CO2_KG	Alüminyum Külçe	10.5000000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:25:24.080091+03	2025-09-15 22:25:24.080091+03	11
+91	4	4.1	EF_KG_CO2_KG	Hurda Metal	0.2000000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:26:07.13054+03	2025-09-15 22:26:07.13054+03	11
+92	4	4.1	EF_KG_CO2_KG	Silisyum Karbür	0.3500000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:26:35.891269+03	2025-09-15 22:26:35.891269+03	11
+93	4	4.1	EF_KG_CO2_KG	Maça Boya	2.5000000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:27:11.188425+03	2025-09-15 22:27:11.188425+03	11
+94	4	4.1	EF_KG_CO2_KG	Maça Reçine	4.0000000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:27:27.153324+03	2025-09-15 22:27:27.153324+03	11
+95	4	4.1	EF_KG_CO2_KG	Aşılayıcı	3.0000000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:27:47.094082+03	2025-09-15 22:27:47.094082+03	11
+96	4	4.2	EF_KG_CO2_KG	Materyal	1.6700000000	kgCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:38:41.506845+03	2025-09-15 22:38:41.506845+03	11
+97	4	4.2	EF_TCO2E_KG	Proses	2.0000000000	tCO2/kg	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:39:10.6088+03	2025-09-15 22:39:10.6088+03	11
+98	4	4.3	EF_KG_CO2E_KWH	Elektrik-Üretim	0.0462500000	kgCO2e/kWh	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:41:16.152092+03	2025-09-15 22:41:16.152092+03	11
+99	4	4.3	EF_KG_CO2E_KWH	Elektrik-İletim	0.0042600000	kgCO2e/kWh	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:42:11.586124+03	2025-09-15 22:42:11.586124+03	11
+100	4	4.3	EF_KG_CO2E_M3	Su-Asansör D2	0.1913000000	kgCO2e/m³	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:43:20.8218+03	2025-09-15 22:43:20.8218+03	11
+101	4	4.3	EF_KG_CO2E_M3	Su-Dökümhane D3	0.1913000000	kgCO2e/m³	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:43:57.643328+03	2025-09-15 22:43:57.643328+03	11
+102	4	4.3	EF_KG_CO2E_M3	Su-Frenbu	0.1913000000	kgCO2e/m³	2000-01-01	2222-01-01	ISO 14064		2025-09-15 22:44:25.428632+03	2025-09-15 22:44:25.428632+03	11
+103	4	4.3	EF_KG_CO2_TON	Katı Atık - Düzenli Depolanan	50.0000000000	kgCO2/ton	2000-01-01	2222-01-01	ISO 14064		2025-09-16 06:56:16.987118+03	2025-09-16 06:56:16.987118+03	11
+104	4	4.3	EF_KG_CO2_TON	Katı Atık - Döküm Yapılmış Tehlikeli Madde	1.0083500000	kgCO2/ton	2000-01-01	2222-01-01	ISO 14064		2025-09-16 06:58:01.967772+03	2025-09-16 06:58:01.967772+03	11
+105	4	4.3	EF_KG_CO2_TON	Katı Atık - Karışık Ambalaj	4.6856800000	kgCO2/ton	2000-01-01	2222-01-01	ISO 14064		2025-09-16 06:58:47.399384+03	2025-09-16 06:58:47.399384+03	11
+106	4	4.3	EF_KG_CO2_M3	Atıksu - Asansör D2	0.1708800000	kgCO2/m³	2000-01-01	2222-01-01	ISO 14064		2025-09-16 06:59:51.291946+03	2025-09-16 06:59:51.291946+03	11
+107	4	4.3	EF_KG_CO2_M3	Atıksu - Dökümhane D3	0.1708800000	kgCO2/m³	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:00:15.792492+03	2025-09-16 07:00:15.792492+03	11
+108	4	4.3	EF_KG_CO2_M3	Atıksu - Frenbu	0.1708800000	kgCO2/m³	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:00:43.573175+03	2025-09-16 07:00:43.573175+03	11
+109	4	4.3	NKD	Çevre Danışmanlık	47.3000000000	TJ/Gg	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:05:24.301447+03	2025-09-16 07:05:24.301447+03	11
+110	4	4.3	YOGUNLUK_TON_LT	Çevre Danışmanlık	0.0005200000	ton/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:18:59.81546+03	2025-09-16 07:18:59.81546+03	11
+111	4	4.3	EF_N2O	Çevre Danışmanlık	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:20:10.998547+03	2025-09-16 07:20:10.998547+03	11
+112	4	4.3	EF_CH4	Çevre Danışmanlık	3.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:20:32.974378+03	2025-09-16 07:20:32.974378+03	11
+113	4	4.3	EF_CO2	Çevre Danışmanlık	64200.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:20:56.139296+03	2025-09-16 07:20:56.139296+03	11
+114	4	4.3	NKD	Kargo	43.0000000000	TJ/Gg	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:21:33.196153+03	2025-09-16 07:21:33.196153+03	11
+115	4	4.3	YOGUNLUK_TON_LT	Kargo	0.0008400000	ton/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:22:22.681022+03	2025-09-16 07:22:22.681022+03	11
+116	4	4.3	EF_N2O	Kargo	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:22:46.183166+03	2025-09-16 07:22:46.183166+03	11
+117	4	4.3	EF_CH4	Kargo	3.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:23:06.844223+03	2025-09-16 07:23:06.844223+03	11
+118	4	4.3	EF_CO2	Kargo	74100.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:23:31.844422+03	2025-09-16 07:23:31.844422+03	11
+119	4	4.3	NKD	İSG	43.0000000000	TJ/Gg	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:24:21.720821+03	2025-09-16 07:24:21.720821+03	11
+120	4	4.3	YOGUNLUK_TON_LT	İSG	0.0008400000	ton/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:24:50.907848+03	2025-09-16 07:24:50.907848+03	11
+121	4	4.3	EF_N2O	İSG	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:25:12.0924+03	2025-09-16 07:25:12.0924+03	11
+122	4	4.3	EF_CH4	İSG	3.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:25:33.609063+03	2025-09-16 07:25:33.609063+03	11
+123	4	4.3	EF_CO2	İSG	74100.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:25:59.29032+03	2025-09-16 07:25:59.29032+03	11
+124	4	4.3	NKD	Muhasebe	43.0000000000	TJ/Gg	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:26:32.505719+03	2025-09-16 07:26:32.505719+03	11
+125	4	4.3	YOGUNLUK_TON_LT	Muhasebe	0.0008400000	ton/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:26:55.167034+03	2025-09-16 07:26:55.167034+03	11
+126	4	4.3	EF_N2O	Muhasebe	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:28:54.47169+03	2025-09-16 07:28:54.47169+03	11
+127	4	4.3	EF_CH4	Muhasebe	3.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:29:13.011126+03	2025-09-16 07:29:13.011126+03	11
+128	4	4.3	EF_CO2	Muhasebe	74100.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:29:33.037667+03	2025-09-16 07:29:33.037667+03	11
+129	4	4.3	NKD	Market	43.0000000000	TJ/Gg	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:29:54.35957+03	2025-09-16 07:29:54.35957+03	11
+130	4	4.3	YOGUNLUK_TON_LT	Market	0.0008400000	ton/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:30:58.300418+03	2025-09-16 07:30:58.300418+03	11
+131	4	4.3	EF_N2O	Market	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:31:23.700757+03	2025-09-16 07:31:23.700757+03	11
+132	4	4.3	EF_CH4	Market	3.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:31:42.582107+03	2025-09-16 07:31:42.582107+03	11
+133	4	4.3	EF_CO2	Market	74100.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:32:07.241059+03	2025-09-16 07:32:07.241059+03	11
+134	4	4.3	NKD	Su	43.0000000000	TJ/Gg	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:32:32.364043+03	2025-09-16 07:32:32.364043+03	11
+135	4	4.3	YOGUNLUK_TON_LT	Su	0.0008400000	ton/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:33:02.904409+03	2025-09-16 07:33:02.904409+03	11
+136	4	4.3	EF_N2O	Su	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:33:21.645068+03	2025-09-16 07:33:21.645068+03	11
+137	4	4.3	EF_CH4	Su	3.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:33:39.245874+03	2025-09-16 07:33:39.245874+03	11
+138	4	4.3	EF_CO2	Su	74100.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:33:54.8865+03	2025-09-16 07:33:54.8865+03	11
+139	4	4.3	NKD	Yemek	43.0000000000	TJ/Gg	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:34:16.422107+03	2025-09-16 07:34:16.422107+03	11
+140	4	4.3	YOGUNLUK_TON_LT	Yemek	0.0008400000	ton/lt	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:34:32.755052+03	2025-09-16 07:34:32.755052+03	11
+141	4	4.3	EF_N2O	Yemek	0.6000000000	kgN2O/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:34:58.924211+03	2025-09-16 07:34:58.924211+03	11
+142	4	4.3	EF_CH4	Yemek	3.0000000000	kgCH4/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:35:12.289085+03	2025-09-16 07:35:12.289085+03	11
+143	4	4.3	EF_CO2	Yemek	74100.0000000000	kgCO2/TJ	2000-01-01	2222-01-01	ISO 14064		2025-09-16 07:35:29.969491+03	2025-09-16 07:35:29.969491+03	11
+\.
+
+
+--
+-- TOC entry 5305 (class 0 OID 42094)
 -- Dependencies: 270
 -- Data for Name: carbon_coefficienttype; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
@@ -632,7 +784,86 @@ COPY public.carbon_coefficienttype (id, name, unit, description) FROM stdin;
 
 
 --
--- TOC entry 5313 (class 0 OID 42088)
+-- TOC entry 5322 (class 0 OID 83056)
+-- Dependencies: 287
+-- Data for Name: carbon_dynamiccarboninput; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.carbon_dynamiccarboninput (id, datetime, scope, data, co2e_total, created_at, updated_at, created_by_id, firm_id, subscope_id) FROM stdin;
+30	2025-09-18 14:06:00+03	1	{"fuel_name": "Asansör D2", "consumption": "1751988", "coefficient_set": "Genel"}	0.000000	2025-09-18 14:09:11.998518+03	2025-09-18 14:09:11.998518+03	11	4	1
+31	2025-09-18 14:06:00+03	1	{"fuel_name": "Dökümhane D3", "consumption": "7118068", "coefficient_set": "Genel"}	0.000000	2025-09-18 14:09:28.737907+03	2025-09-18 14:09:28.737907+03	11	4	1
+32	2025-09-18 14:06:00+03	1	{"fuel_name": "Frenbu", "consumption": "326622", "coefficient_set": "Genel"}	0.000000	2025-09-18 14:10:01.18102+03	2025-09-18 14:10:01.18102+03	11	4	1
+33	2025-09-18 14:13:00+03	1	{"fuel_name": "Asansör D2", "consumption": "67273", "coefficient_set": "Genel"}	0.000000	2025-09-18 14:14:39.631358+03	2025-09-18 14:14:39.631358+03	11	4	2
+34	2025-09-18 14:13:00+03	1	{"fuel_name": "Dökümhane D3", "consumption": "0", "coefficient_set": "Genel"}	0.000000	2025-09-18 14:14:55.082316+03	2025-09-18 14:14:55.082316+03	11	4	2
+35	2025-09-18 14:13:00+03	1	{"fuel_name": "Frenbu", "consumption": "0", "coefficient_set": "Genel"}	0.000000	2025-09-18 14:15:09.332773+03	2025-09-18 14:15:09.332773+03	11	4	2
+36	2025-09-18 14:37:00+03	1	{"gwp": "1300", "gas_name": "R-600a", "quantity": "1", "leak_rate": "0.1", "device_name": "Buzdolabı", "gas_capacity": "0.052", "coefficient_set": ""}	0.000000	2025-09-18 14:38:02.74349+03	2025-09-18 14:38:02.74349+03	11	4	3
+37	2025-09-18 14:37:00+03	1	{"gwp": "1300", "gas_name": "R134a", "quantity": "4", "leak_rate": "0.1", "device_name": "Su Sebili", "gas_capacity": "0.042", "coefficient_set": ""}	0.000000	2025-09-18 14:38:46.119561+03	2025-09-18 14:38:46.119561+03	11	4	3
+38	2025-09-18 14:37:00+03	1	{"gwp": "2088", "gas_name": "R410a", "quantity": "12", "leak_rate": "1", "device_name": "Klima", "gas_capacity": "0.115", "coefficient_set": ""}	0.000000	2025-09-18 14:41:41.713079+03	2025-09-18 14:41:41.713079+03	11	4	3
+39	2025-09-18 14:37:00+03	1	{"gwp": "3", "gas_name": "R600a", "quantity": "1", "leak_rate": "1", "device_name": "Klima", "gas_capacity": "0.08", "coefficient_set": ""}	0.000000	2025-09-18 14:42:08.660642+03	2025-09-18 14:42:08.660642+03	11	4	3
+40	2025-09-18 14:37:00+03	1	{"gwp": "1", "gas_name": "CO2", "quantity": "289", "leak_rate": "4", "device_name": "Yangın Söndürme Tüpü", "gas_capacity": "15", "coefficient_set": ""}	0.000000	2025-09-18 14:42:55.787103+03	2025-09-18 14:42:55.787103+03	11	4	3
+41	2025-09-18 14:49:00+03	2	{"consumption": "7955030", "facility_name": "Asansör D2", "coefficient_set": "Genel"}	0.000000	2025-09-18 14:50:22.596483+03	2025-09-18 14:50:22.596483+03	11	4	4
+42	2025-09-18 14:49:00+03	2	{"consumption": "7118068", "facility_name": "Dökümhane D3", "coefficient_set": "Genel"}	0.000000	2025-09-18 14:50:39.907333+03	2025-09-18 14:50:39.907333+03	11	4	4
+43	2025-09-18 14:49:00+03	2	{"consumption": "753468", "facility_name": "Frenbu", "coefficient_set": "Genel"}	0.000000	2025-09-18 14:50:55.107732+03	2025-09-18 14:50:55.107732+03	11	4	4
+49	2025-09-18 14:59:00+03	3	{"name": "Asansör D2", "consumption": "26697.126", "coefficient_set": "Motorin"}	0.000000	2025-09-18 15:00:51.315394+03	2025-09-18 15:00:51.315394+03	11	4	8
+50	2025-09-18 14:59:00+03	3	{"name": "Dökümhane D3", "consumption": "8899.042", "coefficient_set": "Motorin"}	0.000000	2025-09-18 15:01:13.32582+03	2025-09-18 15:01:13.32582+03	11	4	8
+51	2025-09-18 14:59:00+03	3	{"name": "Frenbu", "consumption": "8899.042", "coefficient_set": "Motorin"}	0.000000	2025-09-18 15:01:22.07642+03	2025-09-18 15:01:22.07642+03	11	4	8
+52	2025-09-18 15:03:00+03	3	{"name": "Müşteri Ziyareti", "consumption": "4146.31", "coefficient_set": "Motorin"}	0.000000	2025-09-18 15:03:36.102026+03	2025-09-18 15:03:36.102026+03	11	4	9
+53	2025-09-18 15:03:00+03	3	{"name": "İş Seyahatleri (İSTANBUL-TOKYO)", "consumption": "2", "travel_type": "hotel", "coefficient_set": "Tokyo"}	0.000000	2025-09-18 15:04:58.183155+03	2025-09-18 15:04:58.183155+03	11	4	10
+54	2025-09-18 15:03:00+03	3	{"name": "İş Seyahatleri (İSTANBUL- DUBAİ)", "consumption": "3", "travel_type": "hotel", "coefficient_set": "Dubai"}	0.000000	2025-09-18 15:05:33.146268+03	2025-09-18 15:05:33.146268+03	11	4	10
+55	2025-09-18 15:03:00+03	3	{"name": "İş Seyahatleri (ANKARA-MOSKOVA)", "consumption": "3", "travel_type": "hotel", "coefficient_set": "Moskova"}	0.000000	2025-09-18 15:05:52.527323+03	2025-09-18 15:05:52.527323+03	11	4	10
+56	2025-09-18 15:03:00+03	3	{"name": "İş Seyahatleri (KONYA - İSTANBUL)", "consumption": "22", "travel_type": "hotel", "coefficient_set": "İstanbul"}	0.000000	2025-09-18 15:06:21.475151+03	2025-09-18 15:06:21.475151+03	11	4	10
+59	2025-09-18 15:03:00+03	3	{"name": "İş Seyahatleri (İSTANBUL-TOKYO)", "consumption": "84000", "travel_type": "flight", "coefficient_set": "Tokyo"}	0.000000	2025-09-18 15:08:36.574428+03	2025-09-18 15:08:36.574428+03	11	4	10
+60	2025-09-18 15:03:00+03	3	{"name": "İş Seyahatleri (İSTANBUL-TOKYO)", "consumption": "13660", "travel_type": "vehicle", "coefficient_set": "Tokyo"}	0.000000	2025-09-18 15:08:55.302035+03	2025-09-18 15:08:55.302035+03	11	4	10
+61	2025-09-18 15:03:00+03	3	{"name": "İş Seyahatleri (İSTANBUL- DUBAİ)", "consumption": "15000", "travel_type": "flight", "coefficient_set": "Dubai"}	0.000000	2025-09-18 15:09:21.663263+03	2025-09-18 15:09:21.663263+03	11	4	10
+62	2025-09-18 15:03:00+03	3	{"name": "İş Seyahatleri (İSTANBUL- DUBAİ)", "consumption": "4738", "travel_type": "vehicle", "coefficient_set": "Dubai"}	0.000000	2025-09-18 15:09:42.596209+03	2025-09-18 15:09:42.596209+03	11	4	10
+63	2025-09-18 15:03:00+03	3	{"name": "İş Seyahatleri (ANKARA-MOSKOVA)", "consumption": "8400", "travel_type": "flight", "coefficient_set": "Moskova"}	0.000000	2025-09-18 15:10:04.556731+03	2025-09-18 15:10:04.556731+03	11	4	10
+64	2025-09-18 15:03:00+03	3	{"name": "İş Seyahatleri (ANKARA-MOSKOVA)", "consumption": "3642", "travel_type": "vehicle", "coefficient_set": "Moskova"}	0.000000	2025-09-18 15:10:26.557723+03	2025-09-18 15:10:26.557723+03	11	4	10
+65	2025-09-18 15:03:00+03	3	{"name": "İş Seyahatleri (KONYA - İSTANBUL)", "consumption": "3000", "travel_type": "flight", "coefficient_set": "İstanbul"}	0.000000	2025-09-18 15:10:45.50081+03	2025-09-18 15:10:45.50081+03	11	4	10
+66	2025-09-18 15:03:00+03	3	{"name": "İş Seyahatleri (KONYA - İSTANBUL)", "consumption": "385", "travel_type": "vehicle", "coefficient_set": "İstanbul"}	0.000000	2025-09-18 15:10:56.812463+03	2025-09-18 15:10:56.812463+03	11	4	10
+67	2025-09-18 15:11:00+03	4	{"amount": "810000", "material_type": "79"}	0.000000	2025-09-18 15:12:45.139862+03	2025-09-18 15:12:45.139862+03	11	4	11
+68	2025-09-18 15:11:00+03	4	{"amount": "439000", "material_type": "80"}	0.000000	2025-09-18 15:13:07.533099+03	2025-09-18 15:13:07.533099+03	11	4	11
+69	2025-09-18 15:11:00+03	4	{"amount": "138000", "material_type": "81"}	0.000000	2025-09-18 15:13:22.083764+03	2025-09-18 15:13:22.083764+03	11	4	11
+70	2025-09-18 15:11:00+03	4	{"amount": "2000", "material_type": "82"}	0.000000	2025-09-18 15:13:33.828045+03	2025-09-18 15:13:33.828045+03	11	4	11
+71	2025-09-18 15:11:00+03	4	{"amount": "19000", "material_type": "83"}	0.000000	2025-09-18 15:13:45.094045+03	2025-09-18 15:13:45.094045+03	11	4	11
+72	2025-09-18 15:11:00+03	4	{"amount": "40571", "material_type": "84"}	0.000000	2025-09-18 15:13:56.515247+03	2025-09-18 15:13:56.515247+03	11	4	11
+73	2025-09-18 15:11:00+03	4	{"amount": "37000", "material_type": "85"}	0.000000	2025-09-18 15:14:08.024181+03	2025-09-18 15:14:08.024181+03	11	4	11
+74	2025-09-18 15:11:00+03	4	{"amount": "35631", "material_type": "86"}	0.000000	2025-09-18 15:14:19.436531+03	2025-09-18 15:14:19.436531+03	11	4	11
+75	2025-09-18 15:11:00+03	4	{"amount": "372600", "material_type": "87"}	0.000000	2025-09-18 15:14:39.610707+03	2025-09-18 15:14:39.610707+03	11	4	11
+76	2025-09-18 15:11:00+03	4	{"amount": "137584", "material_type": "88"}	0.000000	2025-09-18 15:15:01.85167+03	2025-09-18 15:15:01.85167+03	11	4	11
+77	2025-09-18 15:11:00+03	4	{"amount": "942000", "material_type": "89"}	0.000000	2025-09-18 15:15:13.49858+03	2025-09-18 15:15:13.49858+03	11	4	11
+78	2025-09-18 15:11:00+03	4	{"amount": "9752", "material_type": "90"}	0.000000	2025-09-18 15:15:24.099181+03	2025-09-18 15:15:24.099181+03	11	4	11
+79	2025-09-18 15:11:00+03	4	{"amount": "578605", "material_type": "91"}	0.000000	2025-09-18 15:15:37.479813+03	2025-09-18 15:15:37.479813+03	11	4	11
+80	2025-09-18 15:11:00+03	4	{"amount": "96000", "material_type": "92"}	0.000000	2025-09-18 15:15:51.140582+03	2025-09-18 15:15:51.140582+03	11	4	11
+81	2025-09-18 15:11:00+03	4	{"amount": "56472", "material_type": "93"}	0.000000	2025-09-18 15:16:04.00092+03	2025-09-18 15:16:04.00092+03	11	4	11
+82	2025-09-18 15:11:00+03	4	{"amount": "42840", "material_type": "94"}	0.000000	2025-09-18 15:16:17.734363+03	2025-09-18 15:16:17.734363+03	11	4	11
+83	2025-09-18 15:11:00+03	4	{"amount": "13000", "material_type": "95"}	0.000000	2025-09-18 15:16:28.686859+03	2025-09-18 15:16:28.686859+03	11	4	11
+84	2025-09-18 15:18:00+03	4	{"name": "Sermaye Malları", "amount": "1.67", "coefficient_set": "Materyal"}	0.000000	2025-09-18 15:20:34.663062+03	2025-09-18 15:20:34.663062+03	11	4	12
+85	2025-09-18 15:18:00+03	4	{"name": "Sermaye Malları", "amount": "2", "coefficient_set": "Proses"}	0.000000	2025-09-18 15:20:43.673377+03	2025-09-18 15:20:43.673377+03	11	4	12
+86	2025-09-18 15:30:00+03	4	{"name": "Elektrik Kayıp-Kaçak", "amount": "15826566", "company": "", "fuel_type": "", "coefficient_set": "Elektrik-Üretim"}	0.000000	2025-09-18 15:31:47.43273+03	2025-09-18 15:31:47.43273+03	11	4	13
+87	2025-09-18 15:30:00+03	4	{"name": "Elektrik Kayıp-Kaçak", "amount": "15826566", "company": "", "fuel_type": "", "coefficient_set": "Elektrik-İletim"}	0.000000	2025-09-18 15:31:56.376294+03	2025-09-18 15:31:56.376294+03	11	4	13
+88	2025-09-18 15:30:00+03	4	{"name": "Su Temini", "amount": "1943.26", "company": "", "fuel_type": "", "coefficient_set": "Su-Asansör D2"}	0.000000	2025-09-18 15:34:02.628751+03	2025-09-18 15:34:02.628751+03	11	4	13
+89	2025-09-18 15:30:00+03	4	{"name": "Su Temini", "amount": "7116", "company": "", "fuel_type": "", "coefficient_set": "Su-Dökümhane D3"}	0.000000	2025-09-18 15:34:36.610284+03	2025-09-18 15:34:36.610284+03	11	4	13
+90	2025-09-18 15:30:00+03	4	{"name": "Su Temini", "amount": "485", "company": "", "fuel_type": "", "coefficient_set": "Su-Frenbu"}	0.000000	2025-09-18 15:35:01.284548+03	2025-09-18 15:35:01.284548+03	11	4	13
+91	2025-09-18 15:30:00+03	4	{"name": "Düzenli Depolamaya Giden", "amount": "0", "company": "", "fuel_type": "", "coefficient_set": "Katı Atık - Düzenli Depolanan"}	0.000000	2025-09-18 15:35:40.733035+03	2025-09-18 15:35:40.733035+03	11	4	13
+92	2025-09-18 15:30:00+03	4	{"name": "Döküm Yapılmış Tehlikeli Madde İçeren", "amount": "10850", "company": "", "fuel_type": "", "coefficient_set": "Katı Atık - Döküm Yapılmış Tehlikeli Madde"}	0.000000	2025-09-18 15:36:31.308834+03	2025-09-18 15:36:31.308834+03	11	4	13
+93	2025-09-18 15:30:00+03	4	{"name": "Karışık Ambalaj", "amount": "500", "company": "", "fuel_type": "", "coefficient_set": "Katı Atık - Karışık Ambalaj"}	0.000000	2025-09-18 15:37:07.697061+03	2025-09-18 15:37:07.697061+03	11	4	13
+94	2025-09-18 15:30:00+03	4	{"name": "Atıksu", "amount": "6032880", "company": "", "fuel_type": "", "coefficient_set": "Atıksu - Asansör D2"}	0.000000	2025-09-18 15:37:31.420642+03	2025-09-18 15:37:31.420642+03	11	4	13
+95	2025-09-18 15:30:00+03	4	{"name": "Atıksu", "amount": "441000", "company": "", "fuel_type": "", "coefficient_set": "Atıksu - Dökümhane D3"}	0.000000	2025-09-18 15:37:45.54761+03	2025-09-18 15:37:45.54761+03	11	4	13
+96	2025-09-18 15:30:00+03	4	{"name": "Atıksu", "amount": "1490580", "company": "", "fuel_type": "", "coefficient_set": "Atıksu - Frenbu"}	0.000000	2025-09-18 15:38:20.253698+03	2025-09-18 15:38:20.253698+03	11	4	13
+97	2025-09-18 15:30:00+03	4	{"name": "Ekonaz", "amount": "12.432", "company": "", "fuel_type": "", "coefficient_set": "Çevre Danışmanlık"}	0.000000	2025-09-18 15:38:45.99442+03	2025-09-18 15:38:45.99442+03	11	4	13
+98	2025-09-18 15:30:00+03	4	{"name": "Aras", "amount": "0", "company": "", "fuel_type": "", "coefficient_set": "Kargo"}	0.000000	2025-09-18 15:39:06.087543+03	2025-09-18 15:39:06.087543+03	11	4	13
+99	2025-09-18 15:30:00+03	4	{"name": "Beyhekim", "amount": "105.95", "company": "", "fuel_type": "", "coefficient_set": "İSG"}	0.000000	2025-09-18 15:39:33.62362+03	2025-09-18 15:39:33.62362+03	11	4	13
+100	2025-09-18 15:30:00+03	4	{"name": "Muhasebe", "amount": "0", "company": "", "fuel_type": "", "coefficient_set": "Muhasebe"}	0.000000	2025-09-18 15:39:52.384015+03	2025-09-18 15:39:52.384015+03	11	4	13
+101	2025-09-18 15:30:00+03	4	{"name": "Metro Market", "amount": "0", "company": "", "fuel_type": "", "coefficient_set": "Market"}	0.000000	2025-09-18 15:40:16.913768+03	2025-09-18 15:40:16.913768+03	11	4	13
+102	2025-09-18 15:30:00+03	4	{"name": "Erikli", "amount": "0", "company": "", "fuel_type": "", "coefficient_set": "Su"}	0.000000	2025-09-18 15:40:34.514449+03	2025-09-18 15:40:34.514449+03	11	4	13
+103	2025-09-18 15:30:00+03	4	{"name": "Sini", "amount": "0", "company": "", "fuel_type": "", "coefficient_set": "Yemek"}	0.000000	2025-09-18 15:40:49.140345+03	2025-09-18 15:40:49.140345+03	11	4	13
+104	2025-09-18 15:50:00+03	3	{"name": "Tüm Nakliye Araçları", "consumption": "0", "coefficient_set": "Motorin"}	0.000000	2025-09-18 15:50:33.485658+03	2025-09-18 15:50:33.485658+03	11	4	5
+105	2025-09-18 15:52:00+03	3	{"name": "Tüm Nakliye Araçları", "consumption": "0", "coefficient_set": "Motorin"}	0.000000	2025-09-18 15:52:54.65886+03	2025-09-18 15:52:54.65886+03	11	4	6
+\.
+
+
+--
+-- TOC entry 5303 (class 0 OID 42088)
 -- Dependencies: 268
 -- Data for Name: carbon_emissionfactor; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
@@ -641,21 +872,42 @@ COPY public.carbon_emissionfactor (id, name, category, value, valid_from, valid_
 3	Üretimin dolaylı etkisi	KAPSAM_1	1.900000	2020-01-01	2027-02-02	ESA	1		kgCO2e		2025-09-01 23:49:53.212833+03	2025-09-01 23:49:53.214833+03
 4	Doğalgaz	KAPSAM_1	56100.000000	2024-01-01	\N	IPCC	2				2025-09-02 08:01:20.324045+03	2025-09-02 08:01:20.324045+03
 2	Test Emisyon Faktör	KAPSAM_1	2.400000	2023-04-23	2027-10-29	ESA	1		kgCO2e		2025-09-01 23:49:53.212833+03	2025-09-02 08:12:37.379673+03
+5	Test Yeni	KAPSAM_1	3.500000	2020-01-01	2222-01-01	ESA	1	2.2	kgCO2e		2025-09-03 17:45:42.739519+03	2025-09-03 17:45:50.738447+03
 \.
 
 
 --
--- TOC entry 5324 (class 0 OID 58472)
--- Dependencies: 279
+-- TOC entry 5316 (class 0 OID 66671)
+-- Dependencies: 281
+-- Data for Name: carbon_excelreport; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.carbon_excelreport (id, year, month, scope1_total, scope2_total, scope3_total, scope4_total, total_co2e, created_at, created_by_id, firm_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5312 (class 0 OID 58472)
+-- Dependencies: 277
 -- Data for Name: carbon_fueltype; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
 
-COPY public.carbon_fueltype (id, code, name, category, ncv, ef_co2, ef_ch4, ef_n2o, valid_from, valid_to, source, notes, created_at, updated_at) FROM stdin;
+COPY public.carbon_fueltype (id, code, name, category, ncv, ef_co2, ef_ch4, ef_n2o, valid_from, valid_to, source, notes, created_at, updated_at, density, unit) FROM stdin;
 \.
 
 
 --
--- TOC entry 5317 (class 0 OID 42102)
+-- TOC entry 5314 (class 0 OID 66664)
+-- Dependencies: 279
+-- Data for Name: carbon_gwpvalues; Type: TABLE DATA; Schema: public; Owner: mydbuser
+--
+
+COPY public.carbon_gwpvalues (id, ch4_gwp, n2o_gwp, valid_from, source) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5307 (class 0 OID 42102)
 -- Dependencies: 272
 -- Data for Name: carbon_inputcategory; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
@@ -670,68 +922,42 @@ COPY public.carbon_inputcategory (id, name, scope) FROM stdin;
 
 
 --
--- TOC entry 5319 (class 0 OID 42114)
+-- TOC entry 5309 (class 0 OID 42114)
 -- Dependencies: 274
 -- Data for Name: carbon_inputdata; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
 
 COPY public.carbon_inputdata (id, value, unit, period_start, period_end, location, created_at, category_id, created_by_id, firm_id) FROM stdin;
 1	7	kgCO2e	2023-01-01	2027-12-12	Ankara	2025-09-02 13:11:54.688848+03	1	11	4
+2	7	kgCO2e	2023-01-01	2027-12-12	Ankara	2025-09-03 17:46:21.040452+03	5	11	4
 \.
 
 
 --
--- TOC entry 5321 (class 0 OID 42120)
--- Dependencies: 276
--- Data for Name: carbon_report; Type: TABLE DATA; Schema: public; Owner: mydbuser
---
-
-COPY public.carbon_report (id, report_date, total_co2e, direct_ratio, indirect_ratio, json_details, generated_at, firm_id, generated_by_id, scope1_total, scope2_total, scope3_total, scope4_total, scope5_total, scope6_total, report_period_start, report_period_end) FROM stdin;
-\.
-
-
---
--- TOC entry 5326 (class 0 OID 58482)
--- Dependencies: 281
--- Data for Name: carbon_scope1data; Type: TABLE DATA; Schema: public; Owner: mydbuser
---
-
-COPY public.carbon_scope1data (id, combustion_type, location, consumption_value, consumption_unit, period_year, period_month, co2_emission, ch4_emission, n2o_emission, total_co2e, created_at, updated_at, created_by_id, firm_id, fuel_type_id) FROM stdin;
-\.
-
-
---
--- TOC entry 5328 (class 0 OID 58490)
--- Dependencies: 283
--- Data for Name: carbon_scope2data; Type: TABLE DATA; Schema: public; Owner: mydbuser
---
-
-COPY public.carbon_scope2data (id, location, electricity_kwh, grid_emission_factor, period_year, period_month, total_co2e, created_at, updated_at, created_by_id, firm_id) FROM stdin;
-\.
-
-
---
--- TOC entry 5330 (class 0 OID 58498)
+-- TOC entry 5320 (class 0 OID 83048)
 -- Dependencies: 285
--- Data for Name: carbon_scope3data; Type: TABLE DATA; Schema: public; Owner: mydbuser
+-- Data for Name: carbon_subscope; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
 
-COPY public.carbon_scope3data (id, transport_type, transport_mode, vehicle_type, distance_km, fuel_consumption_lt, cargo_weight_ton, period_year, period_month, total_co2e, notes, created_at, updated_at, created_by_id, firm_id, fuel_type_id) FROM stdin;
+COPY public.carbon_subscope (id, scope, code, name, description) FROM stdin;
+1	1	1.1	Sabit Yanma	
+2	1	1.2	Mobil Yanma	
+3	1	1.4	Kaçak Emisyonlar	
+4	2	2.1	Elektrik Tüketimi	
+5	3	3.1	Satın Alınan Mal ve Hizmet Taşımacılığı	
+6	3	3.2	Satılan Mal ve Hizmet Taşımacılığı	
+7	1	1.3	Proses Emisyonları	
+8	3	3.3	Kiralanan Varlıklar	
+9	3	3.4	İşe Gidiş Geliş	
+10	3	3.5	İş Seyahatleri	
+11	4	4.1	Satın Alınan Mal ve Hizmetler	
+12	4	4.2	Sermaye Malları	
+13	4	4.3	Atık	
 \.
 
 
 --
--- TOC entry 5332 (class 0 OID 58506)
--- Dependencies: 287
--- Data for Name: carbon_scope4data; Type: TABLE DATA; Schema: public; Owner: mydbuser
---
-
-COPY public.carbon_scope4data (id, product_category, product_name, supplier, quantity, unit, emission_factor, emission_factor_source, period_year, period_month, total_co2e, notes, created_at, updated_at, created_by_id, firm_id) FROM stdin;
-\.
-
-
---
--- TOC entry 5262 (class 0 OID 25464)
+-- TOC entry 5252 (class 0 OID 25464)
 -- Dependencies: 217
 -- Data for Name: city_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -822,7 +1048,7 @@ COPY public.city_ (id, name_) FROM stdin;
 
 
 --
--- TOC entry 5309 (class 0 OID 33857)
+-- TOC entry 5299 (class 0 OID 33857)
 -- Dependencies: 264
 -- Data for Name: department_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -835,7 +1061,7 @@ COPY public.department_ (id, firm_id, name_) FROM stdin;
 
 
 --
--- TOC entry 5264 (class 0 OID 25468)
+-- TOC entry 5254 (class 0 OID 25468)
 -- Dependencies: 219
 -- Data for Name: district_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1847,7 +2073,7 @@ COPY public.district_ (id, name_, city_id) FROM stdin;
 
 
 --
--- TOC entry 5302 (class 0 OID 25748)
+-- TOC entry 5292 (class 0 OID 25748)
 -- Dependencies: 257
 -- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
@@ -1868,7 +2094,7 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 
 
 --
--- TOC entry 5288 (class 0 OID 25648)
+-- TOC entry 5278 (class 0 OID 25648)
 -- Dependencies: 243
 -- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
@@ -1916,11 +2142,19 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 40	carbon	scope2data
 41	carbon	scope3data
 42	carbon	scope4data
+43	carbon	gwpvalues
+44	carbon	excelreport
+45	carbon	scope1excel
+46	carbon	scope2excel
+47	carbon	scope4excel
+48	carbon	carboncoefficient
+49	carbon	dynamiccarboninput
+50	carbon	subscope
 \.
 
 
 --
--- TOC entry 5286 (class 0 OID 25640)
+-- TOC entry 5276 (class 0 OID 25640)
 -- Dependencies: 241
 -- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
@@ -1953,11 +2187,19 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 93	carbon	0005_enhanced_carbon_models	2025-09-01 23:49:53.327773+03
 94	carbon	0006_merge_20250901_2345	2025-09-01 23:49:53.331042+03
 95	carbon	0007_alter_emissionfactor_options_and_more	2025-09-01 23:49:53.461895+03
+96	carbon	0008_gwpvalues_fueltype_density_fueltype_unit_excelreport_and_more	2025-09-03 18:17:32.828546+03
+97	carbon	0009_carboncoefficient	2025-09-11 22:26:19.151515+03
+98	carbon	0010_alter_carboncoefficient_coefficient_type	2025-09-15 13:08:34.012397+03
+99	carbon	0011_alter_carboncoefficient_coefficient_type	2025-09-15 13:30:35.191156+03
+100	carbon	0012_subscope_dynamiccarboninput	2025-09-15 15:38:00.759372+03
+101	carbon	0013_alter_scope1data_unique_together_and_more	2025-09-15 16:49:03.555163+03
+102	carbon	0014_alter_carboncoefficient_coefficient_type	2025-09-15 20:48:54.022959+03
+103	carbon	0015_alter_carboncoefficient_coefficient_type	2025-09-15 22:37:38.394313+03
 \.
 
 
 --
--- TOC entry 5303 (class 0 OID 25776)
+-- TOC entry 5293 (class 0 OID 25776)
 -- Dependencies: 258
 -- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: mydbuser
 --
@@ -1967,12 +2209,12 @@ cgujftek4k3tp4sm4jlvo4wruqisfzom	.eJxVjMsOwiAURP-FtSHyBpfu-w3kci9K1UBS2pXx36VJF5
 py67f9crma7nk01shu37lg72c5sasy9t	.eJxVjMsOwiAURP-FtSHyBpfu-w3kci9K1UBS2pXx36VJF5rMas6ZebMI21ri1vMSZ2IXJtjpt0uAz1x3QA-o98ax1XWZE98VftDOp0b5dT3cv4MCvYw1CCN8tsGlkBKM2KAyGufOOAih9tYoLxVI0uIGQmkyJsmMypD2IbDPF-R2N6E:1uhjqs:9LoeRn5V25FDLlwL4OH8cHWm8p5BxUF9VLWX1R43-Ww	2026-08-01 10:06:50.336713+03
 376l9a118ur83wr63vioiuv81aync234	.eJxVjMsOwiAURP-FtSHyBpfu-w3kci9K1UBS2pXx36VJF5rMas6ZebMI21ri1vMSZ2IXJtjpt0uAz1x3QA-o98ax1XWZE98VftDOp0b5dT3cv4MCvYw1CCN8tsGlkBKM2KAyGufOOAih9tYoLxVI0uIGQmkyJsmMypD2IbDPF-R2N6E:1uhjs0:Ltuj0wkAoOgVTuiMbivLZppWRLYSlClgdw20OtovQGk	2026-08-01 10:08:00.956517+03
 a5ru6dgo0567l50i4vybeftb9tlisvvr	.eJxVjEEOwiAQRe_C2hCcgba4dN8zNAMzSNVAUtqV8e7apAvd_vfef6mJtjVPW5NlmlldlFen3y1QfEjZAd-p3KqOtazLHPSu6IM2PVaW5_Vw_w4ytfytI9I5CGNMYMk6w-DROOygMx5dnwIMhoJNlhgHFAjkIyKARGcZqFfvD-I-N7k:1utBUn:N1hkQjyUoLCSsRVoj5TZKr0_yqyFtjDCBH15S4__kus	2026-09-01 23:51:21.501565+03
-pb9six2gi5mrqklty0g75bz6ep5glf49	.eJxVjDEOAiEQRe9CbQgMKGBp7xnIDAOyaiBZdivj3XWTLbT9773_EhHXpcZ15DlOLM5Ca3H4HQnTI7eN8B3brcvU2zJPJDdF7nTIa-f8vOzu30HFUb91sA68OpLCRIbRcSE4gQNyyepCrAOTzV7ZEgr7TBSKNojBQLKeM4j3BxpNOPA:1utJpP:cLYPsIuwSl36fkB8osMHLuBBba8ghHvik0zc8iFVsG8	2026-09-02 08:45:11.373853+03
+80ml3lg4hpxpe94ea973s514e6w24qvy	.eJxVjDEOAiEQRe9CbQgMKGBp7xnIDAOyaiBZdivj3XWTLbT9773_EhHXpcZ15DlOLM5Ca3H4HQnTI7eN8B3brcvU2zJPJDdF7nTIa-f8vOzu30HFUb91sA68OpLCRIbRcSE4gQNyyepCrAOTzV7ZEgr7TBSKNojBQLKeM4j3BxpNOPA:1uy8eW:cZI80eXOkyLLyPQaEddMdwmtiqZhHsxDnnH5Zquqpew	2026-09-15 15:49:52.268756+03
 \.
 
 
 --
--- TOC entry 5311 (class 0 OID 33874)
+-- TOC entry 5301 (class 0 OID 33874)
 -- Dependencies: 266
 -- Data for Name: education_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1991,7 +2233,7 @@ COPY public.education_ (id, name_) FROM stdin;
 
 
 --
--- TOC entry 5266 (class 0 OID 25472)
+-- TOC entry 5256 (class 0 OID 25472)
 -- Dependencies: 221
 -- Data for Name: firm_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2004,7 +2246,7 @@ COPY public.firm_ (id, name_, city_id, district_id, tax_office_id, nace_id, crea
 
 
 --
--- TOC entry 5268 (class 0 OID 25479)
+-- TOC entry 5258 (class 0 OID 25479)
 -- Dependencies: 223
 -- Data for Name: language_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2016,7 +2258,7 @@ COPY public.language_ (id, name_, short_) FROM stdin;
 
 
 --
--- TOC entry 5270 (class 0 OID 25485)
+-- TOC entry 5260 (class 0 OID 25485)
 -- Dependencies: 225
 -- Data for Name: media_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2026,7 +2268,7 @@ COPY public.media_ (id, create_, media_type_id, path_id, name_, delete_, active_
 
 
 --
--- TOC entry 5272 (class 0 OID 25490)
+-- TOC entry 5262 (class 0 OID 25490)
 -- Dependencies: 227
 -- Data for Name: media_type; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2036,7 +2278,7 @@ COPY public.media_type (id, name_) FROM stdin;
 
 
 --
--- TOC entry 5274 (class 0 OID 25494)
+-- TOC entry 5264 (class 0 OID 25494)
 -- Dependencies: 229
 -- Data for Name: nace_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3576,7 +3818,7 @@ COPY public.nace_ (id, name_, code_, description_) FROM stdin;
 
 
 --
--- TOC entry 5276 (class 0 OID 25500)
+-- TOC entry 5266 (class 0 OID 25500)
 -- Dependencies: 231
 -- Data for Name: path_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3586,7 +3828,7 @@ COPY public.path_ (id, name_) FROM stdin;
 
 
 --
--- TOC entry 5305 (class 0 OID 33832)
+-- TOC entry 5295 (class 0 OID 33832)
 -- Dependencies: 260
 -- Data for Name: personnel_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3599,7 +3841,7 @@ COPY public.personnel_ (id, name_, surname_, tckno_, address_, cell_, birthday_,
 
 
 --
--- TOC entry 5278 (class 0 OID 25504)
+-- TOC entry 5268 (class 0 OID 25504)
 -- Dependencies: 233
 -- Data for Name: tax_office; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4643,7 +4885,7 @@ COPY public.tax_office (id, name_, city_id, district_id) FROM stdin;
 
 
 --
--- TOC entry 5280 (class 0 OID 25508)
+-- TOC entry 5270 (class 0 OID 25508)
 -- Dependencies: 235
 -- Data for Name: user_; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4656,7 +4898,7 @@ COPY public.user_ (id, user_group_id, language_id, name_, tckno_, certificate_nu
 
 
 --
--- TOC entry 5282 (class 0 OID 25515)
+-- TOC entry 5272 (class 0 OID 25515)
 -- Dependencies: 237
 -- Data for Name: user_firm; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4667,7 +4909,7 @@ COPY public.user_firm (user_id, firm_id, create_, id) FROM stdin;
 
 
 --
--- TOC entry 5283 (class 0 OID 25519)
+-- TOC entry 5273 (class 0 OID 25519)
 -- Dependencies: 238
 -- Data for Name: user_group; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4679,7 +4921,7 @@ COPY public.user_group (id, name_, description_) FROM stdin;
 
 
 --
--- TOC entry 5388 (class 0 OID 0)
+-- TOC entry 5378 (class 0 OID 0)
 -- Dependencies: 246
 -- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
@@ -4688,7 +4930,7 @@ SELECT pg_catalog.setval('public.auth_group_id_seq', 2, true);
 
 
 --
--- TOC entry 5389 (class 0 OID 0)
+-- TOC entry 5379 (class 0 OID 0)
 -- Dependencies: 248
 -- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
@@ -4697,16 +4939,16 @@ SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 12, true);
 
 
 --
--- TOC entry 5390 (class 0 OID 0)
+-- TOC entry 5380 (class 0 OID 0)
 -- Dependencies: 244
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
 
-SELECT pg_catalog.setval('public.auth_permission_id_seq', 173, true);
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 205, true);
 
 
 --
--- TOC entry 5391 (class 0 OID 0)
+-- TOC entry 5381 (class 0 OID 0)
 -- Dependencies: 252
 -- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
@@ -4715,7 +4957,7 @@ SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 8, true);
 
 
 --
--- TOC entry 5392 (class 0 OID 0)
+-- TOC entry 5382 (class 0 OID 0)
 -- Dependencies: 250
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
@@ -4724,7 +4966,7 @@ SELECT pg_catalog.setval('public.auth_user_id_seq', 11, true);
 
 
 --
--- TOC entry 5393 (class 0 OID 0)
+-- TOC entry 5383 (class 0 OID 0)
 -- Dependencies: 254
 -- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
@@ -4733,7 +4975,7 @@ SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 459, true);
 
 
 --
--- TOC entry 5394 (class 0 OID 0)
+-- TOC entry 5384 (class 0 OID 0)
 -- Dependencies: 261
 -- Name: blood__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4742,7 +4984,16 @@ SELECT pg_catalog.setval('public.blood__id_seq', 8, true);
 
 
 --
--- TOC entry 5395 (class 0 OID 0)
+-- TOC entry 5385 (class 0 OID 0)
+-- Dependencies: 282
+-- Name: carbon_carboncoefficient_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+--
+
+SELECT pg_catalog.setval('public.carbon_carboncoefficient_id_seq', 143, true);
+
+
+--
+-- TOC entry 5386 (class 0 OID 0)
 -- Dependencies: 269
 -- Name: carbon_coefficienttype_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
@@ -4751,17 +5002,35 @@ SELECT pg_catalog.setval('public.carbon_coefficienttype_id_seq', 2, true);
 
 
 --
--- TOC entry 5396 (class 0 OID 0)
+-- TOC entry 5387 (class 0 OID 0)
+-- Dependencies: 286
+-- Name: carbon_dynamiccarboninput_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+--
+
+SELECT pg_catalog.setval('public.carbon_dynamiccarboninput_id_seq', 105, true);
+
+
+--
+-- TOC entry 5388 (class 0 OID 0)
 -- Dependencies: 267
 -- Name: carbon_emissionfactor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
 
-SELECT pg_catalog.setval('public.carbon_emissionfactor_id_seq', 4, true);
+SELECT pg_catalog.setval('public.carbon_emissionfactor_id_seq', 5, true);
 
 
 --
--- TOC entry 5397 (class 0 OID 0)
--- Dependencies: 278
+-- TOC entry 5389 (class 0 OID 0)
+-- Dependencies: 280
+-- Name: carbon_excelreport_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+--
+
+SELECT pg_catalog.setval('public.carbon_excelreport_id_seq', 1, false);
+
+
+--
+-- TOC entry 5390 (class 0 OID 0)
+-- Dependencies: 276
 -- Name: carbon_fueltype_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
 
@@ -4769,7 +5038,16 @@ SELECT pg_catalog.setval('public.carbon_fueltype_id_seq', 1, false);
 
 
 --
--- TOC entry 5398 (class 0 OID 0)
+-- TOC entry 5391 (class 0 OID 0)
+-- Dependencies: 278
+-- Name: carbon_gwpvalues_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+--
+
+SELECT pg_catalog.setval('public.carbon_gwpvalues_id_seq', 1, false);
+
+
+--
+-- TOC entry 5392 (class 0 OID 0)
 -- Dependencies: 271
 -- Name: carbon_inputcategory_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
@@ -4778,61 +5056,25 @@ SELECT pg_catalog.setval('public.carbon_inputcategory_id_seq', 5, true);
 
 
 --
--- TOC entry 5399 (class 0 OID 0)
+-- TOC entry 5393 (class 0 OID 0)
 -- Dependencies: 273
 -- Name: carbon_inputdata_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
 
-SELECT pg_catalog.setval('public.carbon_inputdata_id_seq', 1, true);
+SELECT pg_catalog.setval('public.carbon_inputdata_id_seq', 2, true);
 
 
 --
--- TOC entry 5400 (class 0 OID 0)
--- Dependencies: 275
--- Name: carbon_report_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
---
-
-SELECT pg_catalog.setval('public.carbon_report_id_seq', 1, false);
-
-
---
--- TOC entry 5401 (class 0 OID 0)
--- Dependencies: 280
--- Name: carbon_scope1data_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
---
-
-SELECT pg_catalog.setval('public.carbon_scope1data_id_seq', 1, false);
-
-
---
--- TOC entry 5402 (class 0 OID 0)
--- Dependencies: 282
--- Name: carbon_scope2data_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
---
-
-SELECT pg_catalog.setval('public.carbon_scope2data_id_seq', 1, false);
-
-
---
--- TOC entry 5403 (class 0 OID 0)
+-- TOC entry 5394 (class 0 OID 0)
 -- Dependencies: 284
--- Name: carbon_scope3data_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
+-- Name: carbon_subscope_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
 
-SELECT pg_catalog.setval('public.carbon_scope3data_id_seq', 1, false);
-
-
---
--- TOC entry 5404 (class 0 OID 0)
--- Dependencies: 286
--- Name: carbon_scope4data_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
---
-
-SELECT pg_catalog.setval('public.carbon_scope4data_id_seq', 1, false);
+SELECT pg_catalog.setval('public.carbon_subscope_id_seq', 13, true);
 
 
 --
--- TOC entry 5405 (class 0 OID 0)
+-- TOC entry 5395 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: city_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4841,7 +5083,7 @@ SELECT pg_catalog.setval('public.city_id_seq', 1, false);
 
 
 --
--- TOC entry 5406 (class 0 OID 0)
+-- TOC entry 5396 (class 0 OID 0)
 -- Dependencies: 263
 -- Name: department__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4850,7 +5092,7 @@ SELECT pg_catalog.setval('public.department__id_seq', 3, true);
 
 
 --
--- TOC entry 5407 (class 0 OID 0)
+-- TOC entry 5397 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: district_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4859,7 +5101,7 @@ SELECT pg_catalog.setval('public.district_id_seq', 1, false);
 
 
 --
--- TOC entry 5408 (class 0 OID 0)
+-- TOC entry 5398 (class 0 OID 0)
 -- Dependencies: 256
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
@@ -4868,25 +5110,25 @@ SELECT pg_catalog.setval('public.django_admin_log_id_seq', 29, true);
 
 
 --
--- TOC entry 5409 (class 0 OID 0)
+-- TOC entry 5399 (class 0 OID 0)
 -- Dependencies: 242
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
 
-SELECT pg_catalog.setval('public.django_content_type_id_seq', 42, true);
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 50, true);
 
 
 --
--- TOC entry 5410 (class 0 OID 0)
+-- TOC entry 5400 (class 0 OID 0)
 -- Dependencies: 240
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 95, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 103, true);
 
 
 --
--- TOC entry 5411 (class 0 OID 0)
+-- TOC entry 5401 (class 0 OID 0)
 -- Dependencies: 265
 -- Name: education__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4895,7 +5137,7 @@ SELECT pg_catalog.setval('public.education__id_seq', 9, true);
 
 
 --
--- TOC entry 5412 (class 0 OID 0)
+-- TOC entry 5402 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: firm_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4904,7 +5146,7 @@ SELECT pg_catalog.setval('public.firm_id_seq', 5, true);
 
 
 --
--- TOC entry 5413 (class 0 OID 0)
+-- TOC entry 5403 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: language__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4913,7 +5155,7 @@ SELECT pg_catalog.setval('public.language__id_seq', 1, false);
 
 
 --
--- TOC entry 5414 (class 0 OID 0)
+-- TOC entry 5404 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: media_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4922,7 +5164,7 @@ SELECT pg_catalog.setval('public.media_id_seq', 1, false);
 
 
 --
--- TOC entry 5415 (class 0 OID 0)
+-- TOC entry 5405 (class 0 OID 0)
 -- Dependencies: 228
 -- Name: media_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4931,7 +5173,7 @@ SELECT pg_catalog.setval('public.media_type_id_seq', 1, false);
 
 
 --
--- TOC entry 5416 (class 0 OID 0)
+-- TOC entry 5406 (class 0 OID 0)
 -- Dependencies: 230
 -- Name: nace_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4940,7 +5182,7 @@ SELECT pg_catalog.setval('public.nace_id_seq', 1, false);
 
 
 --
--- TOC entry 5417 (class 0 OID 0)
+-- TOC entry 5407 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: path_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4949,7 +5191,7 @@ SELECT pg_catalog.setval('public.path_id_seq', 1, false);
 
 
 --
--- TOC entry 5418 (class 0 OID 0)
+-- TOC entry 5408 (class 0 OID 0)
 -- Dependencies: 259
 -- Name: personnel__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4958,7 +5200,7 @@ SELECT pg_catalog.setval('public.personnel__id_seq', 5, true);
 
 
 --
--- TOC entry 5419 (class 0 OID 0)
+-- TOC entry 5409 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: tax_office_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4967,7 +5209,7 @@ SELECT pg_catalog.setval('public.tax_office_id_seq', 1, false);
 
 
 --
--- TOC entry 5420 (class 0 OID 0)
+-- TOC entry 5410 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: user__id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4976,8 +5218,8 @@ SELECT pg_catalog.setval('public.user__id_seq', 11, true);
 
 
 --
--- TOC entry 5421 (class 0 OID 0)
--- Dependencies: 277
+-- TOC entry 5411 (class 0 OID 0)
+-- Dependencies: 275
 -- Name: user_firm_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -4985,7 +5227,7 @@ SELECT pg_catalog.setval('public.user_firm_id_seq', 2, true);
 
 
 --
--- TOC entry 5422 (class 0 OID 0)
+-- TOC entry 5412 (class 0 OID 0)
 -- Dependencies: 239
 -- Name: user_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4993,7 +5235,7 @@ SELECT pg_catalog.setval('public.user_firm_id_seq', 2, true);
 SELECT pg_catalog.setval('public.user_group_id_seq', 1, false);
 
 
--- Completed on 2025-09-02 22:13:57
+-- Completed on 2025-09-18 16:25:40
 
 --
 -- PostgreSQL database dump complete
