@@ -5,7 +5,7 @@
 -- Dumped from database version 17.5
 -- Dumped by pg_dump version 17.5
 
--- Started on 2025-09-18 16:25:39
+-- Started on 2025-09-22 21:46:53
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -837,28 +837,28 @@ COPY public.carbon_dynamiccarboninput (id, datetime, scope, data, co2e_total, cr
 81	2025-09-18 15:11:00+03	4	{"amount": "56472", "material_type": "93"}	0.000000	2025-09-18 15:16:04.00092+03	2025-09-18 15:16:04.00092+03	11	4	11
 82	2025-09-18 15:11:00+03	4	{"amount": "42840", "material_type": "94"}	0.000000	2025-09-18 15:16:17.734363+03	2025-09-18 15:16:17.734363+03	11	4	11
 83	2025-09-18 15:11:00+03	4	{"amount": "13000", "material_type": "95"}	0.000000	2025-09-18 15:16:28.686859+03	2025-09-18 15:16:28.686859+03	11	4	11
-84	2025-09-18 15:18:00+03	4	{"name": "Sermaye Malları", "amount": "1.67", "coefficient_set": "Materyal"}	0.000000	2025-09-18 15:20:34.663062+03	2025-09-18 15:20:34.663062+03	11	4	12
-85	2025-09-18 15:18:00+03	4	{"name": "Sermaye Malları", "amount": "2", "coefficient_set": "Proses"}	0.000000	2025-09-18 15:20:43.673377+03	2025-09-18 15:20:43.673377+03	11	4	12
-86	2025-09-18 15:30:00+03	4	{"name": "Elektrik Kayıp-Kaçak", "amount": "15826566", "company": "", "fuel_type": "", "coefficient_set": "Elektrik-Üretim"}	0.000000	2025-09-18 15:31:47.43273+03	2025-09-18 15:31:47.43273+03	11	4	13
-87	2025-09-18 15:30:00+03	4	{"name": "Elektrik Kayıp-Kaçak", "amount": "15826566", "company": "", "fuel_type": "", "coefficient_set": "Elektrik-İletim"}	0.000000	2025-09-18 15:31:56.376294+03	2025-09-18 15:31:56.376294+03	11	4	13
-88	2025-09-18 15:30:00+03	4	{"name": "Su Temini", "amount": "1943.26", "company": "", "fuel_type": "", "coefficient_set": "Su-Asansör D2"}	0.000000	2025-09-18 15:34:02.628751+03	2025-09-18 15:34:02.628751+03	11	4	13
-89	2025-09-18 15:30:00+03	4	{"name": "Su Temini", "amount": "7116", "company": "", "fuel_type": "", "coefficient_set": "Su-Dökümhane D3"}	0.000000	2025-09-18 15:34:36.610284+03	2025-09-18 15:34:36.610284+03	11	4	13
-90	2025-09-18 15:30:00+03	4	{"name": "Su Temini", "amount": "485", "company": "", "fuel_type": "", "coefficient_set": "Su-Frenbu"}	0.000000	2025-09-18 15:35:01.284548+03	2025-09-18 15:35:01.284548+03	11	4	13
-91	2025-09-18 15:30:00+03	4	{"name": "Düzenli Depolamaya Giden", "amount": "0", "company": "", "fuel_type": "", "coefficient_set": "Katı Atık - Düzenli Depolanan"}	0.000000	2025-09-18 15:35:40.733035+03	2025-09-18 15:35:40.733035+03	11	4	13
-92	2025-09-18 15:30:00+03	4	{"name": "Döküm Yapılmış Tehlikeli Madde İçeren", "amount": "10850", "company": "", "fuel_type": "", "coefficient_set": "Katı Atık - Döküm Yapılmış Tehlikeli Madde"}	0.000000	2025-09-18 15:36:31.308834+03	2025-09-18 15:36:31.308834+03	11	4	13
-93	2025-09-18 15:30:00+03	4	{"name": "Karışık Ambalaj", "amount": "500", "company": "", "fuel_type": "", "coefficient_set": "Katı Atık - Karışık Ambalaj"}	0.000000	2025-09-18 15:37:07.697061+03	2025-09-18 15:37:07.697061+03	11	4	13
-94	2025-09-18 15:30:00+03	4	{"name": "Atıksu", "amount": "6032880", "company": "", "fuel_type": "", "coefficient_set": "Atıksu - Asansör D2"}	0.000000	2025-09-18 15:37:31.420642+03	2025-09-18 15:37:31.420642+03	11	4	13
-95	2025-09-18 15:30:00+03	4	{"name": "Atıksu", "amount": "441000", "company": "", "fuel_type": "", "coefficient_set": "Atıksu - Dökümhane D3"}	0.000000	2025-09-18 15:37:45.54761+03	2025-09-18 15:37:45.54761+03	11	4	13
-96	2025-09-18 15:30:00+03	4	{"name": "Atıksu", "amount": "1490580", "company": "", "fuel_type": "", "coefficient_set": "Atıksu - Frenbu"}	0.000000	2025-09-18 15:38:20.253698+03	2025-09-18 15:38:20.253698+03	11	4	13
-97	2025-09-18 15:30:00+03	4	{"name": "Ekonaz", "amount": "12.432", "company": "", "fuel_type": "", "coefficient_set": "Çevre Danışmanlık"}	0.000000	2025-09-18 15:38:45.99442+03	2025-09-18 15:38:45.99442+03	11	4	13
-98	2025-09-18 15:30:00+03	4	{"name": "Aras", "amount": "0", "company": "", "fuel_type": "", "coefficient_set": "Kargo"}	0.000000	2025-09-18 15:39:06.087543+03	2025-09-18 15:39:06.087543+03	11	4	13
-99	2025-09-18 15:30:00+03	4	{"name": "Beyhekim", "amount": "105.95", "company": "", "fuel_type": "", "coefficient_set": "İSG"}	0.000000	2025-09-18 15:39:33.62362+03	2025-09-18 15:39:33.62362+03	11	4	13
-100	2025-09-18 15:30:00+03	4	{"name": "Muhasebe", "amount": "0", "company": "", "fuel_type": "", "coefficient_set": "Muhasebe"}	0.000000	2025-09-18 15:39:52.384015+03	2025-09-18 15:39:52.384015+03	11	4	13
-101	2025-09-18 15:30:00+03	4	{"name": "Metro Market", "amount": "0", "company": "", "fuel_type": "", "coefficient_set": "Market"}	0.000000	2025-09-18 15:40:16.913768+03	2025-09-18 15:40:16.913768+03	11	4	13
-102	2025-09-18 15:30:00+03	4	{"name": "Erikli", "amount": "0", "company": "", "fuel_type": "", "coefficient_set": "Su"}	0.000000	2025-09-18 15:40:34.514449+03	2025-09-18 15:40:34.514449+03	11	4	13
-103	2025-09-18 15:30:00+03	4	{"name": "Sini", "amount": "0", "company": "", "fuel_type": "", "coefficient_set": "Yemek"}	0.000000	2025-09-18 15:40:49.140345+03	2025-09-18 15:40:49.140345+03	11	4	13
-104	2025-09-18 15:50:00+03	3	{"name": "Tüm Nakliye Araçları", "consumption": "0", "coefficient_set": "Motorin"}	0.000000	2025-09-18 15:50:33.485658+03	2025-09-18 15:50:33.485658+03	11	4	5
-105	2025-09-18 15:52:00+03	3	{"name": "Tüm Nakliye Araçları", "consumption": "0", "coefficient_set": "Motorin"}	0.000000	2025-09-18 15:52:54.65886+03	2025-09-18 15:52:54.65886+03	11	4	6
+106	2025-09-18 09:50:00+03	3	{"name": "Tüm Nakliye Araçları", "consumption": "0", "coefficient_set": "Motorin"}	0.000000	2025-09-19 21:27:58.079348+03	2025-09-19 22:59:07.214605+03	11	4	5
+107	2025-09-18 09:52:00+03	3	{"name": "Tüm Nakliye Araçları", "consumption": "0", "coefficient_set": "Motorin"}	0.000000	2025-09-19 21:28:26.537707+03	2025-09-19 22:59:21.769955+03	11	4	6
+85	2025-09-18 12:18:00+03	4	{"name": "Sermaye Malları", "amount": "1908300", "coefficient_set": "Proses"}	0.000000	2025-09-18 15:20:43.673377+03	2025-09-22 16:02:45.5442+03	11	4	12
+84	2025-09-18 12:18:00+03	4	{"name": "Sermaye Malları", "amount": "1908300", "coefficient_set": "Materyal"}	0.000000	2025-09-18 15:20:34.663062+03	2025-09-22 16:03:16.905489+03	11	4	12
+103	2025-09-18 12:30:00+03	4	{"name": "Sini", "consumption": "0", "service_type": "service", "coefficient_set": "Yemek"}	0.000000	2025-09-18 15:40:49.140345+03	2025-09-22 21:07:04.329949+03	11	4	13
+102	2025-09-18 12:30:00+03	4	{"name": "Erikli", "consumption": "0", "service_type": "service", "coefficient_set": "Su"}	0.000000	2025-09-18 15:40:34.514449+03	2025-09-22 21:07:22.877184+03	11	4	13
+101	2025-09-18 12:30:00+03	4	{"name": "Metro Market", "consumption": "0", "service_type": "service", "coefficient_set": "Market"}	0.000000	2025-09-18 15:40:16.913768+03	2025-09-22 21:07:43.728065+03	11	4	13
+100	2025-09-18 12:30:00+03	4	{"name": "Muhasebe", "consumption": "0", "service_type": "service", "coefficient_set": "Muhasebe"}	0.000000	2025-09-18 15:39:52.384015+03	2025-09-22 21:08:01.962508+03	11	4	13
+99	2025-09-18 12:30:00+03	4	{"name": "Beyhekim", "consumption": "105.95", "service_type": "service", "coefficient_set": "İSG"}	0.000000	2025-09-18 15:39:33.62362+03	2025-09-22 21:08:15.765174+03	11	4	13
+98	2025-09-18 12:30:00+03	4	{"name": "Aras", "consumption": "0", "service_type": "service", "coefficient_set": "Kargo"}	0.000000	2025-09-18 15:39:06.087543+03	2025-09-22 21:08:28.589875+03	11	4	13
+97	2025-09-18 12:30:00+03	4	{"name": "Ekonaz", "consumption": "12.432", "service_type": "service", "coefficient_set": "Çevre Danışmanlık"}	0.000000	2025-09-18 15:38:45.99442+03	2025-09-22 21:08:43.870713+03	11	4	13
+96	2025-09-18 12:30:00+03	4	{"name": "Atıksu", "consumption": "1490580", "service_type": "wastewater", "coefficient_set": "Atıksu - Frenbu"}	0.000000	2025-09-18 15:38:20.253698+03	2025-09-22 21:09:31.886153+03	11	4	13
+95	2025-09-18 12:30:00+03	4	{"name": "Atıksu", "consumption": "441000", "service_type": "wastewater", "coefficient_set": "Atıksu - Dökümhane D3"}	0.000000	2025-09-18 15:37:45.54761+03	2025-09-22 21:09:49.213054+03	11	4	13
+94	2025-09-18 12:30:00+03	4	{"name": "Atıksu", "consumption": "6032880", "service_type": "wastewater", "coefficient_set": "Atıksu - Asansör D2"}	0.000000	2025-09-18 15:37:31.420642+03	2025-09-22 21:10:02.528921+03	11	4	13
+93	2025-09-18 12:30:00+03	4	{"name": "Karışık Ambalaj", "consumption": "500", "service_type": "solid_waste", "coefficient_set": "Katı Atık - Karışık Ambalaj"}	0.000000	2025-09-18 15:37:07.697061+03	2025-09-22 21:10:21.074364+03	11	4	13
+92	2025-09-18 12:30:00+03	4	{"name": "Döküm Yapılmış Tehlikeli Madde İçeren", "consumption": "10850", "service_type": "solid_waste", "coefficient_set": "Katı Atık - Döküm Yapılmış Tehlikeli Madde"}	0.000000	2025-09-18 15:36:31.308834+03	2025-09-22 21:10:38.169885+03	11	4	13
+91	2025-09-18 12:30:00+03	4	{"name": "Düzenli Depolamaya Giden", "consumption": "0", "service_type": "solid_waste", "coefficient_set": "Katı Atık - Düzenli Depolanan"}	0.000000	2025-09-18 15:35:40.733035+03	2025-09-22 21:11:09.406474+03	11	4	13
+90	2025-09-18 12:30:00+03	4	{"name": "Su Temini", "consumption": "485", "service_type": "water", "coefficient_set": "Su-Frenbu"}	0.000000	2025-09-18 15:35:01.284548+03	2025-09-22 21:11:49.01326+03	11	4	13
+89	2025-09-18 12:30:00+03	4	{"name": "Su Temini", "consumption": "7116", "service_type": "water", "coefficient_set": "Su-Dökümhane D3"}	0.000000	2025-09-18 15:34:36.610284+03	2025-09-22 21:12:19.479128+03	11	4	13
+88	2025-09-18 12:30:00+03	4	{"name": "Su Temini", "consumption": "1943.26", "service_type": "water", "coefficient_set": "Su-Asansör D2"}	0.000000	2025-09-18 15:34:02.628751+03	2025-09-22 21:12:41.089808+03	11	4	13
+87	2025-09-18 12:30:00+03	4	{"name": "Elektrik Kayıp-Kaçak", "consumption": "15826566", "service_type": "electricity_loss", "coefficient_set": "Elektrik-İletim"}	0.000000	2025-09-18 15:31:56.376294+03	2025-09-22 21:12:59.320655+03	11	4	13
+86	2025-09-18 12:30:00+03	4	{"name": "Elektrik Kayıp-Kaçak", "consumption": "15826566", "service_type": "electricity_loss", "coefficient_set": "Elektrik-Üretim"}	0.000000	2025-09-18 15:31:47.43273+03	2025-09-22 21:13:20.321368+03	11	4	13
 \.
 
 
@@ -5007,7 +5007,7 @@ SELECT pg_catalog.setval('public.carbon_coefficienttype_id_seq', 2, true);
 -- Name: carbon_dynamiccarboninput_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mydbuser
 --
 
-SELECT pg_catalog.setval('public.carbon_dynamiccarboninput_id_seq', 105, true);
+SELECT pg_catalog.setval('public.carbon_dynamiccarboninput_id_seq', 107, true);
 
 
 --
@@ -5235,7 +5235,7 @@ SELECT pg_catalog.setval('public.user_firm_id_seq', 2, true);
 SELECT pg_catalog.setval('public.user_group_id_seq', 1, false);
 
 
--- Completed on 2025-09-18 16:25:40
+-- Completed on 2025-09-22 21:46:54
 
 --
 -- PostgreSQL database dump complete

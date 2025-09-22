@@ -110,12 +110,11 @@ const subscopeDefinitions = {
         '1.4': {
             name: 'Kaçak Emisyonlar',
             fields: [
-                {name: 'coefficient_set', label: 'Katsayı Kümesi', type: 'select', options: 'coefficient_names'},
                 {name: 'device_name', label: 'Cihaz Adı', type: 'text'},
-                {name: 'gas_name', label: 'Gaz Adı', type: 'text'},
-                {name: 'gwp', label: 'KIP', type: 'number'},
-                {name: 'leak_rate', label: 'Kaçak (%)', type: 'number'},
-                {name: 'gas_capacity', label: 'Gaz Kapasitesi', type: 'number'},
+                {name: 'gas_name', label: 'Gaz Türü', type: 'text'},
+                {name: 'gwp', label: 'KIP (GWP)', type: 'number'},
+                {name: 'leak_rate', label: 'Kaçak Oranı', type: 'number'},
+                {name: 'gas_capacity', label: 'Gaz Kapasitesi (kg)', type: 'number'},
                 {name: 'quantity', label: 'Adet', type: 'number'}
             ]
         },
@@ -204,13 +203,19 @@ const subscopeDefinitions = {
             ]
         },
         '4.3': {
-            name: 'Atık',
+            name: 'Kullanılan Hizmetler',
             fields: [
                 {name: 'coefficient_set', label: 'Katsayı Kümesi', type: 'select', options: 'coefficient_names'},
                 {name: 'name', label: 'İsim', type: 'text'},
-                {name: 'amount', label: 'Miktar', type: 'number'},
-                {name: 'fuel_type', label: 'Yakıt Tipi', type: 'text', conditional: 'waste_type:other'},
-                {name: 'company', label: 'Şirket', type: 'text', conditional: 'waste_type:other'}
+                {name: 'service_type', label: 'Hizmet Türü', type: 'select',
+                options: [
+                    {value: 'electricity_loss', text: 'Elektrik Kayıp-Kaçak'},
+                    {value: 'water', text: 'Su Temini'},
+                    {value: 'wastewater', text: 'Atıksu Arıtma'},
+                    {value: 'solid_waste', text: 'Katı Atık Bertaraf'},
+                    {value: 'service', text: 'Diğer Hizmetler'}
+                ]},
+                {name: 'consumption', label: 'Tüketim', type: 'number', id: 'consumption-4-3'}
             ]
         }
     }
@@ -348,6 +353,7 @@ document.getElementById('carbon-input-form').addEventListener('submit', function
     e.preventDefault();
     
     const formData = new FormData(this);
+    const editId = this.dataset.editId;
     const data = {
         firm: document.getElementById('firm-select').value,
         datetime: document.getElementById('input-datetime').value,
@@ -361,9 +367,12 @@ document.getElementById('carbon-input-form').addEventListener('submit', function
         data.data[key] = value;
     }
     
-    // AJAX ile gönder
-    fetch('/carbon/api/dynamic-input/', {
-        method: 'POST',
+    // Güncelleme mi yoksa yeni kayıt mı?
+    const url = editId ? `/carbon/api/dynamic-input/${editId}/` : '/carbon/api/dynamic-input/';
+    const method = editId ? 'PUT' : 'POST';
+    
+    fetch(url, {
+        method: method,
         headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': getCookie('csrftoken')
@@ -373,13 +382,38 @@ document.getElementById('carbon-input-form').addEventListener('submit', function
     .then(response => response.json())
     .then(result => {
         if (result.success) {
-            alert('Veri başarıyla kaydedildi!');
+            alert(editId ? 'Güncellendi!' : 'Kaydedildi!');
             loadRecentInputs();
             this.reset();
+            
+            // Düzenleme modundan çık
+            delete this.dataset.editId;
+            const submitBtn = document.querySelector('#carbon-input-form button[type="submit"]');
+            submitBtn.innerHTML = '<i class="fas fa-save"></i> Kaydet';
         } else {
             alert('Hata: ' + result.message);
         }
     });
+});
+
+// Hizmet türü değiştiğinde birim etiketini güncelle
+document.addEventListener('change', function(e) {
+    if (e.target.name === 'service_type' && currentScope == 4) {
+        const consumptionField = document.querySelector('input[name="consumption"]');
+        const consumptionLabel = document.querySelector('label[for="field-consumption"]');
+        
+        const units = {
+            'electricity_loss': 'Tüketim (MWh)',
+            'water': 'Tüketim (m³)',
+            'wastewater': 'Tüketim (m³)',
+            'solid_waste': 'Tüketim (ton)',
+            'service': 'Tüketim (TL)'
+        };
+        
+        if (consumptionLabel) {
+            consumptionLabel.textContent = units[e.target.value] || 'Tüketim';
+        }
+    }
 });
 
 // Son girişleri yükle
@@ -465,10 +499,13 @@ function formatDetails(data) {
 // Düzenleme fonksiyonu
 function editInput(id) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Veriyi çek
+    
     fetch(`/carbon/api/get-input/${id}/`)
         .then(response => response.json())
         .then(data => {
+            console.log('Gelen veri:', data);  // Browser konsolunda görünmeli
+            console.log('Data içeriği:', data.data);
+            
             if (!data.id) {
                 alert('Kayıt bulunamadı!');
                 return;
@@ -479,44 +516,49 @@ function editInput(id) {
             document.getElementById('input-datetime').value = data.datetime;
             document.getElementById('scope-select').value = data.scope;
             
-            // Scope'u değiştir (alt kapsamları yükle)
+            // Scope'u değiştir
             currentScope = data.scope;
             const evt = new Event('change');
             document.getElementById('scope-select').dispatchEvent(evt);
             
-            // Alt kapsam seçimi ve form oluşturma için bekle
             setTimeout(() => {
                 document.getElementById('subscope-select').value = data.subscope;
-                createDynamicForm(data.subscope);  // Formu direkt oluştur
+                createDynamicForm(data.subscope);
                 
-                // Form alanlarını doldur
                 setTimeout(() => {
+                    // TÜM form alanlarını doldur
                     for (let [key, value] of Object.entries(data.data)) {
-                        const field = document.getElementById(`field-${key}`);
+                        console.log(`Dolduruluyor: ${key} = ${value}`);
+                        
+                        // amount'u consumption'a çevir (4.3 için)
+                        if (key === 'amount' && currentScope == 4 && data.subscope === '4.3') {
+                            key = 'consumption';
+                        }
+                        
+                        // Önce ID ile dene
+                        let field = document.getElementById(`field-${key}`);
+                        
+                        // ID bulunamazsa name ile dene
+                        if (!field) {
+                            field = document.querySelector(`[name="${key}"]`);
+                        }
+                        
                         if (field) {
-                            // Select elementler için özel işlem
-                            if (field.tagName === 'SELECT' && field.dataset.optionType === 'coefficient_names') {
-                                loadSelectOptions(field, 'coefficient_names');
-                                setTimeout(() => {
-                                    field.value = value;
-                                }, 300);
-                            } else {
-                                field.value = value;
-                            }
+                            field.value = value;
+                            console.log(`${key} alanı dolduruldu: ${value}`);
                         }
                     }
                     
-                    // Güncelleme modu için işaret koy
+                    // Güncelleme modu işareti
                     document.getElementById('carbon-input-form').dataset.editId = id;
-                    
-                    // Butonu güncelle
                     const submitBtn = document.querySelector('#carbon-input-form button[type="submit"]');
                     submitBtn.innerHTML = '<i class="fas fa-save"></i> Güncelle';
                 }, 200);
             }, 200);
         })
         .catch(error => {
-            alert('Hata: ' + error);
+            console.error('Hata:', error);
+            alert('Veri yükleme hatası: ' + error);
         });
 }
 
