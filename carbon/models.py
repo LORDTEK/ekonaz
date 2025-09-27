@@ -43,8 +43,8 @@ class DynamicCarbonInput(models.Model):
     
     # Hesaplanan değerler
     co2e_total = models.DecimalField(
-        max_digits=15, 
-        decimal_places=6, 
+        max_digits=20, 
+        decimal_places=10, 
         default=0,
         verbose_name="Toplam CO2e"
     )
@@ -118,6 +118,7 @@ class CarbonCoefficient(models.Model):
         ('EF_KG_CO2E_M3', 'Emisyon Faktörü (kgCO2e/m³)'),
         ('EF_KG_CO2_TON', 'Emisyon Faktörü (kgCO2/ton)'),
         ('EF_KG_CO2_M3', 'Emisyon Faktörü (kgCO2/m³)'),
+        ('EF_KG_CO2E_ODA', 'EF (kgCO2e/oda)'),
     ]
     
     scope = models.CharField(max_length=1, choices=SCOPE_CHOICES, verbose_name="Kapsam")
@@ -216,6 +217,72 @@ class CarbonCoefficient(models.Model):
         ).filter(
             models.Q(valid_to__gte=date) | models.Q(valid_to__isnull=True)
         ).first()
+
+
+class Report(models.Model):
+    """Karbon Raporu Modeli"""
+    
+    STATUS_CHOICES = [
+        ('DRAFT', 'Taslak'),
+        ('COMPLETED', 'Tamamlandı'),
+        ('APPROVED', 'Onaylandı'),
+    ]
+    
+    # Temel bilgiler
+    firm = models.ForeignKey(Firm, on_delete=models.CASCADE, verbose_name="Firma")
+    report_name = models.CharField(max_length=200, verbose_name="Rapor Adı")
+    report_date = models.DateField(auto_now_add=True, verbose_name="Rapor Tarihi")
+    period_start = models.DateField(verbose_name="Dönem Başlangıcı")
+    period_end = models.DateField(verbose_name="Dönem Bitişi")
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='DRAFT')
+    
+    # Kapsam toplamları (hesaplama sonuçları buraya kaydedilecek)
+    scope1_total = models.DecimalField(max_digits=12, decimal_places=2, default=0, verbose_name="Kapsam 1 Toplam")
+    scope1_stationary = models.DecimalField(max_digits=12, decimal_places=2, default=0, verbose_name="Sabit Yanma")
+    scope1_mobile = models.DecimalField(max_digits=12, decimal_places=2, default=0, verbose_name="Mobil Yanma")
+    
+    scope2_total = models.DecimalField(max_digits=12, decimal_places=2, default=0, verbose_name="Kapsam 2 Toplam")
+    scope2_electricity = models.DecimalField(max_digits=12, decimal_places=2, default=0, verbose_name="Elektrik")
+    
+    scope3_total = models.DecimalField(max_digits=12, decimal_places=2, default=0, verbose_name="Kapsam 3 Toplam")
+    scope4_total = models.DecimalField(max_digits=12, decimal_places=2, default=0, verbose_name="Kapsam 4 Toplam")
+    
+    total_co2e = models.DecimalField(max_digits=12, decimal_places=2, default=0, verbose_name="Toplam CO2e")
+    
+    # Metadata
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name="Oluşturan")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    content = models.TextField(blank=True, null=True, verbose_name='Rapor İçeriği')
+    report_type = models.CharField(
+        max_length=50,
+        choices=[
+            ('detailed', 'Detaylı'),
+            ('summary', 'Özet'),
+            ('executive', 'Yönetici Özeti'),
+            ('custom', 'Özel')
+        ],
+        default='detailed'
+    )
+
+    class Meta:
+        verbose_name = "Karbon Raporu"
+        verbose_name_plural = "Karbon Raporları"
+        ordering = ['-report_date']
+    
+    def __str__(self):
+        return f"{self.firm.name} - {self.report_name} ({self.report_date})"
+    
+    def calculate_total(self):
+        """Toplam emisyonu hesapla"""
+        self.total_co2e = (
+            self.scope1_total + 
+            self.scope2_total + 
+            self.scope3_total + 
+            self.scope4_total
+        )
+        self.save()
 
 
 # ============================================
@@ -319,7 +386,7 @@ class ExcelReport(models.Model):
     
     # Metadata
     generated_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name="Oluşturan")
-    generated_at = models.DateTimeField(auto_now_add=True, verbose_name="Oluşturulma Tarihi")
+    generated_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     notes = models.TextField(blank=True, verbose_name="Notlar")
     
     class Meta:
