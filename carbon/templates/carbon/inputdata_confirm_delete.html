@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block body_class %}inputdata-confirm-delete-bg{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/backgrounds.css' %}">
+{% endblock %}
 
 {% block title %}Karbon Girdi Silme Onayı - Ekonaz Portal{% endblock %}
 

@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block body_class %}user-list-bg{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/backgrounds.css' %}">
+{% endblock %}
 
 {% block title %}{{ list_title }} - Ekonaz Portal{% endblock %}
 

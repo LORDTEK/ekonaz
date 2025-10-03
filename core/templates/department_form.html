@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block body_class %}department-form-bg{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/backgrounds.css' %}">
+{% endblock %}
 
 {% block title %}Birim Formu - Ekonaz Portal{% endblock %}
+
 
 {% block styles %}
     <style>

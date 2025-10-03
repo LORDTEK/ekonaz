@@ -1,0 +1,307 @@
+/* ===============================================
+   GENEL YAZI GÖRÜNÜRLÜĞÜ AYARLARI - TÜM SAYFALAR
+   =============================================== */
+
+/* Ana içerik alanına modern glassmorphism efekti */
+body[class*="-bg"] .main-content {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Başlıklar - Modern ve Okunaklı */
+body[class*="-bg"] .main-content h1,
+body[class*="-bg"] .main-content h2,
+body[class*="-bg"] .main-content h3 {
+    background: rgba(255, 255, 255, 0.95) !important;
+    padding: 18px 25px !important;
+    border-radius: 10px !important;
+    color: #1a1a1a !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    border-left: 4px solid #007bff !important;
+    margin-bottom: 25px !important;
+}
+
+/* İçerik Alanları - Opak Beyaz Arka Plan */
+body[class*="-bg"] .main-content table,
+body[class*="-bg"] .main-content form,
+body[class*="-bg"] .main-content ul:not(.sidebar ul),
+body[class*="-bg"] .main-content .confirmation-box,
+body[class*="-bg"] .main-content figure {
+    background: rgba(255, 255, 255, 0.98) !important;
+    padding: 25px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Yazılar - Koyu ve Net */
+body[class*="-bg"] .main-content p,
+body[class*="-bg"] .main-content label,
+body[class*="-bg"] .main-content td,
+body[class*="-bg"] .main-content th,
+body[class*="-bg"] .main-content li:not(.sidebar li),
+body[class*="-bg"] .main-content a,
+body[class*="-bg"] .main-content span,
+body[class*="-bg"] .main-content div {
+    color: #2c3e50 !important;
+    text-shadow: none !important;
+}
+
+/* Tablo Başlıkları */
+body[class*="-bg"] .main-content th {
+    background-color: #f8f9fa !important;
+    font-weight: 600 !important;
+    color: #1a1a1a !important;
+}
+
+/* Butonlar */
+body[class*="-bg"] .main-content button,
+body[class*="-bg"] .main-content .btn {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ===============================================
+   ARKAPLAN RESİMLERİ - DAHA KOYULAŞTIRILMIŞ OVERLAY
+   =============================================== */
+
+/* Login sayfası */
+.login-bg {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('/static/images/backgrounds/login-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Dashboard/Portal sayfası */
+.dashboard-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/dashboard-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Firma Liste sayfası */
+.firm-list-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/firm-list-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Firma Form sayfası */
+.firm-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/firm-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Firma Silme Onay sayfası */
+.firm-confirm-delete-bg {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url('/static/images/backgrounds/firm-confirm-delete-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Kullanıcı Liste sayfası */
+.user-list-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/user-list-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Kullanıcı Form sayfası */
+.user-form-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/user-form-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Kullanıcı Silme Onay sayfası */
+.user-confirm-delete-bg {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url('/static/images/backgrounds/user-confirm-delete-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Birim (Department) Liste sayfası */
+.department-list-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/department-list-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Birim (Department) Form sayfası */
+.department-form-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/department-form-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Birim Silme Onay sayfası */
+.department-confirm-delete-bg {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url('/static/images/backgrounds/department-confirm-delete-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Personel Liste sayfası */
+.personnel-list-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/personnel-list-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Personel Form sayfası */
+.personnel-form-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/personnel-form-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Personel Silme Onay sayfası */
+.personnel-confirm-delete-bg {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url('/static/images/backgrounds/personnel-confirm-delete-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Karbon Yönetim sayfası */
+.management-list-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/management-list-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Karbon Katsayı Liste sayfası */
+.coefficient-list-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/coefficient-list-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Karbon Katsayı Form sayfası */
+.coefficient-form-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/coefficient-form-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Karbon Girdi Liste sayfası */
+.input-list-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/input-list-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Dinamik Karbon Girişi sayfası */
+.dynamic-input-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/dynamic-input-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Karbon Rapor sayfası */
+.report-bg {
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+                url('/static/images/backgrounds/report-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Karbon Rapor Liste sayfası */
+.report-list-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/report-list-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Emisyon Faktörü Form sayfası */
+.emissionfactor-form-bg {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('/static/images/backgrounds/emissionfactor-form-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Emisyon Faktörü Silme Onay sayfası */
+.emissionfactor-confirm-delete-bg {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url('/static/images/backgrounds/emissionfactor-confirm-delete-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Karbon Girdi Verisi Silme Onay sayfası */
+.inputdata-confirm-delete-bg {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url('/static/images/backgrounds/inputdata-confirm-delete-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}

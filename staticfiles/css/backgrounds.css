@@ -1,0 +1,29 @@
+/* Login sayfası */
+.login-bg {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('/static/images/backgrounds/login-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Dashboard sayfası */
+.dashboard-bg {
+    background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.05)),
+                url('/static/images/backgrounds/dashboard-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Report sayfası */
+.report-bg {
+    background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)),
+                url('/static/images/backgrounds/report-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}

@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block body_class %}firm-list-bg{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/backgrounds.css' %}">
+{% endblock %}
 
 {% block title %}Firma Listesi - Ekonaz Portal{% endblock %}
 
